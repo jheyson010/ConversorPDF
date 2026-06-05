@@ -1,0 +1,31 @@
+node_modules/
+
+# Local Codex/agent state
+.agents/
+.codex/
+
+# Runtime data (uploads, outputs, database)
+data/uploads/
+data/outputs/
+data/*.sqlite
+data/*.db
+
+# QA / test files (not source code)
+data/qa/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts (el bundle se regenera con npm run build:workspace)
+# Si quieres excluirlo del repo, descomenta la siguiente línea:
+# public/assets/js/workspace-react.bundle.js

@@ -1,0 +1,37 @@
+{
+  "name": "pdf",
+  "version": "1.0.0",
+  "description": "DocFlow - editor y conversor de documentos con historial por usuario.",
+  "main": "server.js",
+  "scripts": {
+    "build:workspace": "node node_modules/esbuild/bin/esbuild src/react/workspace/main.jsx --bundle --format=iife --global-name=DocFlowWorkspace --outfile=public/assets/js/workspace-react.bundle.js --loader:.jsx=jsx --jsx=automatic",
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pdfsmaller/pdf-encrypt-lite": "^1.0.2",
+    "canvas": "^3.2.3",
+    "cookie-parser": "^1.4.7",
+    "docx": "^9.7.1",
+    "dotenv": "^17.4.2",
+    "esbuild": "^0.28.0",
+    "express": "^5.2.1",
+    "google-auth-library": "^10.6.2",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.12.0",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.4",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.4.624",
+    "playwright-core": "^1.60.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sql.js": "^1.14.1",
+    "tesseract.js": "^7.0.0",
+    "xlsx": "^0.18.5"
+  }
+}

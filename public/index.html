@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocFlow - Editor de Documentos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260604-email">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <nav>
+    <a href="#inicio" class="logo">Doc<span>Flow</span></a>
+    <ul class="top-tabs" id="moduleTabs">
+      <li><button class="top-tab active" type="button" data-module="herramientas">Herramientas</button></li>
+      <li><button class="top-tab" type="button" data-module="convertir">Convertir</button></li>
+      <li><button class="top-tab" type="button" data-module="editar">Edición</button></li>
+      <li><button class="top-tab" type="button" data-module="proteger">Proteger</button></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="account-chip hidden" id="accountChip" type="button"></button>
+      <button class="nav-cta" id="startButton" type="button">Continuar con Google</button>
+    </div>
+  </nav>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-tag">Suite Profesional de Documentos</div>
+        <h1>Edita, convierte y<br><em>transforma</em> tus archivos</h1>
+        <p>PDF, Word, Excel, PowerPoint — todas las herramientas que necesitas en un solo lugar, con la precisión que mereces.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" id="heroUploadButton" type="button"><i class="fas fa-upload"></i> Subir archivo</button>
+          <a class="btn-ghost hero-secondary" href="#herramientas">Ver todas las herramientas</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="upload-section" id="uploadSection" aria-label="Carga de documentos">
+      <div class="upload-context">
+        <span class="panel-kicker">Subida</span>
+        <h2 id="uploadToolTitle">Selecciona una herramienta para continuar</h2>
+        <p id="uploadToolDescription">Después de elegir una acción, sube el archivo y DocFlow abrirá el workspace o procesará la conversión.</p>
+        <div class="tool-options upload-options hidden" id="uploadOptions"></div>
+      </div>
+      <form class="upload-box" id="uploadBox">
+        <input class="file-input" id="fileInput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png">
+        <div class="upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+        <h2>Arrastra tu archivo aquí</h2>
+        <p>o <span>selecciona desde tu dispositivo</span> — Máx. 50 MB</p>
+        <div class="format-pills" id="uploadFormatPills">
+          <span class="pill">PDF</span>
+          <span class="pill">DOCX</span>
+          <span class="pill">XLSX</span>
+          <span class="pill">PPTX</span>
+          <span class="pill">JPG</span>
+          <span class="pill">PNG</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="module-filter hidden-control" aria-hidden="true">
+      <span id="moduleKicker">Herramientas</span>
+      <h2 id="moduleTitle">Herramientas</h2>
+      <p id="moduleDescription"></p>
+      <div id="ribbonActions"></div>
+      <button id="selectFirstToolButton" type="button"></button>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="herramientas">
+      <div class="section-header">
+        <h2 id="toolsSectionTitle">Herramientas</h2>
+        <div class="line"></div>
+      </div>
+      <div class="tools-grid" id="toolsGrid"></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="docs-section" id="documentos">
+      <div class="panel-header">
+        <div>
+          <span class="panel-kicker">Documentos subidos</span>
+          <h2>Historial y resultados</h2>
+        </div>
+        <button class="icon-button" id="refreshHistoryButton" type="button" title="Actualizar historial"><i class="fas fa-rotate"></i></button>
+      </div>
+      <div class="docs-summary" id="docsSummary">
+        <span>Inicia sesión para ver tus documentos.</span>
+      </div>
+      <div class="recent-strip hidden" id="recentStrip">
+        <div class="document-list" id="documentList"></div>
+      </div>
+    </section>
+
+    <section class="section workflow-section">
+      <div class="section-header">
+        <h2>¿Por qué DocFlow?</h2>
+        <div class="line"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feat">
+          <div class="feat-num">01</div>
+          <div class="feat-text">
+            <h3>Sin instalación</h3>
+            <p>Todo funciona directo en el navegador. Sin descargas, sin configuraciones.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-num">02</div>
+          <div class="feat-text">
+            <h3>Cuenta segura</h3>
+            <p>Acceso con Google para historial privado, resultados y descargas.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-num">03</div>
+          <div class="feat-text">
+            <h3>Alta fidelidad</h3>
+            <p>Conversiones y edición con el formato lo más estable posible.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="feat-num">04</div>
+          <div class="feat-text">
+            <h3>Planes sin anuncios</h3>
+            <p>La eliminación de anuncios estará disponible mediante suscripción.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section plans-section" id="planes">
+      <div class="section-header">
+        <h2>Planes</h2>
+        <div class="line"></div>
+      </div>
+      <div class="plans-grid">
+        <article class="plan-card">
+          <span class="panel-kicker">Gratis</span>
+          <h3>Para empezar</h3>
+          <p>Herramientas básicas con anuncios y límite razonable de uso.</p>
+          <strong>S/ 0</strong>
+        </article>
+        <article class="plan-card featured">
+          <span class="panel-kicker">Pro</span>
+          <h3>Sin anuncios</h3>
+          <p>Quita anuncios, conserva historial extendido y prioriza conversiones.</p>
+          <strong>Suscripción</strong>
+        </article>
+        <article class="plan-card">
+          <span class="panel-kicker">Empresa</span>
+          <h3>Equipos</h3>
+          <p>Usuarios, permisos, almacenamiento y configuración avanzada.</p>
+          <strong>A medida</strong>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">DocFlow</div>
+    <p>© 2026 - Suite profesional de documentos</p>
+  </footer>
+
+  <dialog class="auth-dialog" id="authDialog">
+    <div class="auth-card" id="authCard">
+      <button class="icon-button close-button" value="cancel" type="button" id="closeAuthButton" title="Cerrar"><i class="fas fa-xmark"></i></button>
+      <div class="auth-mark"><i class="fas fa-fingerprint"></i></div>
+      <h2>Ingresa a DocFlow</h2>
+      <p>Usa tu correo o Google para entrar al inicio, conservar tu historial y descargar resultados.</p>
+      <form class="email-auth-form" id="emailAuthForm">
+        <label for="emailAuthInput">Correo electrónico</label>
+        <div class="email-auth-row">
+          <input id="emailAuthInput" name="email" type="email" autocomplete="email" placeholder="tu correo@ejemplo.com" required>
+          <button class="btn-primary auth-submit" type="submit">Ingresar</button>
+        </div>
+      </form>
+      <div class="auth-divider"><span>o continúa con Google</span></div>
+      <div class="google-holder" id="googleButton"></div>
+      <p class="auth-note" id="authNote"></p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="/assets/js/app.js?v=20260604-email"></script>
+</body>
+</html>

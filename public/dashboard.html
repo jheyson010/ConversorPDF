@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocFlow - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260604-refdash">
+</head>
+<body class="dashboard-body ref-dashboard">
+  <aside class="dashboard-sidebar">
+    <a href="/dashboard.html" class="sb-logo"><i class="ti ti-files"></i><span>Doc<span>Flow</span></span></a>
+    <div class="sb-user">
+      <div class="avatar" id="dashboardAvatar">DF</div>
+      <div class="sb-user-info">
+        <p id="dashboardUserName">Cuenta</p>
+        <span id="dashboardPlan">Plan Gratis</span>
+      </div>
+    </div>
+    <div class="sb-scroll">
+      <div class="sb-section">
+        <div class="sb-label">Principal</div>
+        <button class="sb-item active" type="button" data-section="home"><i class="ti ti-layout-dashboard"></i><span>Inicio</span></button>
+        <button class="sb-item" type="button" data-section="files"><i class="ti ti-files"></i><span>Mis archivos</span></button>
+        <button class="sb-item" type="button" data-section="recent"><i class="ti ti-clock-hour-4"></i><span>Recientes</span></button>
+      </div>
+      <div class="sb-section">
+        <div class="sb-label">Editar</div>
+        <button class="sb-item" type="button" data-editor-view="word"><i class="ti ti-file-type-doc"></i><span>Editar Word</span></button>
+        <button class="sb-item" type="button" data-tool-id="editPdf"><i class="ti ti-file-type-pdf"></i><span>Editar PDF</span></button>
+      </div>
+      <div class="sb-section">
+        <div class="sb-label">PDF Tools</div>
+        <button class="sb-item" type="button" data-tool-id="merge"><i class="ti ti-arrows-join"></i><span>Unir PDFs</span></button>
+        <button class="sb-item" type="button" data-tool-id="split"><i class="ti ti-scissors"></i><span>Dividir PDF</span></button>
+        <button class="sb-item" type="button" data-tool-id="compress"><i class="ti ti-compress"></i><span>Comprimir</span></button>
+        <button class="sb-item" type="button" data-tool-id="protect"><i class="ti ti-lock"></i><span>Proteger</span></button>
+        <button class="sb-item" type="button" data-tool-id="rotate"><i class="ti ti-rotate"></i><span>Rotar páginas</span></button>
+        <button class="sb-item" type="button" data-tool-id="watermark"><i class="ti ti-droplet"></i><span>Marca de agua</span></button>
+      </div>
+      <div class="sb-section">
+        <div class="sb-label">Convertir</div>
+        <button class="sb-item" type="button" data-tool-id="pdfToWord"><i class="ti ti-file-type-pdf"></i><span>PDF -> Word</span></button>
+        <button class="sb-item" type="button" data-tool-id="wordToPdf"><i class="ti ti-file-type-doc"></i><span>Word -> PDF</span></button>
+        <button class="sb-item" type="button" data-tool-id="pdfToImage"><i class="ti ti-photo"></i><span>PDF -> Imagen</span></button>
+        <button class="sb-item" type="button" data-tool-id="excelToPdf"><i class="ti ti-table"></i><span>Excel -> PDF</span></button>
+        <button class="sb-item" type="button" data-tool-id="pptToPdf"><i class="ti ti-presentation"></i><span>PPT -> PDF</span></button>
+      </div>
+      <div class="sb-section">
+        <div class="sb-label">Avanzado</div>
+        <button class="sb-item" type="button" data-tool-id="ocr"><i class="ti ti-eye"></i><span>OCR</span></button>
+      </div>
+    </div>
+    <div class="sb-bottom">
+      <a class="sb-item" href="/#planes"><i class="ti ti-crown"></i><span>Quitar anuncios</span></a>
+      <button class="sb-item" id="logoutButton" type="button"><i class="ti ti-logout"></i><span>Salir</span></button>
+    </div>
+  </aside>
+
+  <main class="ref-main">
+    <header class="ref-topbar">
+      <div class="topbar-left">
+        <div class="topbar-title" id="topbarTitle">Inicio</div>
+        <div class="breadcrumb">DocFlow <span id="breadcrumbCurrent">/ Inicio</span></div>
+      </div>
+      <div class="topbar-right">
+        <button class="tb-btn" id="refreshDashboardButton" type="button"><i class="ti ti-history"></i> Historial</button>
+        <a class="tb-btn" href="/#planes"><i class="ti ti-share"></i> Compartir</a>
+        <button class="tb-btn" id="topUploadButton" type="button"><i class="ti ti-download"></i> Descargar</button>
+        <button class="tb-btn tb-btn-gold" id="convertButton" type="button"><i class="ti ti-arrows-exchange"></i> Convertir</button>
+      </div>
+    </header>
+
+    <section class="ref-view" id="homeView">
+      <div class="view-inner">
+        <div class="view-header">
+          <h2 id="welcomeTitle">Bienvenido</h2>
+          <p id="activeToolHelp">¿Qué necesitas hacer hoy?</p>
+        </div>
+        <section class="drop-zone" id="dashboardUploadBox">
+          <input class="file-input" id="dashboardFileInput" type="file" multiple>
+          <div class="dz-icon"><i class="ti ti-cloud-upload"></i></div>
+          <h3 id="dashboardUploadTitle">Arrastra tu archivo aquí</h3>
+          <p>o <span>selecciona desde tu dispositivo</span> — Máx. 50 MB</p>
+          <div class="format-pills" id="dashboardFormats">
+            <span class="fpill">PDF</span><span class="fpill">DOCX</span><span class="fpill">XLSX</span><span class="fpill">PPTX</span><span class="fpill">JPG</span><span class="fpill">PNG</span>
+          </div>
+        </section>
+        <div class="dash-grid" id="dashboardTools"></div>
+        <section class="recent-block">
+          <div class="recent-head">
+            <span>Recientes</span>
+            <button type="button" data-section="recent">Ver todos -></button>
+          </div>
+          <div id="recentItemsHome"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="ref-view hidden" id="filesView">
+      <div class="view-inner">
+        <div class="view-header"><h2>Mis archivos</h2><p>Historial de documentos subidos y resultados.</p></div>
+        <div class="files-toolbar">
+          <input id="fileSearchInput" type="search" placeholder="Buscar archivos...">
+          <button class="btn btn-ghost" id="filesUploadButton" type="button"><i class="ti ti-upload"></i> Subir</button>
+        </div>
+        <div id="dashboardFiles" class="files-table"></div>
+      </div>
+    </section>
+
+    <section class="word-editor-view hidden" id="wordEditorView">
+      <div class="tabs-bar">
+        <button class="tab active" type="button"><i class="ti ti-file-type-doc"></i> Informe_Final.docx</button>
+        <button class="tab" type="button"><i class="ti ti-file-type-doc"></i> CV_actualizado.docx</button>
+        <button class="tab-add" type="button" id="wordUploadButton"><i class="ti ti-plus"></i></button>
+      </div>
+      <div class="editor-toolbar">
+        <select class="et-select"><option>Calibri</option><option>Arial</option><option>Times New Roman</option></select>
+        <select class="et-select"><option>12</option><option>14</option><option>16</option></select>
+        <span class="et-sep"></span>
+        <button class="et-btn" type="button" data-command="bold"><i class="ti ti-bold"></i></button>
+        <button class="et-btn" type="button" data-command="italic"><i class="ti ti-italic"></i></button>
+        <button class="et-btn" type="button" data-command="underline"><i class="ti ti-underline"></i></button>
+        <button class="et-btn" type="button" data-command="justifyLeft"><i class="ti ti-align-left"></i></button>
+        <button class="et-btn active" type="button" data-command="justifyCenter"><i class="ti ti-align-center"></i></button>
+        <button class="et-btn" type="button" data-command="justifyRight"><i class="ti ti-align-right"></i></button>
+        <span class="et-sep"></span>
+        <button class="et-btn ai-btn" type="button"><i class="ti ti-sparkles"></i> IA</button>
+      </div>
+      <div class="word-editor-shell">
+        <aside class="file-panel word-file-panel">
+          <div class="fp-head"><span class="fp-head-title">Archivos</span><button class="icon-btn" id="wordSideUploadButton" type="button"><i class="ti ti-upload"></i></button></div>
+          <div class="fp-search"><input type="search" placeholder="Buscar..."></div>
+          <div class="fp-list">
+            <a class="fp-file active" href="#"><i class="ti ti-file-type-doc"></i><span class="fp-name">Informe_Final.docx</span><span class="fp-size">248 KB</span></a>
+            <a class="fp-file" href="#"><i class="ti ti-file-type-pdf"></i><span class="fp-name">Contrato_v2.pdf</span><span class="fp-size">1.2 MB</span></a>
+            <a class="fp-file" href="#"><i class="ti ti-photo"></i><span class="fp-name">Logo_empresa.png</span><span class="fp-size">84 KB</span></a>
+          </div>
+        </aside>
+        <main class="doc-area word-doc-area">
+          <article class="doc-page" id="wordEditorPage" contenteditable="true" spellcheck="true">
+            <div class="doc-title-block">
+              <span>Informe Técnico — 2026</span>
+              <h1>Análisis de Sistemas de Gestión Documental para PYMES</h1>
+              <p>Elaborado por: J. Hernández · Junio 2026</p>
+            </div>
+            <h2>1. Introducción</h2>
+            <p>La gestión eficiente de documentos digitales se ha convertido en un factor clave para la competitividad de las pequeñas y medianas empresas. La adopción de herramientas especializadas permite reducir tiempos operativos y mejorar la trazabilidad de la información.</p>
+            <h2>2. Objetivos</h2>
+            <p>El presente informe evalúa las principales plataformas de edición y conversión documental, analizando capacidades técnicas, facilidad de uso y relación costo-beneficio para organizaciones con recursos limitados.</p>
+            <h2>3. Metodología</h2>
+            <p>Se realizó un análisis comparativo de seis herramientas líderes durante el primer trimestre, considerando velocidad de procesamiento, fidelidad de conversión y compatibilidad con formatos PDF, DOCX, XLSX y PPTX.</p>
+            <div class="doc-callout"><strong>Hallazgo clave:</strong> El 78% de las empresas considera la conversión PDF&lt;-&gt;Word como su necesidad más crítica en el flujo diario.</div>
+          </article>
+        </main>
+        <aside class="right-panel word-right-panel">
+          <div class="rp-section"><div class="rp-title">Propiedades</div><div class="rp-row"><label>Páginas</label><div class="rp-val">1</div></div><div class="rp-row"><label>Palabras</label><div class="rp-val">185</div></div><div class="rp-row"><label>Tamaño</label><div class="rp-val">248 KB</div></div><div class="rp-row"><label>Guardado</label><div class="rp-val" style="color:var(--green)">Auto</div></div></div>
+          <div class="rp-section"><div class="rp-title">Convertir a</div><button class="convert-card" type="button" data-tool-id="wordToPdf"><div class="cc-top"><i class="ti ti-file-type-pdf"></i><span class="cc-from">DOCX</span><span class="cc-arrow">-></span><span class="cc-to">PDF</span></div><div class="cc-desc">Exportar con formato</div></button></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="ref-view hidden" id="recentView">
+      <div class="view-inner">
+        <div class="view-header"><h2>Archivos recientes</h2><p>Últimas cargas y conversiones.</p></div>
+        <div id="recentFullList"></div>
+      </div>
+    </section>
+
+    <footer class="statusbar">
+      <div class="sb-status">
+        <div><span class="status-dot"></span><span id="statusText">Archivo procesado correctamente</span></div>
+        <div id="statusFile"></div>
+        <div id="statusInfo"></div>
+      </div>
+      <div class="storage-status">
+        <span>Almacenamiento</span>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+        <span>6.5 / 10 GB</span>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/assets/js/dashboard.js?v=20260604-refdash"></script>
+</body>
+</html>

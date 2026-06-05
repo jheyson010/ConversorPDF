@@ -1,0 +1,1035 @@
+/* React workspace layout. Loaded after styles.css to avoid old workbench rules fighting the app. */
+.react-workbench-body {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  grid-template-rows: 74px 50px 62px 56px minmax(0, 1fr) 28px;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--dark);
+  color: var(--text);
+}
+
+.react-workbench-body #react-workspace-root {
+  display: contents;
+}
+
+.react-sidebar {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  width: 248px;
+  min-width: 248px;
+  overflow: hidden;
+}
+
+.react-sidebar .sb-logo {
+  display: flex;
+  align-items: center;
+}
+
+.react-sidebar .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.react-topbar {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.react-topbar .workbench-actions {
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+}
+
+.react-topbar .workbench-actions > * {
+  justify-content: center;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.react-topbar .result-download.is-disabled {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Prominent green download button shown after successful conversion/edit */
+.btn-success {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .45rem 1rem;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: 220px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: background .15s;
+}
+
+.btn-success:hover {
+  background: #1b5e20;
+  color: #fff;
+}
+
+.react-workbench-body .workbench-tabs {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.react-workbench-body .workbench-status {
+  grid-column: 2;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(180px, .7fr) minmax(0, 1.1fr);
+  gap: 1px;
+  min-width: 0;
+  height: auto;
+  padding: 0 1rem;
+  background: var(--dark2);
+  border-bottom: 1px solid var(--border);
+}
+
+.react-workbench-body .workbench-status > div {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+}
+
+.react-workbench-body .workbench-status strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+  font-size: .88rem;
+}
+
+.react-workbench-body .pdf-toolbar {
+  grid-column: 2;
+  grid-row: 4;
+  min-width: 0;
+  height: auto;
+}
+
+.react-workspace {
+  grid-column: 2;
+  grid-row: 5;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  display: grid;
+  grid-template-columns: minmax(210px, 248px) minmax(420px, 1fr) minmax(250px, 292px);
+  gap: 1px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.react-workspace.convert-mode {
+  grid-row: 5;
+}
+
+.react-workspace.convert-mode .pdf-stage {
+  padding-top: 2rem;
+}
+
+.react-workspace .workbench-sidebar,
+.react-workspace .workbench-tools,
+.react-workspace .pdf-stage {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.react-workspace .workbench-sidebar,
+.react-workspace .workbench-tools {
+  overflow: auto;
+  padding: 1rem;
+  background: var(--dark2);
+}
+
+.react-workspace .pdf-stage {
+  overflow: auto;
+  padding: 2rem;
+  background: #24231f;
+}
+
+.react-workspace .document-item {
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+}
+
+.react-workspace .document-item > span:nth-child(2),
+.react-workspace .tool-action span,
+.react-workbench-body .toolbar-button {
+  min-width: 0;
+}
+
+.react-workspace .doc-name,
+.react-workspace .doc-meta,
+.react-workspace .page-title,
+.react-workspace .page-subtitle {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.react-workspace .page-card {
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+}
+
+.react-workspace .mode-tools,
+.react-workspace .editor-tools {
+  display: grid;
+  gap: .7rem;
+  padding: 0;
+}
+
+.react-workspace .tool-section-title {
+  margin-top: .4rem;
+  color: var(--text-soft);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.react-workspace .tool-action.active {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, .08);
+}
+
+.react-workspace .result-box {
+  margin: 1rem 0 0;
+  position: static;
+}
+
+.react-workspace .side-apply {
+  margin-bottom: 1rem;
+}
+
+.sortable-pages {
+  display: grid;
+  gap: .45rem;
+  max-height: min(56vh, 620px);
+  overflow: auto;
+  padding-right: .25rem;
+}
+
+.sortable-page {
+  cursor: grab;
+  user-select: none;
+}
+
+.sortable-page:active {
+  cursor: grabbing;
+}
+
+.sortable-page .page-thumb {
+  transition: transform .15s ease;
+  transform-origin: center;
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  opacity: .35;
+  transition: opacity .15s ease;
+}
+
+.sortable-page:hover .page-actions,
+.sortable-page.active .page-actions {
+  opacity: 1;
+}
+
+.page-actions button {
+  width: 24px;
+  height: 24px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.page-actions button:hover {
+  border-color: rgba(201, 168, 76, .4);
+  color: var(--gold);
+  background: rgba(201, 168, 76, .08);
+}
+
+.page-actions button:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+.react-workbench-body .stable-toolbar {
+  min-height: 56px;
+}
+
+.react-workbench-body .statusbar {
+  grid-column: 2;
+  grid-row: 6;
+  min-width: 0;
+}
+
+/* ── Annotation system ── */
+.annotation-layer,
+.text-replace-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.annotation-layer {
+  z-index: 10;
+}
+
+.text-replace-layer {
+  z-index: 5;
+}
+
+.text-replace-hit {
+  position: absolute;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  cursor: text;
+  pointer-events: auto;
+}
+
+.text-replace-hit:hover,
+.text-replace-hit:focus-visible {
+  border-bottom-color: rgba(201, 168, 76, .85);
+  background: rgba(201, 168, 76, .08);
+  outline: none;
+}
+
+/* Each text annotation — transparent by default, looks like real text on the PDF */
+.react-annotation {
+  position: absolute;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-sizing: border-box;
+  pointer-events: auto;
+  cursor: default;
+  transition: border-color .1s;
+}
+
+.react-annotation.is-erase {
+  background: var(--annotation-fill, #fff);
+  box-shadow: 0 0 0 2px var(--annotation-fill, #fff);
+}
+
+.react-annotation:hover {
+  border-color: rgba(201, 168, 76, .35);
+}
+
+.react-annotation.selected {
+  border-color: rgba(201, 168, 76, .85);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, .18);
+}
+
+.react-annotation.is-preview {
+  border-color: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.react-annotation.is-preview .react-annotation-text {
+  cursor: default;
+}
+
+.draft-text-box {
+  position: absolute;
+  min-width: 8px;
+  min-height: 8px;
+  border: 1.5px dashed rgba(201, 168, 76, .9);
+  background: rgba(201, 168, 76, .08);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Drag handle — only shows when selected */
+.ann-drag-handle {
+  position: absolute;
+  top: -24px;
+  right: 0;
+  width: 54px;
+  min-width: 54px;
+  height: 22px;
+  background: rgba(20, 20, 19, .92);
+  border: 1px solid rgba(201, 168, 76, .65);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  cursor: grab;
+  color: #fff;
+  font-size: .65rem;
+  user-select: none;
+}
+
+.ann-drag-handle:active {
+  cursor: grabbing;
+}
+
+.ann-delete-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.72);
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: .7rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.ann-delete-btn:hover {
+  color: #fff;
+}
+
+/* The actual editable text area */
+.react-annotation-text {
+  width: 100%;
+  padding: 1px 3px;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  outline: none;
+  cursor: text;
+  box-sizing: border-box;
+  line-height: 1.25;
+  min-width: 20px;
+  overflow: visible;
+}
+
+/* CSS placeholder for empty annotations */
+.react-annotation-text:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(0,0,0,.3);
+  pointer-events: none;
+}
+
+/* When empty and not selected, hide placeholder to keep PDF clean */
+.react-annotation.ann-empty:not(.selected) .react-annotation-text::before {
+  display: none;
+}
+
+/* When empty and not selected, show a faint dotted outline so user knows it's there */
+.react-annotation.ann-empty:not(.selected) {
+  border-color: rgba(201,168,76,.18);
+}
+
+/* Resize handle */
+.react-resize {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border: 1.5px solid #fff;
+  border-radius: 2px;
+  cursor: nwse-resize;
+  z-index: 20;
+}
+
+.react-workbench-body ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.react-workbench-body ::-webkit-scrollbar-track {
+  background: #151515;
+}
+
+.react-workbench-body ::-webkit-scrollbar-thumb {
+  background: #4a463d;
+  border-radius: 8px;
+}
+
+@media (max-width: 1100px) {
+  .react-workbench-body {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  .react-sidebar {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .react-workspace {
+    grid-template-columns: 220px minmax(520px, 1fr);
+  }
+
+  .react-workspace .workbench-tools {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(220px, .45fr) minmax(0, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* ── Multi-page PDF container ── */
+.react-pdf-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.react-pdf-page {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .35);
+}
+
+.react-pdf-page canvas {
+  display: block;
+}
+
+.react-pdf-page.mode-addtext {
+  cursor: crosshair;
+}
+
+.page-badge {
+  position: absolute;
+  top: -22px;
+  left: 0;
+  font-size: .68rem;
+  color: var(--text-soft);
+  letter-spacing: .06em;
+  background: transparent;
+  pointer-events: none;
+}
+
+.pdf-loading {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: .9rem;
+}
+
+.react-pdf-page .annotation-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.react-pdf-page .text-replace-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ── Module forms (Proteger, Herramientas, Organizar) ── */
+.module-form {
+  display: grid;
+  gap: 1rem;
+  padding-top: .5rem;
+}
+
+.form-group {
+  display: grid;
+  gap: .35rem;
+}
+
+.form-label {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.form-input {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 5px;
+  padding: .5rem .75rem;
+  font-size: .84rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.form-input:focus {
+  border-color: var(--gold);
+}
+
+.form-range {
+  width: 100%;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.form-hint {
+  font-size: .74rem;
+  color: var(--text-soft);
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  line-height: 1.4;
+  margin-top: .25rem;
+}
+
+/* ── Toolbar label / input ── */
+.toolbar-label {
+  color: var(--text-soft);
+  font-size: .78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.toolbar-input {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: .28rem .55rem;
+  font-size: .82rem;
+  outline: none;
+}
+
+.toolbar-input:focus {
+  border-color: var(--gold);
+}
+
+/* PDF tool suite */
+.pdf-tool-surface {
+  grid-column: 2;
+  grid-row: 4 / 6;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  background: #0c0c0b;
+  padding: 1.8rem 2rem 3rem;
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 1.1rem;
+}
+
+.tool-hero,
+.tool-card-shell,
+.watermark-layout,
+.tool-result {
+  width: min(760px, 100%);
+}
+
+.tool-hero h2 {
+  margin: 0 0 .3rem;
+  color: var(--text);
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.tool-hero p,
+.tool-muted {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: .82rem;
+}
+
+.tool-card-shell {
+  display: grid;
+  gap: .85rem;
+  padding: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--dark2);
+  box-sizing: border-box;
+}
+
+.tool-card-shell.narrow {
+  width: min(590px, 100%);
+}
+
+.tool-card-shell.wide {
+  width: min(760px, 100%);
+}
+
+.merge-list {
+  display: grid;
+  gap: .45rem;
+}
+
+.merge-row {
+  display: grid;
+  grid-template-columns: 18px 22px minmax(0, 1fr) auto 28px 28px 28px;
+  align-items: center;
+  gap: .55rem;
+  min-height: 38px;
+  padding: .48rem .55rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #1b1b1a;
+}
+
+.merge-row strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .83rem;
+}
+
+.merge-row span {
+  color: var(--text-soft);
+  font-size: .74rem;
+}
+
+.merge-row button,
+.tool-page {
+  border: 0;
+  color: var(--text-soft);
+  background: transparent;
+  cursor: pointer;
+}
+
+.merge-row button:hover,
+.tool-page:hover {
+  color: var(--gold);
+}
+
+.drag-grip {
+  text-align: center;
+}
+
+.pdf-red {
+  color: #ef5350;
+}
+
+.tool-inline-actions {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+}
+
+.tool-inline-actions.compact-left {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.tool-inline-actions .full,
+.tool-card-shell .full {
+  flex: 1 1 0;
+  justify-content: center;
+}
+
+.empty-state {
+  min-height: 72px;
+  display: grid;
+  place-items: center;
+  color: var(--text-soft);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.tool-page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: .9rem;
+}
+
+.tool-page {
+  display: grid;
+  gap: .35rem;
+  justify-items: center;
+  padding: 0;
+  min-height: 126px;
+}
+
+.tool-page-thumb {
+  width: 78px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  border: 2px solid #333;
+  background: #fff;
+  color: #b8b8b8;
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.tool-page.selected .tool-page-thumb {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, .18);
+}
+
+.tool-page-thumb b {
+  position: absolute;
+  right: 5px;
+  bottom: 4px;
+  color: #999;
+  font-size: .64rem;
+}
+
+.tool-page small,
+.tool-page em {
+  color: var(--text-soft);
+  font-size: .7rem;
+  font-style: normal;
+}
+
+.tool-page em {
+  color: var(--gold);
+  margin-top: -.25rem;
+}
+
+.tool-input.small {
+  width: 120px;
+}
+
+.compression-box {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.compression-box > div {
+  min-height: 64px;
+  display: grid;
+  place-items: center;
+  background: #1b1b1a;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.compression-box strong {
+  color: var(--text);
+  font-size: 1.25rem;
+}
+
+.compression-box span {
+  color: var(--text-soft);
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.savings-bar {
+  padding: .55rem;
+  border: 1px solid rgba(67, 160, 71, .35);
+  border-radius: 4px;
+  background: rgba(67, 160, 71, .1);
+  color: #66d48d;
+  text-align: center;
+  font-size: .78rem;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--text-soft);
+  font-size: .82rem;
+}
+
+.check-row input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--gold);
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .45rem;
+}
+
+.segmented button {
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #1b1b1a;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.segmented button.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, .08);
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 220px;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background:
+    linear-gradient(45deg, #fff 25%, #f4f4f4 25% 50%, #fff 50% 75%, #f4f4f4 75%) 0 0 / 18px 18px;
+  touch-action: none;
+}
+
+.signature-text-input {
+  width: 100%;
+  min-height: 96px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+  padding: 1rem;
+  font: 2rem "Brush Script MT", "Segoe Script", cursive;
+  box-sizing: border-box;
+}
+
+.tool-two-cols,
+.watermark-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.watermark-layout {
+  align-items: start;
+}
+
+.watermark-preview {
+  padding-top: 1.2rem;
+}
+
+.fake-page {
+  aspect-ratio: 1.72;
+  position: relative;
+  overflow: hidden;
+  padding: 1.4rem;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 16px 46px rgba(0, 0, 0, .28);
+  font-family: Georgia, serif;
+}
+
+.fake-page p {
+  max-width: 68%;
+  margin: .6rem 0;
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+.fake-page span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--wm-color, #c9a84c);
+  font: 700 2.7rem Arial, sans-serif;
+  pointer-events: none;
+  transform-origin: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .react-workbench-body {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+  }
+
+  .react-workbench-body #react-workspace-root {
+    display: block;
+  }
+
+  .react-sidebar {
+    display: none;
+  }
+
+  .react-topbar,
+  .react-workbench-body .workbench-tabs,
+  .react-workbench-body .workbench-status,
+  .react-workbench-body .pdf-toolbar,
+  .pdf-tool-surface,
+  .react-workspace,
+  .react-workbench-body .statusbar {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .react-topbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .react-topbar .workbench-actions {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .react-topbar .result-download.is-disabled {
+    display: none;
+  }
+
+  .react-workbench-body .workbench-status {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+    padding: .8rem 1rem;
+  }
+
+  .react-workspace,
+  .react-workspace.convert-mode {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .react-workspace .workbench-tools {
+    display: block;
+  }
+
+  .pdf-tool-surface {
+    padding: 1rem;
+  }
+
+  .merge-row {
+    grid-template-columns: 18px 22px minmax(0, 1fr) 28px 28px 28px;
+  }
+
+  .merge-row > span:nth-of-type(2) {
+    display: none;
+  }
+
+  .tool-two-cols,
+  .watermark-layout {
+    grid-template-columns: 1fr;
+  }
+}
