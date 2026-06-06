@@ -1,7 +1,7 @@
-import { api } from './api.js?v=20260604-email';
-import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260604-email';
+import { api } from './api.js?v=20260606-google';
+import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260606-google';
 
-export function setupDocuments({ requireAuth, getActiveTool, getToolOptions }) {
+export function setupDocuments({ requireAuth, getActiveTool, inferToolForFiles, getToolOptions }) {
   const recentStrip = $('#recentStrip');
   const list = $('#documentList');
   const fileInput = $('#fileInput');
@@ -17,9 +17,9 @@ export function setupDocuments({ requireAuth, getActiveTool, getToolOptions }) {
     recentStrip.classList.toggle('hidden', documents.length === 0);
     if (!documents.length) {
       docsSummary.innerHTML = authenticated
-        ? '<span>No hay documentos en esta cuenta todavía.</span>'
-        : '<span>Inicia sesión para ver tus documentos.</span>';
-      list.innerHTML = '<div class="empty-state">Todavía no tienes documentos.</div>';
+        ? '<span>No hay documentos en esta cuenta todavia.</span>'
+        : '<span>Inicia sesion para ver tus documentos.</span>';
+      list.innerHTML = '<div class="empty-state">Todavia no tienes documentos.</div>';
       return;
     }
 
@@ -27,7 +27,7 @@ export function setupDocuments({ requireAuth, getActiveTool, getToolOptions }) {
     const outputs = documents.filter((doc) => doc.kind === 'output').length;
     docsSummary.innerHTML = `
       <span><strong>${documents.length}</strong> documentos guardados</span>
-      <span><strong>${uploads}</strong> subidos · <strong>${outputs}</strong> resultados</span>
+      <span><strong>${uploads}</strong> subidos - <strong>${outputs}</strong> resultados</span>
     `;
 
     list.innerHTML = documents.slice(0, 8).map((doc) => `
@@ -35,7 +35,7 @@ export function setupDocuments({ requireAuth, getActiveTool, getToolOptions }) {
         <span class="doc-file-icon"><i class="fas fa-file"></i></span>
         <span>
           <span class="doc-name">${escapeHtml(doc.name)}</span>
-          <span class="doc-meta">${escapeHtml(doc.kind)} · ${formatBytes(doc.sizeBytes)}</span>
+          <span class="doc-meta">${escapeHtml(doc.kind)} - ${formatBytes(doc.sizeBytes)}</span>
         </span>
         <a class="doc-download" href="/workspace.html?tool=editPdf&docs=${doc.id}" title="Abrir"><i class="fas fa-arrow-up-right-from-square"></i></a>
       </article>
@@ -64,16 +64,17 @@ export function setupDocuments({ requireAuth, getActiveTool, getToolOptions }) {
     const user = await requireAuth();
     if (!user) return;
 
-    const tool = getActiveTool();
-    if (!tool) {
-      toast('Primero elige qué quieres hacer.');
-      document.querySelector('#herramientas')?.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
+    const tool = getActiveTool() || inferToolForFiles?.(files);
 
     try {
       uploadBox.classList.add('dragging');
       const result = await api.upload(files);
+      if (!tool) {
+        toast('Archivo guardado en tu historial.');
+        await refresh();
+        return;
+      }
+
       const ids = result.documents.map((doc) => doc.id).join(',');
       if (tool.workspace) {
         toast('Archivo listo. Abriendo workspace...');
@@ -99,15 +100,7 @@ export function setupDocuments({ requireAuth, getActiveTool, getToolOptions }) {
 
   fileInput.addEventListener('change', () => uploadFiles(fileInput.files));
   uploadBox.addEventListener('submit', (event) => event.preventDefault());
-  heroUploadButton.addEventListener('click', () => {
-    const tool = getActiveTool();
-    if (!tool) {
-      toast('Elige una herramienta primero.');
-      document.querySelector('#herramientas')?.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    fileInput.click();
-  });
+  heroUploadButton.addEventListener('click', () => fileInput.click());
   refreshButton.addEventListener('click', () => refresh().catch((error) => toast(error.message)));
 
   uploadBox.addEventListener('dragover', (event) => {

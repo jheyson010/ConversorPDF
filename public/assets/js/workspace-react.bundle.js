@@ -23800,7 +23800,7 @@ var DocFlowWorkspace = (() => {
           ref: uploadInputRef,
           className: "hidden",
           type: "file",
-          accept: ".pdf",
+          accept: ".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.gif,.txt,.csv",
           multiple: module === "merge",
           onChange: (event) => uploadPdf(event.target.files)
         }

@@ -1,7 +1,7 @@
-import { setupAuth } from './auth.js?v=20260604-email';
-import { setupDocuments } from './documents.js?v=20260604-email';
+import { setupAuth } from './auth.js?v=20260606-google';
+import { setupDocuments } from './documents.js?v=20260606-google';
 import { findModule, findTool, modules, tools } from './tools.js?v=20260604-email';
-import { $, escapeHtml, toast } from './ui.js?v=20260604-email';
+import { $, escapeHtml, toast } from './ui.js?v=20260606-google';
 
 const toolsGrid = $('#toolsGrid');
 const ribbonActions = $('#ribbonActions');
@@ -21,6 +21,9 @@ let activeTool = null;
 let activeModuleId = 'inicio';
 let documentsModule;
 
+const UNIVERSAL_ACCEPT = '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.gif,.txt,.csv';
+const UNIVERSAL_FORMATS = ['PDF', 'DOCX', 'XLSX', 'PPTX', 'JPG', 'PNG', 'TXT', 'CSV'];
+
 function toolsForModule(moduleId) {
   const module = findModule(moduleId) || modules[0];
   return module.tools.map(findTool).filter(Boolean);
@@ -29,9 +32,9 @@ function toolsForModule(moduleId) {
 function setUploadAccept(tool) {
   const formats = [];
   if (!tool) {
-    fileInput.accept = '.pdf,.jpg,.jpeg,.png';
+    fileInput.accept = UNIVERSAL_ACCEPT;
     fileInput.multiple = true;
-    formats.push('PDF', 'JPG', 'PNG');
+    formats.push(...UNIVERSAL_FORMATS);
     renderUploadFormats(formats);
     return;
   }
@@ -214,6 +217,22 @@ function selectRecommendedTool() {
   if (tool) selectTool(tool.id);
 }
 
+function inferToolForFiles(files) {
+  const items = Array.from(files || []);
+  if (!items.length) return null;
+  const names = items.map((file) => String(file.name || '').toLowerCase());
+  const ext = (name) => name.split('.').pop();
+  const all = (extensions) => names.every((name) => extensions.includes(ext(name)));
+
+  if (all(['jpg', 'jpeg', 'png', 'webp', 'gif'])) return findTool('imageToPdf');
+  if (items.length > 1 && all(['pdf'])) return findTool('merge');
+  if (all(['doc', 'docx'])) return findTool('wordToPdf');
+  if (all(['xls', 'xlsx', 'csv'])) return findTool('excelToPdf');
+  if (all(['ppt', 'pptx'])) return findTool('pptToPdf');
+  if (all(['pdf'])) return findTool('editPdf');
+  return null;
+}
+
 document.querySelectorAll('[data-module]').forEach((button) => {
   button.addEventListener('click', () => selectModule(button.dataset.module));
 });
@@ -236,21 +255,16 @@ documentsModule = setupDocuments({
     auth.open();
     return null;
   },
-  getActiveTool: () => {
-    if (!activeTool) {
-      toast('Primero elige una acción de la barra superior.');
-      return null;
-    }
-    return activeTool;
-  },
+  getActiveTool: () => activeTool,
+  inferToolForFiles,
   getToolOptions: currentToolOptions,
 });
 
 renderAll();
-activeTool = findTool('editPdf');
-uploadToolTitle.textContent = activeTool.title;
-uploadToolDescription.textContent = 'Al subirlo se abre el workspace con vista completa del PDF y controles superiores.';
-setUploadAccept(activeTool);
+activeTool = null;
+uploadToolTitle.textContent = 'Sube cualquier archivo para empezar';
+uploadToolDescription.textContent = 'DocFlow detectara el formato y abrira la herramienta correcta automaticamente.';
+setUploadAccept(null);
 renderUploadOptions();
 renderAll();
 

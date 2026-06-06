@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=20260604-email">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260606-google">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
@@ -49,7 +49,7 @@
         <div class="tool-options upload-options hidden" id="uploadOptions"></div>
       </div>
       <form class="upload-box" id="uploadBox">
-        <input class="file-input" id="fileInput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png">
+        <input class="file-input" id="fileInput" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.gif,.txt,.csv">
         <div class="upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
         <h2>Arrastra tu archivo aquí</h2>
         <p>o <span>selecciona desde tu dispositivo</span> — Máx. 50 MB</p>
@@ -175,15 +175,7 @@
       <button class="icon-button close-button" value="cancel" type="button" id="closeAuthButton" title="Cerrar"><i class="fas fa-xmark"></i></button>
       <div class="auth-mark"><i class="fas fa-fingerprint"></i></div>
       <h2>Ingresa a DocFlow</h2>
-      <p>Usa tu correo o Google para entrar al inicio, conservar tu historial y descargar resultados.</p>
-      <form class="email-auth-form" id="emailAuthForm">
-        <label for="emailAuthInput">Correo electrónico</label>
-        <div class="email-auth-row">
-          <input id="emailAuthInput" name="email" type="email" autocomplete="email" placeholder="tu correo@ejemplo.com" required>
-          <button class="btn-primary auth-submit" type="submit">Ingresar</button>
-        </div>
-      </form>
-      <div class="auth-divider"><span>o continúa con Google</span></div>
+      <p>Continúa con cualquier cuenta de Google para guardar tu historial privado y descargar resultados.</p>
       <div class="google-holder" id="googleButton"></div>
       <p class="auth-note" id="authNote"></p>
     </div>
@@ -191,6 +183,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script type="module" src="/assets/js/app.js?v=20260604-email"></script>
+  <script type="module" src="/assets/js/app.js?v=20260606-google"></script>
 </body>
 </html>

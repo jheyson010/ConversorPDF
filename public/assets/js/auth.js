@@ -1,5 +1,5 @@
-import { api } from './api.js?v=20260604-email';
-import { $, escapeHtml, toast } from './ui.js?v=20260604-email';
+import { api } from './api.js?v=20260606-google';
+import { $, escapeHtml, toast } from './ui.js?v=20260606-google';
 
 export function setupAuth(onAuthChange) {
   const dialog = $('#authDialog');
@@ -8,8 +8,6 @@ export function setupAuth(onAuthChange) {
   const googleButton = $('#googleButton');
   const startButton = $('#startButton');
   const accountChip = $('#accountChip');
-  const emailForm = $('#emailAuthForm');
-  const emailInput = $('#emailAuthInput');
 
   function open() {
     if (!dialog.open) dialog.showModal();
@@ -55,10 +53,12 @@ export function setupAuth(onAuthChange) {
         authNote.textContent = 'Configura GOOGLE_CLIENT_ID para activar Google.';
         return;
       }
-      if (!window.google?.accounts?.id || !clientId) {
+      if (!window.google?.accounts?.id) {
         setTimeout(renderGoogleButton, 500);
         return;
       }
+
+      googleButton.innerHTML = '';
       window.google.accounts.id.initialize({
         client_id: clientId,
         callback: async (response) => {
@@ -67,7 +67,7 @@ export function setupAuth(onAuthChange) {
             renderUser(user);
             onAuthChange(user);
             close();
-            toast(`Sesión iniciada: ${user.email}`);
+            toast(`Sesion iniciada: ${user.email}`);
             window.location.href = '/dashboard.html';
           } catch (error) {
             authNote.textContent = error.message;
@@ -77,7 +77,7 @@ export function setupAuth(onAuthChange) {
       window.google.accounts.id.renderButton(googleButton, {
         theme: 'filled_blue',
         size: 'large',
-        width: 360,
+        width: Math.min(420, Math.max(260, googleButton.clientWidth || 420)),
         text: 'continue_with',
       });
     } catch (error) {
@@ -91,31 +91,11 @@ export function setupAuth(onAuthChange) {
     await api.logout();
     renderUser(null);
     onAuthChange(null);
-    toast('Sesión cerrada.');
+    toast('Sesion cerrada.');
   });
 
   accountChip.addEventListener('click', open);
   closeButton.addEventListener('click', close);
-  emailForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const email = emailInput.value.trim();
-    if (!email) {
-      authNote.textContent = 'Ingresa tu correo para continuar.';
-      return;
-    }
-    try {
-      authNote.textContent = 'Iniciando sesión...';
-      const { user } = await api.emailLogin(email);
-      renderUser(user);
-      onAuthChange(user);
-      close();
-      toast(`Sesión iniciada: ${user.email}`);
-      window.location.href = '/dashboard.html';
-    } catch (error) {
-      authNote.textContent = error.message;
-    }
-  });
-
   renderGoogleButton();
 
   return { open, close, loadSession };

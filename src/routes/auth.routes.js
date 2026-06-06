@@ -2,7 +2,6 @@ const express = require('express');
 const {
   SESSION_DAYS,
   verifyGoogleCredential,
-  loginWithEmail,
   deleteSession,
 } = require('../services/auth.service');
 
@@ -41,16 +40,6 @@ router.post('/google', async (req, res, next) => {
     const result = await verifyGoogleCredential(req.body.credential);
     if (!result) return res.status(401).json({ message: 'No se pudo validar tu cuenta de Google.' });
 
-    res.cookie('docflow_session', result.token, sessionCookieOptions());
-    return res.json({ user: result.user });
-  } catch (error) {
-    return next(error);
-  }
-});
-
-router.post('/email', async (req, res, next) => {
-  try {
-    const result = await loginWithEmail(req.body.email);
     res.cookie('docflow_session', result.token, sessionCookieOptions());
     return res.json({ user: result.user });
   } catch (error) {

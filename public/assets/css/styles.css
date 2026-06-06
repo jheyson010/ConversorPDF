@@ -147,7 +147,8 @@ footer p{font-size:0.78rem;color:var(--text-muted)}
 .auth-mark{width:44px;height:44px;background:var(--dark4);border:1px solid var(--border);display:grid;place-items:center;color:var(--gold)}
 .close-button{position:absolute;top:0.8rem;right:0.8rem}
 .code-step{display:grid;gap:1rem}
-.google-holder{min-height:44px}
+.google-holder{min-height:44px;width:100%;display:grid;justify-items:stretch}
+.google-holder > div{width:100%!important}
 .auth-note{min-height:1.4rem}
 .email-auth-form{display:grid;gap:.5rem}
 .email-auth-row{display:grid;grid-template-columns:1fr auto;gap:.55rem}
