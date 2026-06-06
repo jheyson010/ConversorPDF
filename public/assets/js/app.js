@@ -1,7 +1,7 @@
-import { setupAuth } from './auth.js?v=20260606-google';
-import { setupDocuments } from './documents.js?v=20260606-google';
-import { findModule, findTool, modules, tools } from './tools.js?v=20260604-email';
-import { $, escapeHtml, toast } from './ui.js?v=20260606-google';
+import { setupAuth } from './auth.js?v=20260606-access';
+import { setupDocuments } from './documents.js?v=20260606-access';
+import { findModule, findTool, modules, tools } from './tools.js?v=20260606-access';
+import { $, escapeHtml, toast } from './ui.js?v=20260606-access';
 
 const toolsGrid = $('#toolsGrid');
 const ribbonActions = $('#ribbonActions');

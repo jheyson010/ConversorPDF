@@ -1,5 +1,5 @@
-import { api } from './api.js?v=20260606-google';
-import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260606-google';
+import { api } from './api.js?v=20260606-access';
+import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260606-access';
 
 export function setupDocuments({ requireAuth, getActiveTool, inferToolForFiles, getToolOptions }) {
   const recentStrip = $('#recentStrip');

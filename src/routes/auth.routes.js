@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   SESSION_DAYS,
+  loginWithEmail,
   verifyGoogleCredential,
   deleteSession,
 } = require('../services/auth.service');
@@ -31,8 +32,19 @@ router.post('/logout', async (req, res, next) => {
 
 router.get('/google/client', (_req, res) => {
   res.json({
+    enabled: process.env.ENABLE_GOOGLE_LOGIN === 'true',
     clientId: process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '660499321480-v9blu82drm6fctvchpt1u4u0o5a8lqvk.apps.googleusercontent.com',
   });
+});
+
+router.post('/email', async (req, res, next) => {
+  try {
+    const result = await loginWithEmail(req.body.email);
+    res.cookie('docflow_session', result.token, sessionCookieOptions());
+    return res.json({ user: result.user });
+  } catch (error) {
+    return next(error);
+  }
 });
 
 router.post('/google', async (req, res, next) => {

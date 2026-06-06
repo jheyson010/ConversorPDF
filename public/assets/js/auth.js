@@ -1,13 +1,23 @@
-import { api } from './api.js?v=20260606-google';
-import { $, escapeHtml, toast } from './ui.js?v=20260606-google';
+import { api } from './api.js?v=20260606-access';
+import { $, escapeHtml, toast } from './ui.js?v=20260606-access';
 
 export function setupAuth(onAuthChange) {
   const dialog = $('#authDialog');
   const authNote = $('#authNote');
   const closeButton = $('#closeAuthButton');
+  const emailForm = $('#emailAuthForm');
+  const emailInput = $('#emailAuthInput');
   const googleButton = $('#googleButton');
   const startButton = $('#startButton');
   const accountChip = $('#accountChip');
+  const authCard = $('#authCard');
+  const googleDivider = authCard?.querySelector('.auth-divider');
+  const authIntro = authCard?.querySelector('p:not(.auth-note)');
+
+  if (authIntro && emailForm) {
+    authIntro.textContent = 'Ingresa con cualquier correo, incluido Gmail, para guardar tu historial y descargar resultados.';
+    authCard.insertBefore(authIntro, emailForm);
+  }
 
   function open() {
     if (!dialog.open) dialog.showModal();
@@ -40,19 +50,46 @@ export function setupAuth(onAuthChange) {
       accountChip.classList.remove('hidden');
       return;
     }
-    startButton.textContent = 'Continuar con Google';
+    startButton.textContent = 'Ingresar';
     accountChip.classList.add('hidden');
     accountChip.textContent = '';
     accountChip.removeAttribute('title');
   }
 
+  async function completeLogin(loginPromise) {
+    const { user } = await loginPromise;
+    renderUser(user);
+    onAuthChange(user);
+    close();
+    toast(`Sesion iniciada: ${user.email}`);
+    window.location.href = '/dashboard.html';
+  }
+
+  emailForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    authNote.textContent = '';
+    const email = emailInput.value.trim();
+    if (!email) {
+      authNote.textContent = 'Ingresa tu correo.';
+      return;
+    }
+    try {
+      await completeLogin(api.emailLogin(email));
+    } catch (error) {
+      authNote.textContent = error.message;
+    }
+  });
+
   async function renderGoogleButton() {
     try {
-      const { clientId } = await api.googleClient();
-      if (!clientId) {
-        authNote.textContent = 'Configura GOOGLE_CLIENT_ID para activar Google.';
+      const { enabled, clientId } = await api.googleClient();
+      if (!enabled || !clientId) {
+        googleButton.classList.add('hidden');
+        googleDivider?.classList.add('hidden');
         return;
       }
+      googleButton.classList.remove('hidden');
+      googleDivider?.classList.remove('hidden');
       if (!window.google?.accounts?.id) {
         setTimeout(renderGoogleButton, 500);
         return;
@@ -63,12 +100,7 @@ export function setupAuth(onAuthChange) {
         client_id: clientId,
         callback: async (response) => {
           try {
-            const { user } = await api.googleLogin(response.credential);
-            renderUser(user);
-            onAuthChange(user);
-            close();
-            toast(`Sesion iniciada: ${user.email}`);
-            window.location.href = '/dashboard.html';
+            await completeLogin(api.googleLogin(response.credential));
           } catch (error) {
             authNote.textContent = error.message;
           }

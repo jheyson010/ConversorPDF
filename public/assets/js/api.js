@@ -21,6 +21,7 @@ export async function request(path, options = {}) {
 
 export const api = {
   me: () => request('/api/auth/me'),
+  emailLogin: (email) => request('/api/auth/email', { method: 'POST', body: JSON.stringify({ email }) }),
   googleLogin: (credential) => request('/api/auth/google', { method: 'POST', body: JSON.stringify({ credential }) }),
   googleClient: () => request('/api/auth/google/client'),
   logout: () => request('/api/auth/logout', { method: 'POST', body: JSON.stringify({}) }),
