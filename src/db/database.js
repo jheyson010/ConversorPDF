@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const initSqlJs = require('sql.js');
 const mysql = require('mysql2/promise');
-const { DATA_DIR, DB_PATH, ROOT_DIR } = require('../config/paths');
+const { DATA_DIR, DB_PATH, ROOT_DIR, STATIC_DATA_DIR } = require('../config/paths');
 
 let SQL;
 let sqliteDb;
@@ -128,7 +128,11 @@ async function initMysql() {
 async function initSqlite() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   SQL = await initSqlJs({
-    locateFile: (file) => path.join(ROOT_DIR, 'node_modules', 'sql.js', 'dist', file),
+    locateFile: (file) => {
+      const bundledFile = path.join(STATIC_DATA_DIR, file);
+      if (fs.existsSync(bundledFile)) return bundledFile;
+      return path.join(ROOT_DIR, 'node_modules', 'sql.js', 'dist', file);
+    },
   });
 
   sqliteDb = fs.existsSync(DB_PATH)

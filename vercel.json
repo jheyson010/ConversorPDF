@@ -6,11 +6,7 @@
   "functions": {
     "api/index.js": {
       "maxDuration": 60,
-      "includeFiles": [
-        "data/*.traineddata",
-        "node_modules/sql.js/dist/sql-wasm.wasm",
-        "src/db/tidb.schema.sql"
-      ]
+      "includeFiles": "data/**"
     }
   },
   "routes": [
