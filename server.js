@@ -14,7 +14,9 @@ const ocrRoutes = require('./src/routes/ocr.routes');
 
 const PORT = Number(process.env.PORT || 3000);
 
-async function start() {
+let appPromise;
+
+async function createApp() {
   await initDatabase();
   ensureStorage();
 
@@ -36,14 +38,24 @@ async function start() {
   app.use((error, _req, res, _next) => {
     console.error(error.stack || error);
     if (error.code === 'LIMIT_FILE_SIZE') {
-      return res.status(413).json({ message: 'El archivo supera el máximo de 50 MB.' });
+      return res.status(413).json({ message: 'El archivo supera el maximo de 50 MB.' });
     }
     const status = error.status || 500;
     return res.status(status).json({
-      message: error.message || 'Ocurrió un error procesando el documento.',
+      message: error.message || 'Ocurrio un error procesando el documento.',
     });
   });
 
+  return app;
+}
+
+function getApp() {
+  if (!appPromise) appPromise = createApp();
+  return appPromise;
+}
+
+async function start() {
+  const app = await getApp();
   const server = app.listen(PORT, () => {
     console.log(`DocFlow listo en http://localhost:${PORT}`);
   });
@@ -60,7 +72,15 @@ async function start() {
   process.once('SIGTERM', () => shutdown('SIGTERM'));
 }
 
-start().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (require.main === module) {
+  start().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
+
+module.exports = {
+  createApp,
+  getApp,
+  start,
+};

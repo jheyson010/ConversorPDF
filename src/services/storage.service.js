@@ -33,7 +33,34 @@ const upload = multer({
   limits: { fileSize: MAX_FILE_SIZE },
 });
 
-async function createDocumentRecord({ userId, originalName, storedName, mimeType, sizeBytes, storagePath, kind, toolSource = null }) {
+function shouldPersistFileContent() {
+  if (process.env.DOCFLOW_STORE_FILES_IN_DB === 'false') return false;
+  return process.env.DOCFLOW_STORE_FILES_IN_DB === 'true' || process.env.VERCEL || db.getEngine() === 'mysql';
+}
+
+function fileContentFromUpload(file) {
+  if (file.buffer) return Buffer.from(file.buffer);
+  if (file.path && fs.existsSync(file.path)) return fs.readFileSync(file.path);
+  return null;
+}
+
+function materializedPathFor(document) {
+  const base = document.kind === 'output' ? OUTPUTS_DIR : UPLOADS_DIR;
+  return path.join(base, document.stored_name || `${document.id}${safeExtension(document.original_name)}`);
+}
+
+function materializeDocument(document) {
+  if (!document) return null;
+  if (document.storage_path && fs.existsSync(document.storage_path)) return document;
+  if (!document.content) return document;
+
+  ensureStorage();
+  const storagePath = materializedPathFor(document);
+  fs.writeFileSync(storagePath, Buffer.from(document.content));
+  return { ...document, storage_path: storagePath };
+}
+
+async function createDocumentRecord({ userId, originalName, storedName, mimeType, sizeBytes, storagePath, kind, toolSource = null, content = null }) {
   const document = {
     id: crypto.randomUUID(),
     user_id: userId,
@@ -42,6 +69,7 @@ async function createDocumentRecord({ userId, originalName, storedName, mimeType
     mime_type: mimeType || 'application/octet-stream',
     size_bytes: Number(sizeBytes || 0),
     storage_path: storagePath,
+    ...(content ? { content: Buffer.from(content) } : {}),
     kind,
     tool_source: toolSource,
     created_at: nowIso(),
@@ -51,6 +79,7 @@ async function createDocumentRecord({ userId, originalName, storedName, mimeType
 }
 
 async function recordUploadedFile(file, userId) {
+  const content = shouldPersistFileContent() ? fileContentFromUpload(file) : null;
   return createDocumentRecord({
     userId,
     originalName: file.originalname,
@@ -58,6 +87,7 @@ async function recordUploadedFile(file, userId) {
     mimeType: file.mimetype,
     sizeBytes: file.size,
     storagePath: file.path,
+    content,
     kind: 'upload',
   });
 }
@@ -73,13 +103,15 @@ async function recordOutputFile({ userId, originalName, mimeType, buffer, toolSo
     mimeType,
     sizeBytes: buffer.length,
     storagePath,
+    content: shouldPersistFileContent() ? buffer : null,
     kind: 'output',
     toolSource,
   });
 }
 
 async function getDocumentForUser(id, userId) {
-  return db.get('SELECT * FROM documents WHERE id = ? AND user_id = ?', [id, userId]);
+  const document = await db.get('SELECT * FROM documents WHERE id = ? AND user_id = ?', [id, userId]);
+  return materializeDocument(document);
 }
 
 async function listDocumentsForUser(userId) {

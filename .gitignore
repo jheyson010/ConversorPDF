@@ -17,10 +17,12 @@ data/qa/
 .env
 .env.local
 .env.production
+.vercel/
 
 # Logs
 *.log
 npm-debug.log*
+data/*.sqlite-journal
 
 # OS
 .DS_Store

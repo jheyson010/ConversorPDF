@@ -51,6 +51,51 @@ function mysqlConfigFromEnv() {
   };
 }
 
+function quoteIdentifier(identifier) {
+  const value = String(identifier || '').trim();
+  if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+    throw new Error('Nombre de base de datos invalido.');
+  }
+  return `\`${value}\``;
+}
+
+async function ensureMysqlDatabase(config, ssl) {
+  if (!config.database) return;
+  const bootstrap = await mysql.createConnection({
+    host: config.host,
+    port: config.port,
+    user: config.user,
+    password: config.password,
+    ssl,
+  });
+  try {
+    await bootstrap.query(`CREATE DATABASE IF NOT EXISTS ${quoteIdentifier(config.database)}`);
+  } finally {
+    await bootstrap.end();
+  }
+}
+
+async function ensureMysqlColumn(table, column, definition) {
+  const rows = await all(`SHOW COLUMNS FROM ${table} LIKE ?`, [column]);
+  if (!rows.length) {
+    await run(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  }
+}
+
+function sqliteHasColumn(table, column) {
+  const stmt = sqliteDb.prepare(`PRAGMA table_info(${table})`);
+  const rows = [];
+  while (stmt.step()) rows.push(stmt.getAsObject());
+  stmt.free();
+  return rows.some((row) => row.name === column);
+}
+
+function ensureSqliteColumn(table, column, definition) {
+  if (!sqliteHasColumn(table, column)) {
+    sqliteDb.run(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  }
+}
+
 async function initMysql() {
   const config = mysqlConfigFromEnv();
   const caPath = process.env.TIDB_CA_PATH || process.env.DB_SSL_CA_PATH;
@@ -61,6 +106,8 @@ async function initMysql() {
         rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED !== 'false',
         ...(caPath && fs.existsSync(caPath) ? { ca: fs.readFileSync(caPath) } : {}),
       };
+
+  await ensureMysqlDatabase(config, ssl);
 
   mysqlPool = mysql.createPool({
     ...config,
@@ -75,6 +122,7 @@ async function initMysql() {
   const schema = fs.readFileSync(schemaPath, 'utf8');
   await mysqlPool.query(schema);
   engine = 'mysql';
+  await ensureMysqlColumn('documents', 'content', 'LONGBLOB');
 }
 
 async function initSqlite() {
@@ -124,6 +172,7 @@ async function initSqlite() {
       mime_type TEXT,
       size_bytes INTEGER NOT NULL,
       storage_path TEXT NOT NULL,
+      content BLOB,
       kind TEXT NOT NULL,
       tool_source TEXT,
       created_at TEXT NOT NULL,
@@ -144,6 +193,7 @@ async function initSqlite() {
       FOREIGN KEY (user_id) REFERENCES users(id)
     );
   `);
+  ensureSqliteColumn('documents', 'content', 'BLOB');
   engine = 'sqlite';
   persist();
 }

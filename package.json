@@ -1,5 +1,5 @@
 {
-  "name": "pdf",
+  "name": "docflow",
   "version": "1.0.0",
   "description": "DocFlow - editor y conversor de documentos con historial por usuario.",
   "main": "server.js",
@@ -7,6 +7,7 @@
     "build:workspace": "node node_modules/esbuild/bin/esbuild src/react/workspace/main.jsx --bundle --format=iife --global-name=DocFlowWorkspace --outfile=public/assets/js/workspace-react.bundle.js --loader:.jsx=jsx --jsx=automatic",
     "dev": "node server.js",
     "start": "node server.js",
+    "db:init": "node scripts/init-db.js",
     "test": "node --test"
   },
   "keywords": [],

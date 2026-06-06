@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS documents (
   mime_type VARCHAR(255),
   size_bytes BIGINT NOT NULL,
   storage_path TEXT NOT NULL,
+  content LONGBLOB,
   kind VARCHAR(32) NOT NULL,
   tool_source VARCHAR(64),
   created_at DATETIME NOT NULL,

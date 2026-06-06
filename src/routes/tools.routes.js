@@ -3,9 +3,12 @@ const { requireUser } = require('../middleware/auth');
 const { getDocumentForUser, recordOutputFile, publicDocument } = require('../services/storage.service');
 const { createOperation, finishOperation, failOperation, publicOperation } = require('../services/operation.service');
 const pdf = require('../services/pdf');
-const conversion = require('../services/conversion');
 
 const router = express.Router();
+
+function conversion() {
+  return require('../services/conversion');
+}
 
 const tools = {
   merge: {
@@ -66,32 +69,32 @@ const tools = {
   pdfToWord: {
     outputName: 'pdf-convertido.docx',
     mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    run: ([document], options) => conversion.pdfToWord(document, options),
+    run: ([document], options) => conversion().pdfToWord(document, options),
   },
   pdfToWordImage: {
     outputName: 'pdf-word-visual.docx',
     mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    run: ([document]) => conversion.pdfToWord(document, { mode: 'image' }),
+    run: ([document]) => conversion().pdfToWord(document, { mode: 'image' }),
   },
   pdfToImage: {
     outputName: 'pdf-imagenes.zip',
     mimeType: 'application/zip',
-    run: ([document]) => conversion.pdfToImages(document),
+    run: ([document]) => conversion().pdfToImages(document),
   },
   wordToPdf: {
     outputName: 'word-a-pdf.pdf',
     mimeType: 'application/pdf',
-    run: ([document]) => conversion.wordToPdf(document),
+    run: ([document]) => conversion().wordToPdf(document),
   },
   excelToPdf: {
     outputName: 'excel-a-pdf.pdf',
     mimeType: 'application/pdf',
-    run: ([document]) => conversion.excelToPdf(document),
+    run: ([document]) => conversion().excelToPdf(document),
   },
   pptToPdf: {
     outputName: 'ppt-a-pdf.pdf',
     mimeType: 'application/pdf',
-    run: ([document]) => conversion.pptToPdf(document),
+    run: ([document]) => conversion().pptToPdf(document),
   },
   protect: {
     outputName: 'pdf-protegido.pdf',
