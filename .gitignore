@@ -18,6 +18,7 @@ data/qa/
 .env.local
 .env.production
 .vercel/
+.vercel-cli/
 
 # Logs
 *.log
