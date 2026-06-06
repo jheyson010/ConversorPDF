@@ -21,7 +21,7 @@ let activeTool = null;
 let activeModuleId = 'inicio';
 let documentsModule;
 
-const UNIVERSAL_ACCEPT = '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.gif,.txt,.csv';
+const UNIVERSAL_ACCEPT = '*/*';
 const UNIVERSAL_FORMATS = ['PDF', 'DOCX', 'XLSX', 'PPTX', 'JPG', 'PNG', 'TXT', 'CSV'];
 
 function toolsForModule(moduleId) {

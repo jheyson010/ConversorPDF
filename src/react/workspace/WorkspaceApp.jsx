@@ -284,7 +284,7 @@ export function WorkspaceApp() {
         ref={uploadInputRef}
         className="hidden"
         type="file"
-        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.gif,.txt,.csv"
+        accept="*/*"
         multiple={module === 'merge'}
         onChange={(event) => uploadPdf(event.target.files)}
       />

@@ -77,7 +77,7 @@ function formatsForTool(tool) {
 
 function setAcceptForTool(tool) {
   if (!tool) {
-    dashboardFileInput.accept = '.pdf,.docx,.xlsx,.xls,.pptx,.jpg,.jpeg,.png';
+    dashboardFileInput.accept = '*/*';
     dashboardFileInput.multiple = true;
   } else if (tool.id === 'imageToPdf') {
     dashboardFileInput.accept = '.jpg,.jpeg,.png';
