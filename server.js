@@ -15,17 +15,36 @@ const ocrRoutes = require('./src/routes/ocr.routes');
 const PORT = Number(process.env.PORT || 3000);
 
 let appPromise;
+let databasePromise;
+
+async function ensureDatabaseReady() {
+  if (!databasePromise) {
+    databasePromise = Promise.resolve()
+      .then(initDatabase)
+      .then(() => {
+        ensureStorage();
+      });
+  }
+  return databasePromise;
+}
+
+async function withDatabase(req, _res, next) {
+  try {
+    await ensureDatabaseReady();
+    next();
+  } catch (error) {
+    databasePromise = null;
+    next(error);
+  }
+}
 
 async function createApp() {
-  await initDatabase();
-  ensureStorage();
-
   const app = express();
   app.use(express.json({ limit: '25mb' }));
   app.use(cookieParser());
-  app.use(attachUser);
   app.use(express.static(PUBLIC_DIR));
 
+  app.use('/api', withDatabase, attachUser);
   app.use('/api/auth', authRoutes);
   app.use('/api/files', filesRoutes);
   app.use('/api/tools', toolsRoutes);
@@ -81,6 +100,7 @@ if (require.main === module) {
 
 module.exports = {
   createApp,
+  ensureDatabaseReady,
   getApp,
   start,
 };
