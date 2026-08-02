@@ -216,8 +216,12 @@ async function initSqlite() {
 
 async function initDatabase() {
   if (hasRemoteConfig()) {
-    await initMysql();
-    return;
+    try {
+      await initMysql();
+      return;
+    } catch (error) {
+      console.warn('Conexión a MySQL/TiDB fallida, usando SQLite fallback:', error.message);
+    }
   }
   await initSqlite();
 }
