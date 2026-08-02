@@ -11,6 +11,8 @@ const authRoutes = require('./src/routes/auth.routes');
 const filesRoutes = require('./src/routes/files.routes');
 const toolsRoutes = require('./src/routes/tools.routes');
 const ocrRoutes = require('./src/routes/ocr.routes');
+const subscriptionsRoutes = require('./src/routes/subscriptions.routes');
+const aiRoutes = require('./src/routes/ai.routes');
 
 const PORT = Number(process.env.PORT || 3000);
 
@@ -49,6 +51,8 @@ function createApp() {
   app.use('/api/files', filesRoutes);
   app.use('/api/tools', toolsRoutes);
   app.use('/api/ocr', ocrRoutes);
+  app.use('/api/subscriptions', subscriptionsRoutes);
+  app.use('/api/ai', aiRoutes);
 
   app.get(/^(?!\/api).*/, (_req, res) => {
     res.sendFile(path.join(PUBLIC_DIR, 'index.html'));

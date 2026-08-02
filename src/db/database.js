@@ -122,6 +122,10 @@ async function initMysql() {
   const schema = fs.readFileSync(schemaPath, 'utf8');
   await mysqlPool.query(schema);
   engine = 'mysql';
+  await ensureMysqlColumn('users', 'plan', "VARCHAR(32) NOT NULL DEFAULT 'free'");
+  await ensureMysqlColumn('users', 'subscription_status', "VARCHAR(32) NOT NULL DEFAULT 'inactive'");
+  await ensureMysqlColumn('users', 'subscription_id', 'VARCHAR(128)');
+  await ensureMysqlColumn('users', 'subscription_updated_at', 'DATETIME NULL');
   await ensureMysqlColumn('documents', 'content', 'LONGBLOB');
 }
 
@@ -146,6 +150,10 @@ async function initSqlite() {
       email TEXT NOT NULL UNIQUE,
       name TEXT,
       avatar_url TEXT,
+      plan TEXT NOT NULL DEFAULT 'free',
+      subscription_status TEXT NOT NULL DEFAULT 'inactive',
+      subscription_id TEXT,
+      subscription_updated_at TEXT,
       created_at TEXT NOT NULL,
       updated_at TEXT NOT NULL
     );
@@ -197,6 +205,10 @@ async function initSqlite() {
       FOREIGN KEY (user_id) REFERENCES users(id)
     );
   `);
+  ensureSqliteColumn('users', 'plan', "TEXT NOT NULL DEFAULT 'free'");
+  ensureSqliteColumn('users', 'subscription_status', "TEXT NOT NULL DEFAULT 'inactive'");
+  ensureSqliteColumn('users', 'subscription_id', 'TEXT');
+  ensureSqliteColumn('users', 'subscription_updated_at', 'TEXT');
   ensureSqliteColumn('documents', 'content', 'BLOB');
   engine = 'sqlite';
   persist();

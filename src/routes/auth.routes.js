@@ -31,9 +31,11 @@ router.post('/logout', async (req, res, next) => {
 });
 
 router.get('/google/client', (_req, res) => {
+  try { require('dotenv').config({ quiet: true, override: true }); } catch (_e) {}
+  const clientId = process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '652344578744-4n8lsr7k1medd0s31g1bnrd3m9bennl.apps.googleusercontent.com';
   res.json({
-    enabled: process.env.ENABLE_GOOGLE_LOGIN === 'true',
-    clientId: process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '660499321480-v9blu82drm6fctvchpt1u4u0o5a8lqvk.apps.googleusercontent.com',
+    enabled: String(process.env.ENABLE_GOOGLE_LOGIN || 'false').toLowerCase() === 'true' && Boolean(clientId),
+    clientId,
   });
 });
 

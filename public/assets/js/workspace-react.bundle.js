@@ -1329,7 +1329,7 @@ var DocFlowWorkspace = (() => {
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React9 = require_react(), Internals = {
+        var React11 = require_react(), Internals = {
           d: {
             f: noop,
             r: function() {
@@ -1347,7 +1347,7 @@ var DocFlowWorkspace = (() => {
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React9.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React11.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -2882,7 +2882,7 @@ var DocFlowWorkspace = (() => {
           "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React9.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React11.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -18514,14 +18514,14 @@ var DocFlowWorkspace = (() => {
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React9 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React11 = require_react(), ReactDOM = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
         /* @__PURE__ */ Symbol.for("react.scope");
         var REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity");
         /* @__PURE__ */ Symbol.for("react.legacy_hidden");
         /* @__PURE__ */ Symbol.for("react.tracing_marker");
         var REACT_MEMO_CACHE_SENTINEL = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
         /* @__PURE__ */ Symbol.for("react.view_transition");
-        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React9.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React11.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
           pending: false,
           data: null,
           method: null,
@@ -21309,7 +21309,7 @@ var DocFlowWorkspace = (() => {
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React9.version;
+          var isomorphicReactPackageVersion = React11.version;
           if ("19.2.7" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.7\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21663,18 +21663,18 @@ var DocFlowWorkspace = (() => {
         function isValidElement(object) {
           return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         }
-        var React9 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React9.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+        var React11 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React11.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
           return null;
         };
-        React9 = {
+        React11 = {
           react_stack_bottom_frame: function(callStackForError) {
             return callStackForError();
           }
         };
         var specialPropKeyWarningShown;
         var didWarnAboutElementRef = {};
-        var unknownOwnerDebugStack = React9.react_stack_bottom_frame.bind(
-          React9,
+        var unknownOwnerDebugStack = React11.react_stack_bottom_frame.bind(
+          React11,
           UnknownOwner
         )();
         var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21719,11 +21719,11 @@ var DocFlowWorkspace = (() => {
   });
 
   // src/react/workspace/main.jsx
-  var import_react8 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // src/react/workspace/WorkspaceApp.jsx
-  var import_react7 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
 
   // src/react/workspace/api.js
   async function request(path, options = {}) {
@@ -21752,6 +21752,18 @@ var DocFlowWorkspace = (() => {
     runTool: (tool, documentIds, options = {}) => request(`/api/tools/${tool}`, {
       method: "POST",
       body: JSON.stringify({ documentIds, options })
+    }),
+    aiSummarize: (documentId) => request("/api/ai/summarize", {
+      method: "POST",
+      body: JSON.stringify({ documentId })
+    }),
+    aiChat: (documentId, question, chatHistory = []) => request("/api/ai/chat", {
+      method: "POST",
+      body: JSON.stringify({ documentId, question, chatHistory })
+    }),
+    aiTranslate: (documentId, targetLanguage) => request("/api/ai/translate", {
+      method: "POST",
+      body: JSON.stringify({ documentId, targetLanguage })
     })
   };
   function downloadDocument(document2) {
@@ -21770,8 +21782,8 @@ var DocFlowWorkspace = (() => {
   var uploadConversions = ["wordToPdf", "excelToPdf", "pptToPdf", "imageToPdf"];
   var convertLabels = {
     compress: "Comprimir PDF",
-    pdfToWord: "PDF -> Word editable",
-    pdfToWordImage: "PDF -> Word visual",
+    pdfToWord: "PDF -> Word",
+    pdfToPpt: "PDF -> PPT",
     pdfToImage: "PDF -> Imagen",
     wordToPdf: "Word -> PDF",
     excelToPdf: "Excel -> PDF",
@@ -21781,7 +21793,7 @@ var DocFlowWorkspace = (() => {
   var convertDescriptions = {
     compress: "Reduce el tamano del archivo PDF manteniendo la calidad.",
     pdfToWord: "Convierte el PDF a Word editable conservando mejor la posicion del texto.",
-    pdfToWordImage: "Mantiene el diseno como imagen dentro de Word; no es editable.",
+    pdfToPpt: "Convierte tu archivo PDF en una presentacion PowerPoint (.pptx).",
     pdfToImage: "Exporta cada pagina como imagen PNG en un archivo ZIP.",
     wordToPdf: "Convierte tu documento Word a formato PDF.",
     excelToPdf: "Convierte tu hoja de calculo Excel a formato PDF.",
@@ -21794,7 +21806,7 @@ var DocFlowWorkspace = (() => {
     pptToPdf: ".pptx",
     imageToPdf: ".jpg,.jpeg,.png"
   };
-  function isPdf(doc) {
+  function isPdf2(doc) {
     return doc?.mimeType === "application/pdf" || /\.pdf$/i.test(doc?.name || "");
   }
   function formatBytes(value = 0) {
@@ -21842,6 +21854,10 @@ var DocFlowWorkspace = (() => {
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { active: module === "ver", icon: "fas fa-clock", label: "Recientes", onClick: () => go("ver") })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "sb-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sb-label", children: "Inteligencia IA" }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { active: module === "ia", icon: "fas fa-wand-magic-sparkles", label: "Asistente IA", onClick: () => go("ia") })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "sb-section", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sb-label", children: "Editar" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { active: module === "editar", icon: "fas fa-file-pen", label: "Editar PDF", onClick: () => go("editar") }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { active: module === "comentario", icon: "fas fa-comment-dots", label: "Comentario", onClick: () => go("comentario") })
@@ -21859,9 +21875,9 @@ var DocFlowWorkspace = (() => {
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "sb-section", children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "sb-label", children: "Conversion" }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { active: module === "convertir", icon: "fas fa-arrows-rotate", label: "Convertir", onClick: () => go("convertir", { convert: "pdfToWord" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-file-word", label: "PDF -> Word editable", onClick: () => go("convertir", { convert: "pdfToWord" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-file-image", label: "PDF -> Word visual", onClick: () => go("convertir", { convert: "pdfToWordImage" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-wand-magic-sparkles", label: "OCR a Word", onClick: () => go("convertir", { convert: "pdfToWord" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-file-word", label: "PDF -> Word", onClick: () => go("convertir", { convert: "pdfToWord" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-file-powerpoint", label: "PDF -> PPT", onClick: () => go("convertir", { convert: "pdfToPpt" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-wand-magic-sparkles", label: "OCR IA", onClick: () => go("convertir", { convert: "pdfToWord" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-file-pdf", label: "Word -> PDF", onClick: () => go("convertir", { upload: "wordToPdf" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-image", label: "PDF -> Imagen", onClick: () => go("convertir", { convert: "pdfToImage" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-table", label: "Excel -> PDF", onClick: () => go("convertir", { upload: "excelToPdf" }) }),
@@ -21870,7 +21886,13 @@ var DocFlowWorkspace = (() => {
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "sb-bottom", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-credit-card", label: "Planes", href: "/#planes" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-house", label: "Salir al inicio", href: "/dashboard.html" })
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavItem, { icon: "fas fa-right-from-bracket", label: "Cerrar sesi\xF3n", onClick: async () => {
+          try {
+            await fetch("/api/auth/logout", { method: "POST" });
+          } catch (_e) {
+          }
+          window.location.href = "/";
+        } })
       ] })
     ] });
   }
@@ -21880,6 +21902,7 @@ var DocFlowWorkspace = (() => {
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   var TAB_LABELS = {
     inicio: "Inicio",
+    ia: "\u2728 Asistente IA",
     editar: "Editar",
     comentario: "Comentario",
     convertir: "Convertir",
@@ -21893,15 +21916,16 @@ var DocFlowWorkspace = (() => {
     herramientas: "Marca de agua"
   };
   function WorkbenchTabs({ module, setModule }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("nav", { className: "workbench-tabs", children: ["inicio", "editar", "comentario", "convertir", "ver", "merge", "split", "compress", "proteger", "sign", "rotate", "herramientas"].map((name) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("button", { className: `workbench-tab ${module === name ? "active" : ""}`, type: "button", onClick: () => setModule(name), children: TAB_LABELS[name] || name[0].toUpperCase() + name.slice(1) }, name)) });
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("nav", { className: "workbench-tabs", children: ["inicio", "ia", "editar", "comentario", "convertir", "ver", "merge", "split", "compress", "proteger", "sign", "rotate", "herramientas"].map((name) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("button", { className: `workbench-tab ${module === name ? "active" : ""}`, type: "button", onClick: () => setModule(name), children: TAB_LABELS[name] || name[0].toUpperCase() + name.slice(1) }, name)) });
   }
 
   // src/react/workspace/components/WorkspaceToolbar.jsx
   var import_react3 = __toESM(require_react());
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
-  var CONVERT_ACTIONS = ["pdfToWord", "pdfToWordImage", "compress", "pdfToImage"];
+  var CONVERT_ACTIONS = ["pdfToWord", "pdfToPpt", "compress", "pdfToImage"];
   function convertIcon(action) {
     if (action === "pdfToImage") return "fas fa-image";
+    if (action === "pdfToPpt") return "fas fa-file-powerpoint";
     if (action.includes("Word")) return "fas fa-file-word";
     return "fas fa-compress-arrows-alt";
   }
@@ -21917,7 +21941,9 @@ var DocFlowWorkspace = (() => {
     convertAction,
     setConvertAction,
     watermarkOptions,
-    setWatermarkOptions
+    setWatermarkOptions,
+    zoomScale = 1,
+    setZoomScale
   }) {
     if (module === "convertir") {
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("section", { className: "pdf-toolbar stable-toolbar", children: [
@@ -21935,7 +21961,7 @@ var DocFlowWorkspace = (() => {
           },
           action
         )),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "toolbar-hint", children: "Word editable conserva texto y estructura. Word visual es solo para copia exacta no editable." })
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "toolbar-hint", children: "PDF \u2794 Word genera un DOCX editable; PDF \u2794 PPT genera una presentaci\xF3n PowerPoint." })
       ] });
     }
     if (module === "herramientas") {
@@ -22030,6 +22056,35 @@ var DocFlowWorkspace = (() => {
         }
       ),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "toolbar-separator" }),
+      setZoomScale && /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          "button",
+          {
+            className: "toolbar-button compact",
+            type: "button",
+            title: "Alejar (Zoom -)",
+            disabled: zoomScale <= 0.6,
+            onClick: () => setZoomScale((prev) => Math.max(0.5, Number((prev - 0.15).toFixed(2)))),
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("i", { className: "fas fa-magnifying-glass-minus" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("span", { className: "toolbar-label", style: { minWidth: 38, textAlign: "center" }, children: [
+          Math.round(zoomScale * 100),
+          "%"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          "button",
+          {
+            className: "toolbar-button compact",
+            type: "button",
+            title: "Acercar (Zoom +)",
+            disabled: zoomScale >= 2,
+            onClick: () => setZoomScale((prev) => Math.min(2, Number((prev + 0.15).toFixed(2)))),
+            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("i", { className: "fas fa-magnifying-glass-plus" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { className: "toolbar-separator" })
+      ] }),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
         "button",
         {
@@ -22080,7 +22135,7 @@ var DocFlowWorkspace = (() => {
   }
 
   // src/react/workspace/components/WorkspacePanels.jsx
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
 
   // src/react/workspace/components/PdfCanvas.jsx
   var import_react4 = __toESM(require_react());
@@ -22166,9 +22221,9 @@ var DocFlowWorkspace = (() => {
     const y = Number(transform[5] || 0);
     const rawHeight = Math.abs(Number(item.height || transform[3] || 10));
     const style = styles?.[item.fontName] || {};
-    const family = String(style.fontFamily || "").toLowerCase();
-    const fontFamily = family.includes("courier") || family.includes("mono") ? "Courier" : family.includes("times") || family.includes("serif") ? "TimesRoman" : "Helvetica";
-    const bold = /bold|black|heavy|semibold/i.test(`${style.fontFamily || ""} ${item.fontName || ""}`);
+    const fontStr = `${style.fontFamily || ""} ${item.fontName || ""}`.toLowerCase();
+    const fontFamily = fontStr.includes("courier") || fontStr.includes("mono") || fontStr.includes("code") ? "Courier" : fontStr.includes("times") || fontStr.includes("serif") || fontStr.includes("georgia") || fontStr.includes("palatino") || fontStr.includes("cambria") ? "TimesRoman" : "Helvetica";
+    const bold = /bold|black|heavy|semibold/i.test(fontStr);
     const size = clamp(rawHeight * 0.86, 7, 48);
     const width = Math.max(Number(item.width || 0), text.length * size * 0.42);
     const height = Math.max(rawHeight, size * 1.15);
@@ -22317,7 +22372,7 @@ var DocFlowWorkspace = (() => {
       });
     }, []);
     (0, import_react4.useEffect)(() => {
-      if (!pdfjs || !doc || !isPdf(doc)) return;
+      if (!pdfjs || !doc || !isPdf2(doc)) return;
       const w = containerRef.current?.clientWidth || 900;
       setMaxWidth(Math.max(540, Math.min(920, w - 48)));
       setPdfDoc(null);
@@ -22357,8 +22412,8 @@ var DocFlowWorkspace = (() => {
         page: pageNum,
         x: hit.x,
         y: hit.y,
-        width: hit.width + 8,
-        height: Math.max(hit.height, hit.size * 1.25),
+        width: hit.width,
+        height: hit.height,
         text: hit.text,
         size: Math.round(hit.size),
         color: sampled.color || textOptions.color,
@@ -22434,7 +22489,7 @@ var DocFlowWorkspace = (() => {
       }
       createTextBox(pageNum, left, top, Math.max(32, width), Math.max(18, height));
     }
-    if (!doc || !isPdf(doc)) return null;
+    if (!doc || !isPdf2(doc)) return null;
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { ref: containerRef, className: "react-pdf-container", children: [
       numPages === 0 && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "pdf-loading", children: [
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("i", { className: "fas fa-spinner fa-spin" }),
@@ -22615,7 +22670,7 @@ var DocFlowWorkspace = (() => {
       globalThis.addEventListener("pointermove", move);
       globalThis.addEventListener("pointerup", up);
     }
-    const fontFamily = annotation.fontFamily === "TimesRoman" ? '"Times New Roman", serif' : annotation.fontFamily === "Courier" ? '"Courier New", monospace' : "Arial, sans-serif";
+    const fontFamily = annotation.fontFamily === "TimesRoman" ? '"Times New Roman", Times, Georgia, serif' : annotation.fontFamily === "Courier" ? '"Courier New", Courier, monospace' : 'Arial, "Helvetica Neue", Helvetica, sans-serif';
     const scaledSize = Math.min(120, Math.max(8, annotation.size * meta.scale));
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
       "div",
@@ -22624,10 +22679,9 @@ var DocFlowWorkspace = (() => {
         "data-erase": annotation.erase ? "true" : "false",
         style: {
           left: annotation.x * meta.scale,
-          // PDF y=0 is bottom of page, canvas y=0 is top. Subtract height so box grows downward.
-          top: (meta.pdfHeight - annotation.y) * meta.scale - annotation.height * meta.scale,
+          top: (meta.pdfHeight - annotation.y - annotation.height) * meta.scale,
           width: annotation.width * meta.scale,
-          minHeight: annotation.height * meta.scale,
+          height: annotation.height * meta.scale,
           backgroundColor: annotation.erase ? annotation.backgroundColor || "#ffffff" : "transparent",
           "--annotation-fill": annotation.backgroundColor || "#ffffff"
         },
@@ -22666,11 +22720,12 @@ var DocFlowWorkspace = (() => {
               spellCheck: "false",
               "data-placeholder": annotation.erase ? "Reemplaza o borra..." : "Escribe...",
               style: {
-                fontSize: scaledSize,
+                fontSize: Math.round(scaledSize),
                 color: annotation.color,
                 fontFamily,
                 fontWeight: annotation.bold ? 700 : 400,
-                minHeight: scaledSize * 1.4
+                lineHeight: `${annotation.height * meta.scale}px`,
+                height: "100%"
               },
               onPointerDown: (e) => e.stopPropagation(),
               onFocus: () => {
@@ -22693,8 +22748,70 @@ var DocFlowWorkspace = (() => {
     );
   }
 
-  // src/react/workspace/components/WorkspacePanels.jsx
+  // src/react/workspace/components/PdfThumbnail.jsx
+  var import_react5 = __toESM(require_react());
   var import_jsx_runtime5 = __toESM(require_jsx_runtime());
+  var PDFJS_URL2 = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+  var WORKER_URL2 = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+  var pdfjsPromise = null;
+  var pdfDocCache = /* @__PURE__ */ new Map();
+  function getPdfjs() {
+    if (!pdfjsPromise) {
+      pdfjsPromise = import(
+        /* webpackIgnore: true */
+        PDFJS_URL2
+      ).then((lib) => {
+        lib.GlobalWorkerOptions.workerSrc = WORKER_URL2;
+        return lib;
+      });
+    }
+    return pdfjsPromise;
+  }
+  function PdfThumbnail({ docUrl, pageNum, width = 90, rotation = 0, fallbackLabel }) {
+    const canvasRef = (0, import_react5.useRef)(null);
+    const [rendered, setRendered] = (0, import_react5.useState)(false);
+    (0, import_react5.useEffect)(() => {
+      if (!docUrl) return;
+      let cancelled = false;
+      async function renderThumb() {
+        try {
+          const lib = await getPdfjs();
+          let pdfDoc = pdfDocCache.get(docUrl);
+          if (!pdfDoc) {
+            pdfDoc = await lib.getDocument({ url: docUrl, withCredentials: true }).promise;
+            pdfDocCache.set(docUrl, pdfDoc);
+          }
+          if (cancelled || !canvasRef.current || pageNum > pdfDoc.numPages) return;
+          const page = await pdfDoc.getPage(pageNum);
+          if (cancelled || !canvasRef.current) return;
+          const baseVp = page.getViewport({ scale: 1, rotation });
+          const scale = width / baseVp.width;
+          const vp = page.getViewport({ scale, rotation });
+          const canvas = canvasRef.current;
+          canvas.width = Math.floor(vp.width);
+          canvas.height = Math.floor(vp.height);
+          const ctx = canvas.getContext("2d");
+          await page.render({ canvasContext: ctx, viewport: vp }).promise;
+          if (!cancelled) setRendered(true);
+        } catch (_err) {
+        }
+      }
+      renderThumb();
+      return () => {
+        cancelled = true;
+      };
+    }, [docUrl, pageNum, width, rotation]);
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "pdf-thumb-wrapper", style: { width: `${width}px`, position: "relative" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("canvas", { ref: canvasRef, style: { display: rendered ? "block" : "none", width: "100%", height: "auto", borderRadius: "3px", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" } }),
+      !rendered && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "page-thumb-fallback", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-file-pdf" }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("b", { children: fallbackLabel || pageNum })
+      ] })
+    ] });
+  }
+
+  // src/react/workspace/components/WorkspacePanels.jsx
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   function pagesFromCount(pageCount) {
     return Array.from({ length: Math.max(0, Number(pageCount || 0)) }, (_v, index) => index + 1);
   }
@@ -22741,31 +22858,31 @@ var DocFlowWorkspace = (() => {
       setSelectedPage?.(page);
       globalThis.document?.getElementById(`pdf-page-${page}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("aside", { className: "workbench-sidebar", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "panel-header", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "panel-kicker", children: "Archivos" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { children: "Documento" })
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("aside", { className: "workbench-sidebar", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "panel-header", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "panel-kicker", children: "Archivos" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { children: "Documento" })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "document-list", children: docs.map((doc, index) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("article", { className: "document-item compact", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "doc-file-icon", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-file-pdf" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "doc-name", children: doc.name }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "doc-meta", children: formatBytes(doc.sizeBytes) })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "document-list", children: docs.map((doc, index) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("article", { className: "document-item compact", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "doc-file-icon", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-file-pdf" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "doc-name", children: doc.name }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "doc-meta", children: formatBytes(doc.sizeBytes) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "status-pill", children: index + 1 })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "status-pill", children: index + 1 })
       ] }, doc.id)) }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "panel-header spaced", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "panel-kicker", children: "Paginas" }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { children: "Orden" })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "panel-header spaced", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "panel-kicker", children: "Paginas" }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { children: "Orden" })
         ] }),
-        pageCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "status-pill", children: [
+        pageCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "status-pill", children: [
           orderedPages.length,
           "/",
           pageCount
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "page-strip sortable-pages", children: currentDoc && isPdf(currentDoc) && orderedPages.map((page, index) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "page-strip sortable-pages", children: currentDoc && isPdf2(currentDoc) && orderedPages.map((page, index) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "article",
         {
           className: `page-card sortable-page ${selectedPage === page ? "active" : ""}`,
@@ -22778,26 +22895,85 @@ var DocFlowWorkspace = (() => {
           },
           onClick: () => selectPage(page),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "page-thumb", style: { transform: `rotate(${pageRotations[page] || 0}deg)` }, children: page }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "page-title", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PdfThumbnail, { docUrl: currentDoc.downloadUrl, pageNum: page, width: 50, rotation: pageRotations[page] || 0, fallbackLabel: page }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "page-title", children: [
                 "Pagina ",
                 page
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "page-subtitle", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "page-subtitle", children: [
                 "Posicion ",
                 index + 1,
                 pageRotations[page] ? ` - ${pageRotations[page]} deg` : ""
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { className: "page-actions", onClick: (event) => event.stopPropagation(), children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", { type: "button", title: "Rotar pagina", onClick: () => rotatePage(page), children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-rotate-right" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("button", { type: "button", title: "Eliminar pagina", disabled: orderedPages.length <= 1, onClick: () => removePage(page), children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-trash" }) })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "page-actions", onClick: (event) => event.stopPropagation(), children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { type: "button", title: "Rotar pagina", onClick: () => rotatePage(page), children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-rotate-right" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { type: "button", title: "Eliminar pagina", disabled: orderedPages.length <= 1, onClick: () => removePage(page), children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-trash" }) })
             ] })
           ]
         },
         page
       )) })
+    ] });
+  }
+  function NonPdfDocumentStage({ doc }) {
+    if (!doc) return null;
+    const ext = (doc.name || "").split(".").pop().toLowerCase();
+    const isWord = ["docx", "doc"].includes(ext);
+    const isPpt = ["pptx", "ppt"].includes(ext);
+    const isExcel = ["xlsx", "xls"].includes(ext);
+    const isZip = ext === "zip";
+    let icon = "fa-file-lines";
+    let badge = `Archivo ${ext.toUpperCase()}`;
+    let desc = "Tu documento procesado est\xE1 listo para descargar, compartir o editar.";
+    if (isWord) {
+      icon = "fa-file-word";
+      badge = "Documento Microsoft Word (.docx)";
+      desc = "Documento editable de Microsoft Word con texto extra\xEDdo y formato conservado.";
+    } else if (isPpt) {
+      icon = "fa-file-powerpoint";
+      badge = "Presentaci\xF3n PowerPoint (.pptx)";
+      desc = "Presentaci\xF3n de diapositivas OpenXML lista para abrir en PowerPoint, Keynote o Google Slides.";
+    } else if (isExcel) {
+      icon = "fa-file-excel";
+      badge = "Hoja de C\xE1lculo Excel (.xlsx)";
+      desc = "Hoja de c\xE1lculo estructurada lista para abrir en Microsoft Excel o Google Sheets.";
+    } else if (isZip) {
+      icon = "fa-file-zipper";
+      badge = "Paquete ZIP de Im\xE1genes";
+      desc = "Archivo comprimido con las p\xE1ginas extra\xEDdas en im\xE1genes PNG de alta resoluci\xF3n.";
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "conversion-stage-card non-pdf-stage-card", style: { padding: "3rem 2rem", textAlign: "center" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "cs-icon", style: {
+        width: 72,
+        height: 72,
+        fontSize: "2rem",
+        margin: "0 auto 1.25rem",
+        borderRadius: "50%",
+        display: "grid",
+        placeItems: "center",
+        background: isWord ? "rgba(66, 133, 244, 0.15)" : isPpt ? "rgba(234, 67, 53, 0.15)" : "rgba(201, 168, 76, 0.15)",
+        color: isWord ? "#4285F4" : isPpt ? "#EA4335" : "var(--gold)",
+        border: `1px solid ${isWord ? "#4285F4" : isPpt ? "#EA4335" : "var(--gold)"}`
+      }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: `fas ${icon}` }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "doc-type-badge", style: { fontSize: "0.8rem", padding: "0.25rem 0.75rem", borderRadius: 20, background: "var(--dark3)", border: "1px solid var(--border)", color: "var(--text-muted)" }, children: badge }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { style: { margin: "1rem 0 0.5rem", fontSize: "1.6rem", color: "var(--text)" }, children: doc.name }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { style: { maxWidth: 480, margin: "0 auto 1.8rem", color: "var(--text-muted)", fontSize: "0.95rem", lineHeight: 1.6 }, children: desc }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { style: { display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("a", { href: doc.downloadUrl, download: doc.name, className: "btn-primary btn-large cs-btn", style: { textDecoration: "none" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-download" }),
+          " Descargar ",
+          ext.toUpperCase(),
+          " (",
+          formatBytes(doc.sizeBytes),
+          ")"
+        ] }),
+        isWord && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("a", { href: "/dashboard.html", className: "btn-secondary btn-large cs-btn", style: { textDecoration: "none", background: "var(--dark3)", border: "1px solid var(--border)", color: "var(--text)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-file-pen" }),
+          " Abrir Editor Word"
+        ] })
+      ] })
     ] });
   }
   function PdfStage({
@@ -22812,13 +22988,13 @@ var DocFlowWorkspace = (() => {
     module,
     pageOrder,
     pageRotations,
-    setPageMeta
+    zoomScale = 1
   }) {
     const canEdit = module === "editar" || module === "comentario";
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("section", { className: "pdf-stage", children: [
-      !currentDoc && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "empty-state stage-empty", children: "Sube un PDF para empezar." }),
-      currentDoc && !isPdf(currentDoc) && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "empty-state stage-empty", children: "Archivo listo para convertir." }),
-      currentDoc && isPdf(currentDoc) && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "pdf-pages", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("section", { className: "pdf-stage", children: [
+      !currentDoc && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "empty-state stage-empty", children: "Sube un PDF para empezar." }),
+      currentDoc && !isPdf2(currentDoc) && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(NonPdfDocumentStage, { doc: currentDoc }),
+      currentDoc && isPdf2(currentDoc) && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "pdf-pages", style: { transform: `scale(${zoomScale})`, transformOrigin: "top center", transition: "transform 0.15s ease" }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         PdfCanvas,
         {
           doc: currentDoc,
@@ -22830,11 +23006,31 @@ var DocFlowWorkspace = (() => {
           selectedId,
           setSelectedId,
           pageOrder,
-          pageRotations,
-          setPageMeta
+          pageRotations
         }
       ) })
     ] });
+  }
+  function ConversionStage({ convertAction, openUploadConversion, busy }) {
+    const titles = {
+      wordToPdf: ["Word \u2192 PDF", "Convierte tus documentos Word (.docx) a PDF con alta fidelidad de formato.", ".docx"],
+      excelToPdf: ["Excel \u2192 PDF", "Convierte tus hojas de c\xE1lculo Excel (.xlsx, .xls) a documento PDF.", ".xlsx, .xls"],
+      pptToPdf: ["PPT \u2192 PDF", "Convierte tus presentaciones PowerPoint (.pptx) a PDF por diapositiva.", ".pptx"],
+      imagesToPdf: ["Imagen \u2192 PDF", "Unifica im\xE1genes JPG, PNG o WEBP en un solo archivo PDF.", ".jpg, .png"]
+    };
+    const info = titles[convertAction] || ["Convertir a PDF", "Selecciona tu archivo para convertir.", ""];
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("section", { className: "pdf-stage conversion-stage", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "conversion-stage-card", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "cs-icon", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-cloud-arrow-up" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { children: info[0] }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { children: info[1] }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn-primary btn-large cs-btn", type: "button", disabled: busy, onClick: () => openUploadConversion(convertAction), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: `fas ${busy ? "fa-spinner fa-spin" : "fa-folder-open"}` }),
+        " ",
+        "Seleccionar archivo ",
+        info[2],
+        " desde tu dispositivo"
+      ] })
+    ] }) });
   }
   function ActionsPanel({
     module,
@@ -22864,18 +23060,13 @@ var DocFlowWorkspace = (() => {
       if (module === "organizar") return "Organizar paginas";
       return "Editar PDF";
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("aside", { className: "workbench-tools", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "panel-header", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "panel-kicker", children: "Acciones" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("h2", { children: panelTitle() })
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("aside", { className: "workbench-tools", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "panel-header", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "panel-kicker", children: "Acciones" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { children: panelTitle() })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("button", { className: "btn-primary full side-apply", type: "button", disabled: busy, onClick: apply, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: `fas ${busy ? "fa-spinner fa-spin" : "fa-check"}` }),
-        " ",
-        busy ? "Procesando..." : primaryLabel
-      ] }),
-      module === "convertir" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ConvertActions, { convertAction, setConvertAction, openUploadConversion }),
-      (module === "editar" || module === "comentario") && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      module === "convertir" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ConvertActions, { convertAction, setConvertAction, openUploadConversion }),
+      (module === "editar" || module === "comentario") && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         EditActions,
         {
           editorMode,
@@ -22887,13 +23078,13 @@ var DocFlowWorkspace = (() => {
           setAnnotations
         }
       ),
-      module === "proteger" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ProtectActions, { protectOptions, setProtectOptions }),
-      module === "herramientas" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(WatermarkActions, { watermarkOptions, setWatermarkOptions }),
-      module === "organizar" && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(OrganizarActions, {}),
-      result && /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "result-box", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: result.name }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("a", { href: result.downloadUrl, download: result.name, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-download" }),
+      module === "proteger" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(ProtectActions, { protectOptions, setProtectOptions }),
+      module === "herramientas" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(WatermarkActions, { watermarkOptions, setWatermarkOptions }),
+      module === "organizar" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(OrganizarActions, {}),
+      result && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "result-box", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: result.name }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("a", { href: result.downloadUrl, download: result.name, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-download" }),
           " Descargar"
         ] })
       ] })
@@ -22901,35 +23092,36 @@ var DocFlowWorkspace = (() => {
   }
   function actionIcon(action) {
     if (action === "pdfToImage") return "fas fa-image";
+    if (action === "pdfToPpt") return "fas fa-file-powerpoint";
     if (action.includes("Word")) return "fas fa-file-word";
     if (action === "compress") return "fas fa-compress-arrows-alt";
     return "fas fa-file-export";
   }
-  var PDF_ACTIONS = ["pdfToWord", "pdfToWordImage", "compress", "pdfToImage"];
+  var PDF_ACTIONS = ["pdfToWord", "pdfToPpt", "compress", "pdfToImage"];
   function ConvertActions({ convertAction, setConvertAction, openUploadConversion }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "mode-tools", children: [
-      PDF_ACTIONS.map((action) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "mode-tools", children: [
+      PDF_ACTIONS.map((action) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "button",
         {
           className: `tool-action ${convertAction === action ? "active" : ""}`,
           type: "button",
           onClick: () => setConvertAction(action),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: actionIcon(action) }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: convertLabels[action] }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: convertDescriptions[action] })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: actionIcon(action) }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: convertLabels[action] }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: convertDescriptions[action] })
             ] })
           ]
         },
         action
       )),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "tool-section-title", children: "Subir y convertir" }),
-      uploadConversions.map((action) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("button", { className: "tool-action", type: "button", onClick: () => openUploadConversion(action), children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-upload" }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: convertLabels[action] }),
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: convertDescriptions[action] })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "tool-section-title", children: "Subir y convertir" }),
+      uploadConversions.map((action) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "tool-action", type: "button", onClick: () => openUploadConversion(action), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-upload" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: convertLabels[action] }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: convertDescriptions[action] })
         ] })
       ] }, action))
     ] });
@@ -22944,96 +23136,96 @@ var DocFlowWorkspace = (() => {
       setAnnotations([]);
       setSelectedId(null);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "editor-tools", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "editor-tools", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "button",
         {
           className: `tool-action ${editorMode === "select" ? "active" : ""}`,
           type: "button",
           onClick: () => setEditorMode("select"),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-i-cursor" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Editar bloque" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: "Haz clic sobre una linea del PDF." })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-i-cursor" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Editar bloque" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: "Haz clic sobre una linea del PDF." })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "button",
         {
           className: `tool-action ${editorMode === "addText" ? "active" : ""}`,
           type: "button",
           onClick: () => setEditorMode("addText"),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-square-t" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Caja de texto" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: "Arrastra para dibujar el cuadro." })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-square-t" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Caja de texto" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: "Arrastra para dibujar el cuadro." })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "button",
         {
           className: `tool-action ${previewMode ? "active" : ""}`,
           type: "button",
           onClick: () => setPreviewMode((value) => !value),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-eye" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Vista previa" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: "Oculta controles y muestra el resultado." })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-eye" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Vista previa" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: "Oculta controles y muestra el resultado." })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "button",
         {
           className: "tool-action",
           type: "button",
           onClick: removeSelected,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-trash" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Borrar seleccionado" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: "Quita el cambio activo." })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-trash" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Borrar seleccionado" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: "Quita el cambio activo." })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
         "button",
         {
           className: "tool-action",
           type: "button",
           onClick: clearChanges,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-eraser" }),
-            /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("span", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("strong", { children: "Limpiar cambios" }),
-              /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("small", { children: "Vuelve al PDF original en pantalla." })
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-eraser" }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "Limpiar cambios" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("small", { children: "Vuelve al PDF original en pantalla." })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "empty-state", children: "Para eliminar texto existente, editalo y deja el campo vacio antes de aplicar." })
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "empty-state", children: "Para eliminar texto existente, editalo y deja el campo vacio antes de aplicar." })
     ] });
   }
   function ProtectActions({ protectOptions, setProtectOptions }) {
     function set(key, value) {
       setProtectOptions((prev) => ({ ...prev, [key]: value }));
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "module-form", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-group", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: "form-label", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-lock" }),
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "module-form", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-lock" }),
           " Contrasena para abrir"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "input",
           {
             className: "form-input",
@@ -23045,12 +23237,12 @@ var DocFlowWorkspace = (() => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-group", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: "form-label", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-shield-alt" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-shield-alt" }),
           " Contrasena de propietario (opcional)"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "input",
           {
             className: "form-input",
@@ -23062,8 +23254,8 @@ var DocFlowWorkspace = (() => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-hint", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-info-circle" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-hint", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-info-circle" }),
         " El PDF cifrado requerira contrasena para abrirse."
       ] })
     ] });
@@ -23072,13 +23264,13 @@ var DocFlowWorkspace = (() => {
     function set(key, value) {
       setWatermarkOptions((prev) => ({ ...prev, [key]: value }));
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "module-form", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-group", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: "form-label", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-water" }),
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "module-form", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-water" }),
           " Texto de la marca de agua"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "input",
           {
             className: "form-input",
@@ -23089,15 +23281,15 @@ var DocFlowWorkspace = (() => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-group", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: "form-label", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
           "Tamano de fuente: ",
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("strong", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("strong", { children: [
             watermarkOptions.size,
             "pt"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "input",
           {
             className: "form-range",
@@ -23109,15 +23301,15 @@ var DocFlowWorkspace = (() => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-group", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: "form-label", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
           "Opacidad: ",
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("strong", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("strong", { children: [
             Math.round(watermarkOptions.opacity * 100),
             "%"
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "input",
           {
             className: "form-range",
@@ -23129,31 +23321,31 @@ var DocFlowWorkspace = (() => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-hint", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-info-circle" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-hint", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-info-circle" }),
         " La marca se aplicara en diagonal sobre todas las paginas."
       ] })
     ] });
   }
   function OrganizarActions() {
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "module-form", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-group", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: "form-label", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-sort" }),
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "module-form", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-sort" }),
           " Reorganizar paginas"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { className: "form-hint", children: "Esta funcion reorganiza las paginas del PDF eliminando las vacias y optimizando el orden existente." })
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "form-hint", children: "Esta funcion reorganiza las paginas del PDF eliminando las vacias y optimizando el orden existente." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "form-hint", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("i", { className: "fas fa-info-circle" }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "form-hint", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-info-circle" }),
         ' Pulsa "Aplicar y descargar" para procesar el documento.'
       ] })
     ] });
   }
 
   // src/react/workspace/components/PdfToolSuite.jsx
-  var import_react6 = __toESM(require_react());
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+  var import_react7 = __toESM(require_react());
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
   var TOOL_COPY = {
     merge: ["Unir PDFs", "Arrastra para reordenar; el orden importa."],
     split: ["Dividir PDF", "Selecciona las paginas a extraer."],
@@ -23188,29 +23380,29 @@ var DocFlowWorkspace = (() => {
     showToast
   }) {
     const currentDoc = docs[0] || null;
-    const [metaById, setMetaById] = (0, import_react6.useState)({});
-    const [selectedPages, setSelectedPages] = (0, import_react6.useState)(/* @__PURE__ */ new Set());
-    const [rotations, setRotations] = (0, import_react6.useState)({});
-    const [range, setRange] = (0, import_react6.useState)("1");
-    const [passwords, setPasswords] = (0, import_react6.useState)({ password: "", confirm: "", ownerPassword: "" });
-    const [permissions, setPermissions] = (0, import_react6.useState)({ print: true, copy: false, edit: false, annotate: true });
-    const [watermark, setWatermark] = (0, import_react6.useState)({ text: "CONFIDENCIAL", opacity: 0.18, size: 42, rotation: -35, color: "#c9a84c", pages: "all" });
-    const [signature, setSignature] = (0, import_react6.useState)({ mode: "draw", text: "", image: "", page: 1, alignment: "inferior-derecha", color: "#111111" });
-    const canvasRef = (0, import_react6.useRef)(null);
-    const drawingRef = (0, import_react6.useRef)(false);
-    const draggedDocId = (0, import_react6.useRef)(null);
+    const [metaById, setMetaById] = (0, import_react7.useState)({});
+    const [selectedPages, setSelectedPages] = (0, import_react7.useState)(/* @__PURE__ */ new Set());
+    const [rotations, setRotations] = (0, import_react7.useState)({});
+    const [range, setRange] = (0, import_react7.useState)("1");
+    const [passwords, setPasswords] = (0, import_react7.useState)({ password: "", confirm: "", ownerPassword: "" });
+    const [permissions, setPermissions] = (0, import_react7.useState)({ print: true, copy: false, edit: false, annotate: true });
+    const [watermark, setWatermark] = (0, import_react7.useState)({ text: "CONFIDENCIAL", opacity: 0.18, size: 42, rotation: -35, color: "#c9a84c", pages: "all" });
+    const [signature, setSignature] = (0, import_react7.useState)({ mode: "draw", text: "", image: "", page: 1, alignment: "inferior-derecha", color: "#111111" });
+    const canvasRef = (0, import_react7.useRef)(null);
+    const drawingRef = (0, import_react7.useRef)(false);
+    const draggedDocId = (0, import_react7.useRef)(null);
     const currentMeta = currentDoc ? metaById[currentDoc.id] : null;
     const pageCount = currentMeta?.pageCount || 0;
     const copy = TOOL_COPY[module] || ["Herramienta PDF", "Procesa tu documento."];
     const totalMergePages = docs.reduce((sum, doc) => sum + (metaById[doc.id]?.pageCount || 0), 0);
-    (0, import_react6.useEffect)(() => {
+    (0, import_react7.useEffect)(() => {
       docs.forEach((doc) => {
         if (!doc?.id || metaById[doc.id]) return;
         api.fileMeta(doc.id).then((response) => setMetaById((prev) => ({ ...prev, [doc.id]: response.meta }))).catch(() => {
         });
       });
     }, [docs, metaById]);
-    (0, import_react6.useEffect)(() => {
+    (0, import_react7.useEffect)(() => {
       setSelectedPages(/* @__PURE__ */ new Set());
       setRotations({});
       setRange("1");
@@ -23329,11 +23521,11 @@ var DocFlowWorkspace = (() => {
       reader.onload = () => setSignature((prev) => ({ ...prev, mode: "image", image: reader.result }));
       reader.readAsDataURL(file);
     }
-    const body = (0, import_react6.useMemo)(() => {
+    const body = (0, import_react7.useMemo)(() => {
       if (module === "merge") {
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell narrow", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "merge-list", children: [
-            docs.map((doc, index) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell narrow", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "merge-list", children: [
+            docs.map((doc, index) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
               "article",
               {
                 className: "merge-row",
@@ -23347,30 +23539,30 @@ var DocFlowWorkspace = (() => {
                   reorderDoc(doc.id);
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "drag-grip", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-grip-vertical" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-file-pdf pdf-red" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: doc.name }),
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "drag-grip", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-grip-vertical" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-file-pdf pdf-red" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: doc.name }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
                     metaById[doc.id]?.pageCount || "-",
                     " pags"
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { type: "button", title: "Subir", onClick: () => moveDoc(doc.id, -1), children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-arrow-up" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { type: "button", title: "Bajar", onClick: () => moveDoc(doc.id, 1), children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-arrow-down" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { type: "button", title: "Eliminar", onClick: () => removeDoc(doc.id), children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-trash" }) })
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { type: "button", title: "Subir", onClick: () => moveDoc(doc.id, -1), children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-arrow-up" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { type: "button", title: "Bajar", onClick: () => moveDoc(doc.id, 1), children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-arrow-down" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { type: "button", title: "Eliminar", onClick: () => removeDoc(doc.id), children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-trash" }) })
                 ]
               },
               doc.id
             )),
-            !docs.length && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "empty-state", children: "Agrega dos o mas PDFs para unirlos." })
+            !docs.length && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "empty-state", children: "Agrega dos o mas PDFs para unirlos." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-inline-actions", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn-ghost full", type: "button", onClick: addPdf, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-plus" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-inline-actions", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("button", { className: "btn-ghost full", type: "button", onClick: addPdf, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-plus" }),
               " Agregar PDF"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy || docs.length < 2, onClick: () => run("merge", docs.map((doc) => doc.id)), children: "Unir documentos" })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy || docs.length < 2, onClick: () => run("merge", docs.map((doc) => doc.id)), children: "Unir documentos" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("p", { className: "tool-muted", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("p", { className: "tool-muted", children: [
             "Total: ",
             docs.length,
             " archivos \xB7 ",
@@ -23380,159 +23572,159 @@ var DocFlowWorkspace = (() => {
         ] });
       }
       if (module === "split") {
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell wide", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PageToolbar, { count: pageCount, selected: selectedPages.size, onAll: selectAllPages, onClear: clearPages }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PageGrid, { pageCount, selectedPages, onToggle: togglePage }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-inline-actions compact-left", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary", type: "button", disabled: busy || !selectedPages.size, onClick: () => run("split", [currentDoc.id], { pages: pagesToRange(selectedPages) }), children: "Extraer seleccion" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "tool-input small", value: range, onChange: (e) => setRange(e.target.value), placeholder: "1-3,5" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", disabled: busy, onClick: () => run("split", [currentDoc.id], { pages: range }), children: "Por rango" })
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell wide", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PageToolbar, { count: pageCount, selected: selectedPages.size, onAll: selectAllPages, onClear: clearPages }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PageGrid, { docUrl: currentDoc?.downloadUrl, pageCount, selectedPages, onToggle: togglePage }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-inline-actions compact-left", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary", type: "button", disabled: busy || !selectedPages.size, onClick: () => run("split", [currentDoc.id], { pages: pagesToRange(selectedPages) }), children: "Extraer seleccion" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "tool-input small", value: range, onChange: (e) => setRange(e.target.value), placeholder: "1-3,5" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", disabled: busy, onClick: () => run("split", [currentDoc.id], { pages: range }), children: "Por rango" })
           ] })
         ] });
       }
       if (module === "compress") {
         const size = currentDoc?.sizeBytes || 0;
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "compression-box", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: formatBytes(size) }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Original" })
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "compression-box", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: formatBytes(size) }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Original" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-arrow-right" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: formatBytes(Math.max(0, Math.round(size * 0.68))) }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: "Estimado" })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-arrow-right" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: formatBytes(Math.max(0, Math.round(size * 0.68))) }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "Estimado" })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "savings-bar", children: "Ahorro estimado: 32%" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "form-label", children: "Nivel de compresion" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-range", type: "range", min: "1", max: "3", defaultValue: "2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("select", { className: "form-input", defaultValue: "150", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "72", children: "DPI 72 - Maxima compresion" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "150", children: "DPI 150 - Balance" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "300", children: "DPI 300 - Maxima calidad" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "savings-bar", children: "Ahorro estimado: 32%" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "form-label", children: "Nivel de compresion" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-range", type: "range", min: "1", max: "3", defaultValue: "2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("select", { className: "form-input", defaultValue: "150", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "72", children: "DPI 72 - Maxima compresion" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "150", children: "DPI 150 - Balance" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value: "300", children: "DPI 300 - Maxima calidad" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "check-row", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { type: "checkbox", defaultChecked: true }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { className: "check-row", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { type: "checkbox", defaultChecked: true }),
             " Eliminar metadatos"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "check-row", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { type: "checkbox" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { className: "check-row", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { type: "checkbox" }),
             " Eliminar capas ocultas"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => run("compress", [currentDoc.id]), children: "Comprimir ahora" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => run("compress", [currentDoc.id]), children: "Comprimir ahora" })
         ] });
       }
       if (module === "proteger") {
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "form-label", children: "Contrasena de apertura" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-input", type: "password", value: passwords.password, onChange: (e) => setPasswords((prev) => ({ ...prev, password: e.target.value })), placeholder: "Contrasena segura" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "form-label", children: "Confirmar contrasena" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-input", type: "password", value: passwords.confirm, onChange: (e) => setPasswords((prev) => ({ ...prev, confirm: e.target.value })), placeholder: "Repite la contrasena" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "form-label", children: "Permisos del documento" }),
-          Object.entries({ print: "Permitir impresion", copy: "Permitir copia de texto", edit: "Permitir edicion", annotate: "Permitir anotaciones" }).map(([key, label]) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "check-row", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { type: "checkbox", checked: permissions[key], onChange: (e) => setPermissions((prev) => ({ ...prev, [key]: e.target.checked })) }),
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "form-label", children: "Contrasena de apertura" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-input", type: "password", value: passwords.password, onChange: (e) => setPasswords((prev) => ({ ...prev, password: e.target.value })), placeholder: "Contrasena segura" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "form-label", children: "Confirmar contrasena" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-input", type: "password", value: passwords.confirm, onChange: (e) => setPasswords((prev) => ({ ...prev, confirm: e.target.value })), placeholder: "Repite la contrasena" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "form-label", children: "Permisos del documento" }),
+          Object.entries({ print: "Permitir impresion", copy: "Permitir copia de texto", edit: "Permitir edicion", annotate: "Permitir anotaciones" }).map(([key, label]) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { className: "check-row", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { type: "checkbox", checked: permissions[key], onChange: (e) => setPermissions((prev) => ({ ...prev, [key]: e.target.checked })) }),
             " ",
             label
           ] }, key)),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => {
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => {
             if (passwords.password !== passwords.confirm) return showToast("Las contrasenas no coinciden.");
             return run("protect", [currentDoc.id], { ...passwords, permissions });
           }, children: "Aplicar proteccion" })
         ] });
       }
       if (module === "sign") {
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell wide signature-shell", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "segmented", children: ["draw", "text", "image"].map((mode) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: signature.mode === mode ? "active" : "", type: "button", onClick: () => setSignature((prev) => ({ ...prev, mode })), children: mode === "draw" ? "Dibujar" : mode === "text" ? "Escribir" : "Imagen" }, mode)) }),
-          signature.mode === "draw" && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("canvas", { ref: canvasRef, className: "signature-canvas", width: "720", height: "220", onPointerDown: startDraw, onPointerMove: draw, onPointerUp: endDraw, onPointerLeave: endDraw }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: "btn-ghost", type: "button", onClick: clearSignatureCanvas, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-trash" }),
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell wide signature-shell", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "segmented", children: ["draw", "text", "image"].map((mode) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: signature.mode === mode ? "active" : "", type: "button", onClick: () => setSignature((prev) => ({ ...prev, mode })), children: mode === "draw" ? "Dibujar" : mode === "text" ? "Escribir" : "Imagen" }, mode)) }),
+          signature.mode === "draw" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("canvas", { ref: canvasRef, className: "signature-canvas", width: "720", height: "220", onPointerDown: startDraw, onPointerMove: draw, onPointerUp: endDraw, onPointerLeave: endDraw }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("button", { className: "btn-ghost", type: "button", onClick: clearSignatureCanvas, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-trash" }),
               " Limpiar"
             ] })
           ] }),
-          signature.mode === "text" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "signature-text-input", value: signature.text, onChange: (e) => setSignature((prev) => ({ ...prev, text: e.target.value })), placeholder: "Escribe tu firma" }),
-          signature.mode === "image" && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-input", type: "file", accept: "image/png,image/jpeg", onChange: (e) => loadSignatureImage(e.target.files?.[0]) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-two-cols", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "form-label", children: "Pagina" }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("select", { className: "form-input", value: signature.page, onChange: (e) => setSignature((prev) => ({ ...prev, page: Number(e.target.value) })), children: pageList(pageCount).map((page) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("option", { value: page, children: [
+          signature.mode === "text" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "signature-text-input", value: signature.text, onChange: (e) => setSignature((prev) => ({ ...prev, text: e.target.value })), placeholder: "Escribe tu firma" }),
+          signature.mode === "image" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-input", type: "file", accept: "image/png,image/jpeg", onChange: (e) => loadSignatureImage(e.target.files?.[0]) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-two-cols", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "form-label", children: "Pagina" }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("select", { className: "form-input", value: signature.page, onChange: (e) => setSignature((prev) => ({ ...prev, page: Number(e.target.value) })), children: pageList(pageCount).map((page) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("option", { value: page, children: [
                 "Pagina ",
                 page
               ] }, page)) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "form-label", children: "Alineacion" }),
-              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("select", { className: "form-input", value: signature.alignment, onChange: (e) => setSignature((prev) => ({ ...prev, alignment: e.target.value })), children: SIGN_ALIGNMENTS.map(([value, label]) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value, children: label }, value)) })
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "form-label", children: "Alineacion" }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("select", { className: "form-input", value: signature.alignment, onChange: (e) => setSignature((prev) => ({ ...prev, alignment: e.target.value })), children: SIGN_ALIGNMENTS.map(([value, label]) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { value, children: label }, value)) })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => run("sign", [currentDoc.id], { signatureText: signature.text, signatureImage: signature.image, page: signature.page, alignment: signature.alignment, color: signature.color }), children: "Firmar documento" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => run("sign", [currentDoc.id], { signatureText: signature.text, signatureImage: signature.image, page: signature.page, alignment: signature.alignment, color: signature.color }), children: "Firmar documento" })
         ] });
       }
       if (module === "rotate") {
-        return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell wide", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-inline-actions compact-left", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => rotateSelected(90), children: "+90" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => rotateSelected(-90), children: "-90" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => rotateSelected(180), children: "180" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => setRotations({}), children: "Resetear" }),
-            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "tool-muted", children: [
+        return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell wide", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-inline-actions compact-left", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => rotateSelected(90), children: "+90" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => rotateSelected(-90), children: "-90" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => rotateSelected(180), children: "180" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", onClick: () => setRotations({}), children: "Resetear" }),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "tool-muted", children: [
               "Sel: ",
               selectedPages.size
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PageGrid, { pageCount, selectedPages, rotations, onToggle: togglePage }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary", type: "button", disabled: busy || !Object.keys(rotations).length, onClick: () => run("rotate", [currentDoc.id], { pages: Object.keys(rotations).join(","), degrees: 90, rotations }), children: "Guardar cambios" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PageGrid, { docUrl: currentDoc?.downloadUrl, pageCount, selectedPages, rotations, onToggle: togglePage }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary", type: "button", disabled: busy || !Object.keys(rotations).length, onClick: () => run("rotate", [currentDoc.id], { pages: Object.keys(rotations).join(","), degrees: 90, rotations }), children: "Guardar cambios" })
         ] });
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "watermark-layout", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "form-label", children: "Tipo" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("select", { className: "form-input", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { children: "Texto" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "form-label", children: "Texto" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-input", value: watermark.text, onChange: (e) => setWatermark((prev) => ({ ...prev, text: e.target.value })) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "watermark-layout", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "form-label", children: "Tipo" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("select", { className: "form-input", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("option", { children: "Texto" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { className: "form-label", children: "Texto" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-input", value: watermark.text, onChange: (e) => setWatermark((prev) => ({ ...prev, text: e.target.value })) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { className: "form-label", children: [
             "Opacidad: ",
             Math.round(watermark.opacity * 100),
             "%"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-range", type: "range", min: "5", max: "60", value: Math.round(watermark.opacity * 100), onChange: (e) => setWatermark((prev) => ({ ...prev, opacity: Number(e.target.value) / 100 })) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "form-label", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-range", type: "range", min: "5", max: "60", value: Math.round(watermark.opacity * 100), onChange: (e) => setWatermark((prev) => ({ ...prev, opacity: Number(e.target.value) / 100 })) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { className: "form-label", children: [
             "Rotacion: ",
             watermark.rotation,
             " grados"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { className: "form-range", type: "range", min: "-60", max: "60", value: watermark.rotation, onChange: (e) => setWatermark((prev) => ({ ...prev, rotation: Number(e.target.value) })) }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => run("watermark", [currentDoc.id], watermark), children: "Aplicar watermark" })
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { className: "form-range", type: "range", min: "-60", max: "60", value: watermark.rotation, onChange: (e) => setWatermark((prev) => ({ ...prev, rotation: Number(e.target.value) })) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary full", type: "button", disabled: busy, onClick: () => run("watermark", [currentDoc.id], watermark), children: "Aplicar watermark" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "watermark-preview", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "fake-page", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("strong", { children: "CONTRATO DE SERVICIOS" }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { children: "Vista previa del documento." }),
-          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { style: { opacity: watermark.opacity, transform: `rotate(${watermark.rotation}deg)` }, children: watermark.text })
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "watermark-preview", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "fake-page", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: "CONTRATO DE SERVICIOS" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { children: "Vista previa del documento." }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { opacity: watermark.opacity, transform: `rotate(${watermark.rotation}deg)` }, children: watermark.text })
         ] }) })
       ] });
     }, [module, docs, metaById, busy, selectedPages, rotations, range, passwords, permissions, watermark, signature, pageCount, currentDoc]);
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("main", { className: "pdf-tool-surface", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("section", { className: "tool-hero", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("h2", { children: copy[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { children: copy[1] })
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("main", { className: "pdf-tool-surface", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("section", { className: "tool-hero", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { children: copy[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { children: copy[1] })
       ] }),
-      !currentDoc && module !== "merge" ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-card-shell narrow", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "empty-state", children: "Sube un PDF para empezar." }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-primary full", type: "button", onClick: addPdf, children: "Agregar PDF" })
+      !currentDoc && module !== "merge" ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-card-shell narrow", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "empty-state", children: "Sube un PDF para empezar." }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-primary full", type: "button", onClick: addPdf, children: "Agregar PDF" })
       ] }) : body,
-      result && /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("a", { className: "btn-success tool-result", href: result.downloadUrl, download: result.name, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-download" }),
+      result && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("a", { className: "btn-success tool-result", href: result.downloadUrl, download: result.name, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-download" }),
         " ",
         result.name
       ] })
     ] });
   }
   function PageToolbar({ count, selected, onAll, onClear }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "tool-inline-actions compact-left", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", onClick: onAll, children: "Seleccionar todas" }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("button", { className: "btn-ghost", type: "button", onClick: onClear, children: "Limpiar" }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "tool-muted", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "tool-inline-actions compact-left", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", onClick: onAll, children: "Seleccionar todas" }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "btn-ghost", type: "button", onClick: onClear, children: "Limpiar" }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { className: "tool-muted", children: [
         "Seleccionadas: ",
         selected,
         " / ",
@@ -23540,28 +23732,310 @@ var DocFlowWorkspace = (() => {
       ] })
     ] });
   }
-  function PageGrid({ pageCount, selectedPages, rotations = {}, onToggle }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "tool-page-grid", children: pageList(pageCount).map((page) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("button", { className: `tool-page ${selectedPages.has(page) ? "selected" : ""}`, type: "button", onClick: () => onToggle(page), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("span", { className: "tool-page-thumb", style: { transform: `rotate(${rotations[page] || 0}deg)` }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("i", { className: "fas fa-file-pdf" }),
-        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("b", { children: page })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("small", { children: [
+  function PageGrid({ docUrl, pageCount, selectedPages, rotations = {}, onToggle }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "tool-page-grid", children: pageList(pageCount).map((page) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("button", { className: `tool-page ${selectedPages.has(page) ? "selected" : ""}`, type: "button", onClick: () => onToggle(page), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PdfThumbnail, { docUrl, pageNum: page, width: 80, rotation: rotations[page] || 0, fallbackLabel: page }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("small", { children: [
         "Pag. ",
         page
       ] }),
-      rotations[page] ? /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("em", { children: [
+      rotations[page] ? /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("em", { children: [
         rotations[page],
         "\xB0"
       ] }) : null
     ] }, page)) });
   }
 
+  // src/react/workspace/components/AiAssistantPanel.jsx
+  var import_react8 = __toESM(require_react());
+  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+  function AiAssistantPanel({ user, currentDoc, docs, showToast }) {
+    const [subTab, setSubTab] = (0, import_react8.useState)("summary");
+    const [loading, setLoading] = (0, import_react8.useState)(false);
+    const [summaryData, setSummaryData] = (0, import_react8.useState)(null);
+    const [chatMessages, setChatMessages] = (0, import_react8.useState)([]);
+    const [inputQuestion, setInputQuestion] = (0, import_react8.useState)("");
+    const [targetLang, setTargetLang] = (0, import_react8.useState)("es");
+    const [translationText, setTranslationText] = (0, import_react8.useState)("");
+    const [submittingPro, setSubmittingPro] = (0, import_react8.useState)(false);
+    const isPro = user?.plan === "pro";
+    async function handleCheckoutPro() {
+      setSubmittingPro(true);
+      try {
+        const checkout = await api.createSubscriptionCheckout();
+        window.location.href = checkout.checkoutUrl;
+      } catch (err) {
+        showToast(err.message || "Error al iniciar la suscripci\xF3n.");
+      } finally {
+        setSubmittingPro(false);
+      }
+    }
+    (0, import_react8.useEffect)(() => {
+      setSummaryData(null);
+      setChatMessages([]);
+      setTranslationText("");
+    }, [currentDoc?.id]);
+    if (!isPro) {
+      return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-empty-state ai-pro-gate", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-badge-hero", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-crown" }),
+          " Funci\xF3n Exclusiva DocFlow Pro"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Desbloquea el Asistente de IA para tus Documentos" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "Genera res\xFAmenes ejecutivos en segundos, chatea directamente con tus PDFs y traduce archivos a cualquier idioma con la m\xE1xima potencia de IA." }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-pro-features", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ap-feat", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-check-circle" }),
+            " Res\xFAmenes autom\xE1ticos y puntos clave"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ap-feat", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-check-circle" }),
+            " Preguntas y respuestas ilimitadas sobre el PDF"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ap-feat", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-check-circle" }),
+            " Traducci\xF3n inteligente a 6 idiomas"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ap-feat", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-check-circle" }),
+            " Sin anuncios y con prioridad de velocidad"
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: "btn-primary btn-large btn-sparkle", type: "button", disabled: submittingPro, onClick: handleCheckoutPro, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: `fas ${submittingPro ? "fa-spinner fa-spin" : "fa-credit-card"}` }),
+          " ",
+          "Suscribirme Pro por S/ 6 mensual"
+        ] })
+      ] });
+    }
+    async function handleSummarize() {
+      if (!currentDoc) return showToast("Por favor sube o selecciona un documento.");
+      setLoading(true);
+      try {
+        const data = await api.aiSummarize(currentDoc.id);
+        setSummaryData(data);
+      } catch (err) {
+        showToast(err.message || "Error al generar resumen.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    async function handleSendQuestion(questionText) {
+      const q = (questionText || inputQuestion).trim();
+      if (!q) return;
+      if (!currentDoc) return showToast("Por favor sube un documento primero.");
+      const newMsg = { sender: "user", text: q, timestamp: (/* @__PURE__ */ new Date()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) };
+      setChatMessages((prev) => [...prev, newMsg]);
+      setInputQuestion("");
+      setLoading(true);
+      try {
+        const res = await api.aiChat(currentDoc.id, q, chatMessages);
+        const aiMsg = {
+          sender: "ai",
+          text: res.answer,
+          source: res.source,
+          page: res.page,
+          timestamp: (/* @__PURE__ */ new Date()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+        };
+        setChatMessages((prev) => [...prev, aiMsg]);
+      } catch (err) {
+        showToast(err.message || "Error al procesar la consulta.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    async function handleTranslate() {
+      if (!currentDoc) return showToast("Por favor sube un documento primero.");
+      setLoading(true);
+      try {
+        const res = await api.aiTranslate(currentDoc.id, targetLang);
+        setTranslationText(res.translatedText);
+      } catch (err) {
+        showToast(err.message || "Error al traducir el documento.");
+      } finally {
+        setLoading(false);
+      }
+    }
+    function copyToClipboard(text) {
+      if (!text) return;
+      navigator.clipboard.writeText(text);
+      showToast("Copiado al portapapeles.");
+    }
+    if (!currentDoc) {
+      return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-empty-state", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-badge-hero", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-wand-magic-sparkles" }),
+          " Inteligencia Artificial DocFlow"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Asistente de IA para Documentos" }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "Sube o selecciona un documento PDF para obtener res\xFAmenes autom\xE1ticos, realizar preguntas en tiempo real o traducir el contenido." })
+      ] });
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-assistant-container", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("header", { className: "ai-header", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-title-wrap", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: "ai-pill", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-sparkles" }),
+            " Powered by DocFlow AI"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { children: "Asistente Inteligente" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("p", { className: "ai-doc-name", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-file-pdf" }),
+            " ",
+            currentDoc.name
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("nav", { className: "ai-subtabs", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: `ai-subtab ${subTab === "summary" ? "active" : ""}`, onClick: () => setSubTab("summary"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-file-lines" }),
+            " Resumen"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: `ai-subtab ${subTab === "chat" ? "active" : ""}`, onClick: () => setSubTab("chat"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-comments" }),
+            " Preguntas al PDF"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: `ai-subtab ${subTab === "translate" ? "active" : ""}`, onClick: () => setSubTab("translate"), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-language" }),
+            " Traducci\xF3n"
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("main", { className: "ai-body", children: [
+        subTab === "summary" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-summary-view", children: [
+          !summaryData && !loading && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-prompt-card", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-brain ai-big-icon" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { children: "Resumen Autom\xE1tico y An\xE1lisis de Contenido" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "Extrae las ideas principales, puntos clave, palabras clave y estad\xEDsticas de tu documento en un solo clic." }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: "btn-primary btn-sparkle", onClick: handleSummarize, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-wand-magic-sparkles" }),
+              " Generar Resumen con IA"
+            ] })
+          ] }),
+          loading && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-loading", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-circle-notch fa-spin" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "Analizando documento y generando resumen inteligente..." })
+          ] }),
+          summaryData && !loading && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-results-card", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-stats-row", children: [
+              summaryData.stats && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-stat-chip", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-font" }),
+                  " ",
+                  summaryData.stats.words,
+                  " Palabras"
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-stat-chip", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-clock" }),
+                  " Lectura: ",
+                  summaryData.stats.estimatedReadTime
+                ] })
+              ] }),
+              summaryData.topics && summaryData.topics.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "ai-topics", children: summaryData.topics.map((t, idx) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: "ai-topic-tag", children: [
+                "#",
+                t
+              ] }, idx)) }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: "btn-ghost btn-sm", onClick: () => copyToClipboard(summaryData.summary), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-copy" }),
+                " Copiar"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "ai-markdown-box", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { whiteSpace: "pre-wrap", lineHeight: "1.6" }, children: summaryData.summary }) }),
+            summaryData.keyPoints && summaryData.keyPoints.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-keypoints-box", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("h4", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-list-check" }),
+                " Puntos Clave"
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("ul", { children: summaryData.keyPoints.map((kp, index) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("li", { children: kp }, index)) })
+            ] })
+          ] })
+        ] }),
+        subTab === "chat" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-chat-view", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-chat-history", children: [
+            chatMessages.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-chat-placeholder", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-messages-question" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { children: "Haz cualquier pregunta sobre este documento" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { children: "Selecciona una sugerencia o escribe tu consulta:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-quick-questions", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { onClick: () => handleSendQuestion("\xBFDe qu\xE9 trata este documento?"), children: "\xBFDe qu\xE9 trata este documento?" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { onClick: () => handleSendQuestion("\xBFCu\xE1les son las conclusiones o puntos principales?"), children: "\xBFCu\xE1les son las conclusiones principales?" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { onClick: () => handleSendQuestion("\xBFHay fechas, nombres o cifras clave?"), children: "\xBFHay fechas o cifras clave?" })
+              ] })
+            ] }) : chatMessages.map((msg, i) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: `ai-chat-bubble ${msg.sender}`, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "ai-chat-avatar", children: msg.sender === "user" ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-user" }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-robot" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-chat-content", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-chat-meta", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: msg.sender === "user" ? "T\xFA" : "DocFlow AI" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("small", { children: msg.timestamp })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { whiteSpace: "pre-wrap" }, children: msg.text }),
+                msg.sender === "ai" && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "ai-copy-btn", onClick: () => copyToClipboard(msg.text), children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-copy" }) })
+              ] })
+            ] }, i)),
+            loading && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-chat-bubble ai loading", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-ellipsis fa-beat" }),
+              " Pensando respuesta..."
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("form", { className: "ai-chat-input-bar", onSubmit: (e) => {
+            e.preventDefault();
+            handleSendQuestion();
+          }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+              "input",
+              {
+                type: "text",
+                placeholder: "Haz una pregunta sobre el PDF...",
+                value: inputQuestion,
+                onChange: (e) => setInputQuestion(e.target.value),
+                disabled: loading
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { type: "submit", className: "btn-primary", disabled: loading || !inputQuestion.trim(), children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-paper-plane" }) })
+          ] })
+        ] }),
+        subTab === "translate" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-translate-view", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-translate-controls", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { children: [
+              "Idioma de destino:",
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("select", { value: targetLang, onChange: (e) => setTargetLang(e.target.value), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "es", children: "Espa\xF1ol" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "en", children: "Ingl\xE9s (English)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "fr", children: "Franc\xE9s (Fran\xE7ais)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "de", children: "Alem\xE1n (Deutsch)" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "it", children: "Italiano" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "pt", children: "Portugu\xE9s (Portugu\xEAs)" })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: "btn-primary", onClick: handleTranslate, disabled: loading, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-language" }),
+              " ",
+              loading ? "Traduciendo..." : "Traducir Documento"
+            ] })
+          ] }),
+          translationText && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-translation-result", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "ai-result-header", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("h4", { children: [
+                "Texto Traducido (",
+                targetLang.toUpperCase(),
+                ")"
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("button", { className: "btn-ghost btn-sm", onClick: () => copyToClipboard(translationText), children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("i", { className: "fas fa-copy" }),
+                " Copiar Texto"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "ai-markdown-box", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { style: { whiteSpace: "pre-wrap", lineHeight: "1.6" }, children: translationText }) })
+          ] })
+        ] })
+      ] })
+    ] });
+  }
+
   // src/react/workspace/WorkspaceApp.jsx
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
   var TOOL_MODULES = /* @__PURE__ */ new Set(["merge", "split", "compress", "proteger", "sign", "rotate", "herramientas"]);
   function initialModule() {
-    if (initialTool === "pdfToWord" || initialTool === "pdfToWordImage") return "convertir";
+    if (initialTool === "pdfToWord" || initialTool === "pdfToPpt") return "convertir";
     if (initialTool === "compress") return "compress";
     if (initialTool === "protect" || initialTool === "proteger") return "proteger";
     if (initialTool === "merge") return "merge";
@@ -23570,9 +24044,11 @@ var DocFlowWorkspace = (() => {
     if (initialTool === "sign") return "sign";
     if (initialTool === "organize") return "organizar";
     if (initialTool === "watermark") return "herramientas";
+    if (initialTool === "ia") return "ia";
     return "editar";
   }
   var MODULE_TITLE = {
+    ia: "Asistente IA para Documentos",
     editar: "Editar PDF",
     comentario: "Comentarios",
     convertir: "Convertir",
@@ -23589,6 +24065,7 @@ var DocFlowWorkspace = (() => {
     formulario: "Formulario"
   };
   var MODULE_MODE = {
+    ia: "Resumen, Chat y Traducci\xF3n",
     editar: "A\xF1adir texto sobre el PDF",
     convertir: "Convertir documento",
     merge: "Unir documentos",
@@ -23605,49 +24082,61 @@ var DocFlowWorkspace = (() => {
     formulario: "Formulario"
   };
   function WorkspaceApp() {
-    const [user, setUser] = (0, import_react7.useState)(null);
-    const [docs, setDocs] = (0, import_react7.useState)([]);
-    const [module, setModule] = (0, import_react7.useState)(initialModule);
-    const [convertAction, setConvertAction] = (0, import_react7.useState)(
+    const [user, setUser] = (0, import_react9.useState)(null);
+    const [docs, setDocs] = (0, import_react9.useState)([]);
+    const [module, setModule] = (0, import_react9.useState)(initialModule);
+    const [convertAction, setConvertAction] = (0, import_react9.useState)(
       ["pdfToWord", "pdfToWordImage", "compress", "pdfToImage"].includes(initialTool) ? initialTool : "pdfToWord"
     );
-    const [editorMode, setEditorMode] = (0, import_react7.useState)("select");
-    const [annotations, setAnnotations] = (0, import_react7.useState)([]);
-    const [selectedId, setSelectedId] = (0, import_react7.useState)(null);
-    const [previewMode, setPreviewMode] = (0, import_react7.useState)(false);
-    const [busy, setBusy] = (0, import_react7.useState)(false);
-    const [result, setResult] = (0, import_react7.useState)(null);
-    const [toast, setToast] = (0, import_react7.useState)("");
-    const [textOptions, setTextOptions] = (0, import_react7.useState)({ size: 12, color: "#111111", fontFamily: "Helvetica", bold: false });
-    const [pdfPageInfo, setPdfPageInfo] = (0, import_react7.useState)({ pageCount: 0 });
-    const [pageOrder, setPageOrder] = (0, import_react7.useState)([]);
-    const [pageRotations, setPageRotations] = (0, import_react7.useState)({});
-    const [selectedPage, setSelectedPage] = (0, import_react7.useState)(1);
-    const [protectOptions, setProtectOptions] = (0, import_react7.useState)({ password: "", ownerPassword: "" });
-    const [watermarkOptions, setWatermarkOptions] = (0, import_react7.useState)({ text: "CONFIDENCIAL", opacity: 0.22, size: 42 });
-    const uploadInputRef = (0, import_react7.useRef)(null);
-    const conversionInputRef = (0, import_react7.useRef)(null);
-    const pendingUploadConversion = (0, import_react7.useRef)(null);
+    const [editorMode, setEditorMode] = (0, import_react9.useState)("select");
+    const [annotations, setAnnotations] = (0, import_react9.useState)([]);
+    const [selectedId, setSelectedId] = (0, import_react9.useState)(null);
+    const [previewMode, setPreviewMode] = (0, import_react9.useState)(false);
+    const [busy, setBusy] = (0, import_react9.useState)(false);
+    const [result, setResult] = (0, import_react9.useState)(null);
+    const [toast, setToast] = (0, import_react9.useState)("");
+    const [textOptions, setTextOptions] = (0, import_react9.useState)({ size: 12, color: "#111111", fontFamily: "Helvetica", bold: false });
+    const [pdfPageInfo, setPdfPageInfo] = (0, import_react9.useState)({ pageCount: 0 });
+    const [pageOrder, setPageOrder] = (0, import_react9.useState)([]);
+    const [pageRotations, setPageRotations] = (0, import_react9.useState)({});
+    const [selectedPage, setSelectedPage] = (0, import_react9.useState)(1);
+    const [zoomScale, setZoomScale] = (0, import_react9.useState)(1);
+    const [protectOptions, setProtectOptions] = (0, import_react9.useState)({ password: "", ownerPassword: "" });
+    const [watermarkOptions, setWatermarkOptions] = (0, import_react9.useState)({ text: "CONFIDENCIAL", opacity: 0.22, size: 42 });
+    const uploadInputRef = (0, import_react9.useRef)(null);
+    const conversionInputRef = (0, import_react9.useRef)(null);
+    const pendingUploadConversion = (0, import_react9.useRef)(null);
     const currentDoc = docs[0] || null;
-    const selectedAnnotation = (0, import_react7.useMemo)(
+    const selectedAnnotation = (0, import_react9.useMemo)(
       () => annotations.find((item) => item.id === selectedId),
       [annotations, selectedId]
     );
+    (0, import_react9.useEffect)(() => {
+      if (selectedAnnotation) {
+        setTextOptions({
+          size: selectedAnnotation.size || 14,
+          color: selectedAnnotation.color || "#111111",
+          fontFamily: selectedAnnotation.fontFamily || "Helvetica",
+          bold: Boolean(selectedAnnotation.bold)
+        });
+      }
+    }, [selectedAnnotation]);
     const title = MODULE_TITLE[module] || "Editar PDF";
-    const primaryLabel = module === "convertir" ? "Convertir y descargar" : "Aplicar y descargar";
-    (0, import_react7.useEffect)(() => {
+    const isNonPdf = currentDoc && !isPdf(currentDoc);
+    const primaryLabel = isNonPdf ? `Descargar ${currentDoc.name.split(".").pop().toUpperCase()}` : module === "convertir" ? "Convertir y descargar" : "Aplicar y descargar";
+    (0, import_react9.useEffect)(() => {
       setPdfPageInfo({ pageCount: 0 });
       setPageOrder([]);
       setPageRotations({});
       setSelectedPage(1);
     }, [currentDoc?.id]);
-    (0, import_react7.useEffect)(() => {
+    (0, import_react9.useEffect)(() => {
       const count = Number(pdfPageInfo.pageCount || 0);
       if (count > 0 && pageOrder.length === 0) {
         setPageOrder(Array.from({ length: count }, (_v, index) => index + 1));
       }
     }, [pdfPageInfo.pageCount, pageOrder.length]);
-    (0, import_react7.useEffect)(() => {
+    (0, import_react9.useEffect)(() => {
       async function load() {
         const session = await api.me();
         if (!session.user) {
@@ -23713,6 +24202,10 @@ var DocFlowWorkspace = (() => {
     async function apply() {
       if (!currentDoc && !uploadConversions.includes(convertAction)) {
         return showToast("Sube un archivo primero.");
+      }
+      if (currentDoc && !isPdf(currentDoc)) {
+        downloadDocument(currentDoc);
+        return showToast(`Descargando ${currentDoc.name}...`);
       }
       setBusy(true);
       setResult(null);
@@ -23792,9 +24285,9 @@ var DocFlowWorkspace = (() => {
       setPreviewMode(false);
       setEditorMode(mode);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Sidebar, { user, module, setModule, setConvertAction, openUploadConversion }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Sidebar, { user, module, setModule, setConvertAction, openUploadConversion }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
         "input",
         {
           ref: uploadInputRef,
@@ -23805,7 +24298,7 @@ var DocFlowWorkspace = (() => {
           onChange: (event) => uploadPdf(event.target.files)
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
         "input",
         {
           ref: conversionInputRef,
@@ -23814,44 +24307,44 @@ var DocFlowWorkspace = (() => {
           onChange: (event) => processUploadConversion(event.target.files)
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("header", { className: "workbench-topbar react-topbar", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "workbench-title", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "panel-kicker", children: module }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h1", { children: title })
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("header", { className: "workbench-topbar react-topbar", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "workbench-title", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "panel-kicker", children: module }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h1", { children: title })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "workbench-actions", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("button", { className: "btn-ghost", type: "button", onClick: () => uploadInputRef.current.click(), children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-plus" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "workbench-actions", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("button", { className: "btn-ghost", type: "button", onClick: () => uploadInputRef.current.click(), children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("i", { className: "fas fa-plus" }),
             " Agregar archivo"
           ] }),
-          result && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("a", { className: "btn-success result-download", href: result.downloadUrl, download: result.name, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-download" }),
+          result && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("a", { className: "btn-success result-download", href: result.downloadUrl, download: result.name, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("i", { className: "fas fa-download" }),
             " ",
             result.name
           ] }),
-          !TOOL_MODULES.has(module) && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("button", { className: "btn-primary", type: "button", disabled: busy, onClick: apply, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: `fas ${busy ? "fa-spinner fa-spin" : "fa-check"}` }),
+          !TOOL_MODULES.has(module) && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("button", { className: "btn-primary", type: "button", disabled: busy, onClick: apply, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("i", { className: `fas ${busy ? "fa-spinner fa-spin" : "fa-check"}` }),
             " ",
             busy ? "Procesando..." : primaryLabel
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(WorkbenchTabs, { module, setModule }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("section", { className: "workbench-status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "panel-kicker", children: "Documento" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: currentDoc?.name || "Sin documento" })
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(WorkbenchTabs, { module, setModule }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("section", { className: "workbench-status", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "panel-kicker", children: "Documento" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("strong", { children: currentDoc?.name || "Sin documento" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "panel-kicker", children: "M\xF3dulo" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: title })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "panel-kicker", children: "M\xF3dulo" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("strong", { children: title })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "panel-kicker", children: "Acci\xF3n" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("strong", { children: module === "convertir" ? convertLabels[convertAction] : MODULE_MODE[module] || "Editar" })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "panel-kicker", children: "Acci\xF3n" }),
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("strong", { children: module === "convertir" ? convertLabels[convertAction] : MODULE_MODE[module] || "Editar" })
         ] })
       ] }),
-      TOOL_MODULES.has(module) ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+      module === "ia" ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("main", { className: "workbench-shell react-workspace ai-mode", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(AiAssistantPanel, { user, currentDoc, docs, showToast }) }) : TOOL_MODULES.has(module) ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
         PdfToolSuite,
         {
           module,
@@ -23864,8 +24357,8 @@ var DocFlowWorkspace = (() => {
           setResult,
           showToast
         }
-      ) : /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_jsx_runtime7.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+      ) : /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
           WorkspaceToolbar,
           {
             module,
@@ -23879,11 +24372,13 @@ var DocFlowWorkspace = (() => {
             convertAction,
             setConvertAction,
             watermarkOptions,
-            setWatermarkOptions
+            setWatermarkOptions,
+            zoomScale,
+            setZoomScale
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("main", { className: `workbench-shell react-workspace ${module === "convertir" ? "convert-mode" : ""}`, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("main", { className: `workbench-shell react-workspace ${module === "convertir" ? "convert-mode" : ""}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             DocumentPanel,
             {
               docs,
@@ -23897,7 +24392,7 @@ var DocFlowWorkspace = (() => {
               setSelectedPage
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          module === "convertir" && uploadConversions.includes(convertAction) ? /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ConversionStage, { convertAction, openUploadConversion, busy }) : /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             PdfStage,
             {
               currentDoc,
@@ -23911,10 +24406,11 @@ var DocFlowWorkspace = (() => {
               module,
               pageOrder,
               pageRotations,
-              setPageMeta: setPdfPageInfo
+              setPageMeta: setPdfPageInfo,
+              zoomScale
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             ActionsPanel,
             {
               module,
@@ -23940,20 +24436,20 @@ var DocFlowWorkspace = (() => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "statusbar", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("i", { className: "fas fa-circle", style: { fontSize: ".45rem", color: "#4CAF50" } }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "statusbar", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("i", { className: "fas fa-circle", style: { fontSize: ".45rem", color: "#4CAF50" } }),
           " Listo"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { children: "React \xB7 Google \xB7 Historial privado" })
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: "\xA9 2026 DocFlow \xB7 Desarrollado por JHS \xB7 Historial privado" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: `toast ${toast ? "show" : ""}`, children: toast })
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: `toast ${toast ? "show" : ""}`, children: toast })
     ] });
   }
 
   // src/react/workspace/main.jsx
-  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
-  (0, import_client.createRoot)(document.getElementById("react-workspace-root")).render(/* @__PURE__ */ (0, import_jsx_runtime8.jsx)(WorkspaceApp, {}));
+  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+  (0, import_client.createRoot)(document.getElementById("react-workspace-root")).render(/* @__PURE__ */ (0, import_jsx_runtime10.jsx)(WorkspaceApp, {}));
 })();
 /*! Bundled license information:
 

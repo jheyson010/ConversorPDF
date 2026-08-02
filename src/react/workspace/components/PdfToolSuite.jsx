@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { api, downloadDocument } from '../api.js';
 import { formatBytes } from '../constants.js';
+import { PdfThumbnail } from './PdfThumbnail.jsx';
 
 const TOOL_COPY = {
   merge: ['Unir PDFs', 'Arrastra para reordenar; el orden importa.'],
@@ -242,7 +243,7 @@ export function PdfToolSuite({
       return (
         <div className="tool-card-shell wide">
           <PageToolbar count={pageCount} selected={selectedPages.size} onAll={selectAllPages} onClear={clearPages} />
-          <PageGrid pageCount={pageCount} selectedPages={selectedPages} onToggle={togglePage} />
+          <PageGrid docUrl={currentDoc?.downloadUrl} pageCount={pageCount} selectedPages={selectedPages} onToggle={togglePage} />
           <div className="tool-inline-actions compact-left">
             <button className="btn-primary" type="button" disabled={busy || !selectedPages.size} onClick={() => run('split', [currentDoc.id], { pages: pagesToRange(selectedPages) })}>Extraer seleccion</button>
             <input className="tool-input small" value={range} onChange={(e) => setRange(e.target.value)} placeholder="1-3,5" />
@@ -326,7 +327,7 @@ export function PdfToolSuite({
             <button className="btn-ghost" type="button" onClick={() => setRotations({})}>Resetear</button>
             <span className="tool-muted">Sel: {selectedPages.size}</span>
           </div>
-          <PageGrid pageCount={pageCount} selectedPages={selectedPages} rotations={rotations} onToggle={togglePage} />
+          <PageGrid docUrl={currentDoc?.downloadUrl} pageCount={pageCount} selectedPages={selectedPages} rotations={rotations} onToggle={togglePage} />
           <button className="btn-primary" type="button" disabled={busy || !Object.keys(rotations).length} onClick={() => run('rotate', [currentDoc.id], { pages: Object.keys(rotations).join(','), degrees: 90, rotations })}>Guardar cambios</button>
         </div>
       );
@@ -374,12 +375,12 @@ function PageToolbar({ count, selected, onAll, onClear }) {
   );
 }
 
-function PageGrid({ pageCount, selectedPages, rotations = {}, onToggle }) {
+function PageGrid({ docUrl, pageCount, selectedPages, rotations = {}, onToggle }) {
   return (
     <div className="tool-page-grid">
       {pageList(pageCount).map((page) => (
         <button className={`tool-page ${selectedPages.has(page) ? 'selected' : ''}`} type="button" key={page} onClick={() => onToggle(page)}>
-          <span className="tool-page-thumb" style={{ transform: `rotate(${rotations[page] || 0}deg)` }}><i className="fas fa-file-pdf"></i><b>{page}</b></span>
+          <PdfThumbnail docUrl={docUrl} pageNum={page} width={80} rotation={rotations[page] || 0} fallbackLabel={page} />
           <small>Pag. {page}</small>
           {rotations[page] ? <em>{rotations[page]}°</em> : null}
         </button>

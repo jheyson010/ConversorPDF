@@ -1,7 +1,8 @@
-import { setupAuth } from './auth.js?v=20260606-access';
-import { setupDocuments } from './documents.js?v=20260606-access';
-import { findModule, findTool, modules, tools } from './tools.js?v=20260606-access';
-import { $, escapeHtml, toast } from './ui.js?v=20260606-access';
+import { setupAuth } from './auth.js?v=20260615-public';
+import { setupDocuments } from './documents.js?v=20260615-public';
+import { findModule, findTool, modules, tools } from './tools.js?v=20260615-public';
+import { $, escapeHtml, toast } from './ui.js?v=20260615-public';
+import { api } from './api.js?v=20260615-public';
 
 const toolsGrid = $('#toolsGrid');
 const ribbonActions = $('#ribbonActions');
@@ -15,6 +16,7 @@ const fileInput = $('#fileInput');
 const uploadFormatPills = $('#uploadFormatPills');
 const selectFirstToolButton = $('#selectFirstToolButton');
 const uploadOptions = $('#uploadOptions');
+const proCheckoutButton = $('#proCheckoutButton');
 
 let currentUser = null;
 let activeTool = null;
@@ -242,6 +244,24 @@ document.querySelectorAll('[data-tool-shortcut]').forEach((button) => {
 });
 
 selectFirstToolButton?.addEventListener('click', selectRecommendedTool);
+
+proCheckoutButton?.addEventListener('click', async () => {
+  try {
+    if (!currentUser) {
+      auth.open();
+      return;
+    }
+    proCheckoutButton.disabled = true;
+    proCheckoutButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Abriendo pago';
+    const checkout = await api.createSubscriptionCheckout();
+    window.location.href = checkout.checkoutUrl;
+  } catch (error) {
+    toast(error.message);
+  } finally {
+    proCheckoutButton.disabled = false;
+    proCheckoutButton.innerHTML = '<i class="fas fa-credit-card"></i> Suscribirme';
+  }
+});
 
 const auth = setupAuth(async (user) => {
   currentUser = user;

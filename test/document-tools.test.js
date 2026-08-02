@@ -234,3 +234,21 @@ test('pdfToWord hybrid mode preserves slide-like layout while keeping text edita
   assert.match(documentXml, /La autoconciencia/);
   assert.ok(media.length >= 1);
 });
+
+test('pdfToPpt creates a valid PPTX package with slide images', async () => {
+  const dir = tempDir();
+  const pdfPath = path.join(dir, 'presentation.pdf');
+  await createPdf(pdfPath, 2);
+
+  const buffer = await conversion.pdfToPpt(
+    documentRecord(pdfPath, 'presentation.pdf', 'application/pdf')
+  );
+  assert.equal(buffer.subarray(0, 2).toString(), 'PK');
+
+  const zip = await JSZip.loadAsync(buffer);
+  assert.ok(zip.file('ppt/presentation.xml'));
+  assert.ok(zip.file('ppt/slides/slide1.xml'));
+  assert.ok(zip.file('ppt/slides/slide2.xml'));
+  assert.ok(zip.file('ppt/media/image1.png'));
+  assert.ok(zip.file('ppt/media/image2.png'));
+});

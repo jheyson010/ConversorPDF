@@ -3,8 +3,31 @@ const { OAuth2Client } = require('google-auth-library');
 const db = require('../db/database');
 
 const SESSION_DAYS = 30;
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '660499321480-v9blu82drm6fctvchpt1u4u0o5a8lqvk.apps.googleusercontent.com';
-const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
+
+function getGoogleClientId() {
+  if (!process.env.GOOGLE_CLIENT_ID && !process.env.REACT_APP_GOOGLE_CLIENT_ID) {
+    try { require('dotenv').config({ quiet: true }); } catch (_e) {}
+  }
+  return process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '652344578744-4n8lsr7k1medd0s31g1bnrd3m9bennl.apps.googleusercontent.com';
+}
+
+async function verifyGoogleCredential(credential) {
+  if (!credential) return null;
+
+  const clientId = getGoogleClientId();
+  const client = new OAuth2Client(clientId);
+
+  const ticket = await client.verifyIdToken({
+    idToken: credential,
+    audience: clientId,
+  });
+  const payload = ticket.getPayload();
+  if (!payload?.email || payload.email_verified === false) return null;
+
+  const user = await findOrCreateUser(payload.email, payload.name, payload.picture);
+  const token = await createSessionForUser(user);
+  return { token, user: publicUser(user) };
+}
 
 function nowIso() {
   return new Date().toISOString();
@@ -22,13 +45,34 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+const ADMIN_EMAILS = new Set([
+  'jheysonrodriguez10@gmail.com',
+  'jheyson@gmail.com',
+  'jheyson.rodriguez@gmail.com',
+  'admin@docflow.com',
+]);
+
+function isProUser(user) {
+  if (!user) return false;
+  const email = String(user.email || '').toLowerCase().trim();
+  const envAdmins = (process.env.ADMIN_EMAILS || '').toLowerCase().split(',').map((e) => e.trim());
+  if (ADMIN_EMAILS.has(email) || envAdmins.includes(email)) return true;
+  if (String(user.plan || '').toLowerCase() === 'pro') return true;
+  if (['authorized', 'active'].includes(String(user.subscription_status || '').toLowerCase())) return true;
+  return false;
+}
+
 function publicUser(user) {
   if (!user) return null;
+  const pro = isProUser(user);
   return {
     id: user.id,
     email: user.email,
     name: user.name || user.email.split('@')[0],
     avatarUrl: user.avatar_url || null,
+    plan: pro ? 'pro' : (user.plan || 'free'),
+    subscriptionStatus: user.subscription_status || (pro ? 'active' : 'inactive'),
+    subscriptionId: user.subscription_id || null,
   };
 }
 
@@ -80,20 +124,6 @@ async function loginWithEmail(email) {
   return { token, user: publicUser(user) };
 }
 
-async function verifyGoogleCredential(credential) {
-  if (!credential) return null;
-
-  const ticket = await googleClient.verifyIdToken({
-    idToken: credential,
-    audience: GOOGLE_CLIENT_ID,
-  });
-  const payload = ticket.getPayload();
-  if (!payload?.email || payload.email_verified === false) return null;
-
-  const user = await findOrCreateUser(payload.email, payload.name, payload.picture);
-  const token = await createSessionForUser(user);
-  return { token, user: publicUser(user) };
-}
 
 async function getUserBySession(token) {
   if (!token) return null;
@@ -115,4 +145,5 @@ module.exports = {
   getUserBySession,
   deleteSession,
   publicUser,
+  isProUser,
 };

@@ -31,6 +31,10 @@ export function Sidebar({ user, module, setModule, setConvertAction, openUploadC
           <NavItem active={module === 'ver'} icon="fas fa-clock" label="Recientes" onClick={() => go('ver')} />
         </div>
         <div className="sb-section">
+          <div className="sb-label">Inteligencia IA</div>
+          <NavItem active={module === 'ia'} icon="fas fa-wand-magic-sparkles" label="Asistente IA" onClick={() => go('ia')} />
+        </div>
+        <div className="sb-section">
           <div className="sb-label">Editar</div>
           <NavItem active={module === 'editar'} icon="fas fa-file-pen" label="Editar PDF" onClick={() => go('editar')} />
           <NavItem active={module === 'comentario'} icon="fas fa-comment-dots" label="Comentario" onClick={() => go('comentario')} />
@@ -48,9 +52,9 @@ export function Sidebar({ user, module, setModule, setConvertAction, openUploadC
         <div className="sb-section">
           <div className="sb-label">Conversion</div>
           <NavItem active={module === 'convertir'} icon="fas fa-arrows-rotate" label="Convertir" onClick={() => go('convertir', { convert: 'pdfToWord' })} />
-          <NavItem icon="fas fa-file-word" label="PDF -> Word editable" onClick={() => go('convertir', { convert: 'pdfToWord' })} />
-          <NavItem icon="fas fa-file-image" label="PDF -> Word visual" onClick={() => go('convertir', { convert: 'pdfToWordImage' })} />
-          <NavItem icon="fas fa-wand-magic-sparkles" label="OCR a Word" onClick={() => go('convertir', { convert: 'pdfToWord' })} />
+          <NavItem icon="fas fa-file-word" label="PDF -> Word" onClick={() => go('convertir', { convert: 'pdfToWord' })} />
+          <NavItem icon="fas fa-file-powerpoint" label="PDF -> PPT" onClick={() => go('convertir', { convert: 'pdfToPpt' })} />
+          <NavItem icon="fas fa-wand-magic-sparkles" label="OCR IA" onClick={() => go('convertir', { convert: 'pdfToWord' })} />
           <NavItem icon="fas fa-file-pdf" label="Word -> PDF" onClick={() => go('convertir', { upload: 'wordToPdf' })} />
           <NavItem icon="fas fa-image" label="PDF -> Imagen" onClick={() => go('convertir', { convert: 'pdfToImage' })} />
           <NavItem icon="fas fa-table" label="Excel -> PDF" onClick={() => go('convertir', { upload: 'excelToPdf' })} />
@@ -59,7 +63,7 @@ export function Sidebar({ user, module, setModule, setConvertAction, openUploadC
       </div>
       <div className="sb-bottom">
         <NavItem icon="fas fa-credit-card" label="Planes" href="/#planes" />
-        <NavItem icon="fas fa-house" label="Salir al inicio" href="/dashboard.html" />
+        <NavItem icon="fas fa-right-from-bracket" label="Cerrar sesión" onClick={async () => { try { await fetch('/api/auth/logout', { method: 'POST' }); } catch(_e){} window.location.href = '/'; }} />
       </div>
     </aside>
   );

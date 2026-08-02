@@ -3,6 +3,10 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(255) NOT NULL UNIQUE,
   name VARCHAR(255),
   avatar_url TEXT,
+  plan VARCHAR(32) NOT NULL DEFAULT 'free',
+  subscription_status VARCHAR(32) NOT NULL DEFAULT 'inactive',
+  subscription_id VARCHAR(128),
+  subscription_updated_at DATETIME NULL,
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL
 );

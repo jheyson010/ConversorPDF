@@ -1,9 +1,10 @@
-import { api } from './api.js?v=20260604-refdash';
-import { findTool, tools } from './tools.js?v=20260604-refdash';
-import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260604-refdash';
+import { api } from './api.js?v=20260615-public';
+import { findTool, tools } from './tools.js?v=20260615-public';
+import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260615-public';
 
 const dashboardAvatar = $('#dashboardAvatar');
 const dashboardUserName = $('#dashboardUserName');
+const dashboardPlan = $('#dashboardPlan');
 const dashboardFiles = $('#dashboardFiles');
 const dashboardTools = $('#dashboardTools');
 const dashboardFileInput = $('#dashboardFileInput');
@@ -16,11 +17,14 @@ const topbarTitle = $('#topbarTitle');
 const breadcrumbCurrent = $('#breadcrumbCurrent');
 const recentItemsHome = $('#recentItemsHome');
 const recentFullList = $('#recentFullList');
+const statusText = $('#statusText');
 const statusFile = $('#statusFile');
 const statusInfo = $('#statusInfo');
 const fileSearchInput = $('#fileSearchInput');
+const storageProgress = $('#storageProgress');
+const storageLabel = $('#storageLabel');
 
-let activeTool = findTool('editPdf');
+let activeTool = null;
 let currentUser = null;
 let documents = [];
 
@@ -58,6 +62,7 @@ function setUser(user) {
   const displayName = user.name || user.email || 'Cuenta';
   dashboardUserName.textContent = displayName;
   welcomeTitle.textContent = `Bienvenido, ${displayName.split(' ')[0]}`;
+  dashboardPlan.textContent = user.plan === 'pro' ? 'Plan Pro' : 'Plan Gratis';
   if (user.avatarUrl) {
     dashboardAvatar.innerHTML = `<img src="${escapeHtml(user.avatarUrl)}" alt="">`;
   } else {
@@ -102,6 +107,22 @@ function setAcceptForTool(tool) {
   dashboardFormats.innerHTML = formatsForTool(tool)
     .map((format) => `<span class="fpill">${escapeHtml(format)}</span>`)
     .join('');
+}
+
+function inferToolForFiles(files) {
+  const items = Array.from(files || []);
+  if (!items.length) return null;
+  const names = items.map((file) => String(file.name || '').toLowerCase());
+  const ext = (name) => name.split('.').pop();
+  const all = (extensions) => names.every((name) => extensions.includes(ext(name)));
+
+  if (all(['jpg', 'jpeg', 'png', 'webp'])) return findTool('imageToPdf');
+  if (items.length > 1 && all(['pdf'])) return findTool('merge');
+  if (all(['doc', 'docx'])) return findTool('wordToPdf');
+  if (all(['xls', 'xlsx', 'csv'])) return findTool('excelToPdf');
+  if (all(['ppt', 'pptx'])) return findTool('pptToPdf');
+  if (all(['pdf'])) return findTool('editPdf');
+  return null;
 }
 
 function setSection(section) {
@@ -150,7 +171,7 @@ function renderTools() {
     .map((tool) => {
       const [title, description, badge, icon] = toolLabels[tool.id] || [tool.title, tool.description, tool.badge, tool.icon];
       return `
-        <button class="dash-tool ${tool.id === activeTool.id ? 'active' : ''}" type="button" data-tool-id="${tool.id}">
+        <button class="dash-tool ${tool.id === activeTool?.id ? 'active' : ''}" type="button" data-tool-id="${tool.id}">
           <span class="dt-icon"><i class="ti ${escapeHtml(icon)}"></i></span>
           <h3>${escapeHtml(title)}</h3>
           <p>${escapeHtml(description)}</p>
@@ -185,6 +206,12 @@ function renderFiles(filter = '') {
   recentFullList.innerHTML = documents.length ? documents.slice(0, 20).map(fileRow).join('') : empty;
   recentItemsHome.innerHTML = documents.length ? documents.slice(0, 4).map(fileRow).join('') : empty;
   statusInfo.textContent = `${documents.length} archivo(s)`;
+  const usedBytes = documents.reduce((total, doc) => total + Number(doc.sizeBytes || 0), 0);
+  const maxBytes = 10 * 1024 * 1024 * 1024;
+  const percent = Math.min(100, (usedBytes / maxBytes) * 100);
+  storageProgress.style.width = `${percent}%`;
+  storageLabel.textContent = `${formatBytes(usedBytes)} / 10 GB`;
+  statusText.textContent = documents.length ? 'Historial actualizado' : 'Sin archivos cargados';
 }
 
 async function refresh() {
@@ -204,18 +231,23 @@ function triggerDownload(document) {
 
 async function uploadFiles(files) {
   if (!files?.length) return;
+  const tool = activeTool || inferToolForFiles(files);
+  if (!tool) {
+    toast('Selecciona una herramienta compatible para este archivo.');
+    return;
+  }
   try {
     dashboardUploadBox.classList.add('dragging');
     const upload = await api.upload(files);
     const ids = upload.documents.map((doc) => doc.id);
     statusFile.textContent = upload.documents[0]?.name || '';
 
-    if (activeTool.workspace) {
-      window.location.href = `/workspace.html?tool=${encodeURIComponent(activeTool.id)}&docs=${encodeURIComponent(ids.join(','))}`;
+    if (tool.workspace) {
+      window.location.href = `/workspace.html?tool=${encodeURIComponent(tool.id)}&docs=${encodeURIComponent(ids.join(','))}`;
       return;
     }
 
-    const result = await api.runTool(activeTool.id, ids, {});
+    const result = await api.runTool(tool.id, ids, {});
     triggerDownload(result.document);
     toast('Resultado listo para descargar.');
     await refresh();
@@ -266,6 +298,10 @@ $('#topUploadButton').addEventListener('click', () => dashboardFileInput.click()
 $('#filesUploadButton').addEventListener('click', () => dashboardFileInput.click());
 $('#wordUploadButton').addEventListener('click', () => dashboardFileInput.click());
 $('#wordSideUploadButton').addEventListener('click', () => dashboardFileInput.click());
+$('#wordEmptyUploadButton').addEventListener('click', () => {
+  selectTool('wordToPdf');
+  dashboardFileInput.click();
+});
 $('#convertButton').addEventListener('click', () => selectTool('pdfToWord'));
 fileSearchInput.addEventListener('input', () => renderFiles(fileSearchInput.value));
 dashboardFileInput.addEventListener('change', () => uploadFiles(dashboardFileInput.files));
@@ -279,6 +315,19 @@ dashboardUploadBox.addEventListener('drop', (event) => {
   uploadFiles(event.dataTransfer.files);
 });
 $('#refreshDashboardButton').addEventListener('click', () => refresh().catch((error) => toast(error.message)));
+async function openSubscriptionCheckout(button) {
+  try {
+    button.disabled = true;
+    const checkout = await api.createSubscriptionCheckout();
+    window.location.href = checkout.checkoutUrl;
+  } catch (error) {
+    toast(error.message);
+  } finally {
+    button.disabled = false;
+  }
+}
+$('#dashboardSubscribeButton').addEventListener('click', (event) => openSubscriptionCheckout(event.currentTarget));
+$('#topSubscribeButton').addEventListener('click', (event) => openSubscriptionCheckout(event.currentTarget));
 $('#logoutButton').addEventListener('click', async () => {
   await api.logout();
   window.location.href = '/';

@@ -4,7 +4,7 @@
   "description": "DocFlow - editor y conversor de documentos con historial por usuario.",
   "main": "server.js",
   "scripts": {
-    "build:workspace": "node node_modules/esbuild/bin/esbuild src/react/workspace/main.jsx --bundle --format=iife --global-name=DocFlowWorkspace --outfile=public/assets/js/workspace-react.bundle.js --loader:.jsx=jsx --jsx=automatic",
+    "build:workspace": "esbuild src/react/workspace/main.jsx --bundle --format=iife --global-name=DocFlowWorkspace --outfile=public/assets/js/workspace-react.bundle.js --loader:.jsx=jsx --jsx=automatic",
     "dev": "node server.js",
     "start": "node server.js",
     "db:init": "node scripts/init-db.js",

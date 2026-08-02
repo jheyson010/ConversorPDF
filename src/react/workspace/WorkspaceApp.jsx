@@ -4,13 +4,14 @@ import { convertLabels, initialIds, initialTool, uploadAccept, uploadConversions
 import { Sidebar } from './components/Sidebar.jsx';
 import { WorkbenchTabs } from './components/WorkbenchTabs.jsx';
 import { WorkspaceToolbar } from './components/WorkspaceToolbar.jsx';
-import { ActionsPanel, DocumentPanel, PdfStage } from './components/WorkspacePanels.jsx';
+import { ActionsPanel, ConversionStage, DocumentPanel, PdfStage } from './components/WorkspacePanels.jsx';
 import { PdfToolSuite } from './components/PdfToolSuite.jsx';
+import { AiAssistantPanel } from './components/AiAssistantPanel.jsx';
 
 const TOOL_MODULES = new Set(['merge', 'split', 'compress', 'proteger', 'sign', 'rotate', 'herramientas']);
 
 function initialModule() {
-  if (initialTool === 'pdfToWord' || initialTool === 'pdfToWordImage') return 'convertir';
+  if (initialTool === 'pdfToWord' || initialTool === 'pdfToPpt') return 'convertir';
   if (initialTool === 'compress') return 'compress';
   if (initialTool === 'protect' || initialTool === 'proteger') return 'proteger';
   if (initialTool === 'merge') return 'merge';
@@ -19,10 +20,12 @@ function initialModule() {
   if (initialTool === 'sign') return 'sign';
   if (initialTool === 'organize') return 'organizar';
   if (initialTool === 'watermark') return 'herramientas';
+  if (initialTool === 'ia') return 'ia';
   return 'editar';
 }
 
 const MODULE_TITLE = {
+  ia: 'Asistente IA para Documentos',
   editar: 'Editar PDF',
   comentario: 'Comentarios',
   convertir: 'Convertir',
@@ -40,6 +43,7 @@ const MODULE_TITLE = {
 };
 
 const MODULE_MODE = {
+  ia: 'Resumen, Chat y Traducción',
   editar: 'Añadir texto sobre el PDF',
   convertir: 'Convertir documento',
   merge: 'Unir documentos',
@@ -75,6 +79,7 @@ export function WorkspaceApp() {
   const [pageOrder, setPageOrder] = useState([]);
   const [pageRotations, setPageRotations] = useState({});
   const [selectedPage, setSelectedPage] = useState(1);
+  const [zoomScale, setZoomScale] = useState(1.0);
 
   // Module-specific options
   const [protectOptions, setProtectOptions] = useState({ password: '', ownerPassword: '' });
@@ -90,8 +95,24 @@ export function WorkspaceApp() {
     [annotations, selectedId]
   );
 
+  useEffect(() => {
+    if (selectedAnnotation) {
+      setTextOptions({
+        size: selectedAnnotation.size || 14,
+        color: selectedAnnotation.color || '#111111',
+        fontFamily: selectedAnnotation.fontFamily || 'Helvetica',
+        bold: Boolean(selectedAnnotation.bold),
+      });
+    }
+  }, [selectedAnnotation]);
+
   const title = MODULE_TITLE[module] || 'Editar PDF';
-  const primaryLabel = module === 'convertir' ? 'Convertir y descargar' : 'Aplicar y descargar';
+  const isNonPdf = currentDoc && !isPdf(currentDoc);
+  const primaryLabel = isNonPdf
+    ? `Descargar ${currentDoc.name.split('.').pop().toUpperCase()}`
+    : module === 'convertir'
+    ? 'Convertir y descargar'
+    : 'Aplicar y descargar';
 
   useEffect(() => {
     setPdfPageInfo({ pageCount: 0 });
@@ -178,6 +199,10 @@ export function WorkspaceApp() {
   async function apply() {
     if (!currentDoc && !uploadConversions.includes(convertAction)) {
       return showToast('Sube un archivo primero.');
+    }
+    if (currentDoc && !isPdf(currentDoc)) {
+      downloadDocument(currentDoc);
+      return showToast(`Descargando ${currentDoc.name}...`);
     }
     setBusy(true);
     setResult(null);
@@ -335,7 +360,11 @@ export function WorkspaceApp() {
         </div>
       </section>
 
-      {TOOL_MODULES.has(module) ? (
+      {module === 'ia' ? (
+        <main className="workbench-shell react-workspace ai-mode">
+          <AiAssistantPanel user={user} currentDoc={currentDoc} docs={docs} showToast={showToast} />
+        </main>
+      ) : TOOL_MODULES.has(module) ? (
         <PdfToolSuite
           module={module}
           docs={docs}
@@ -362,6 +391,8 @@ export function WorkspaceApp() {
             setConvertAction={setConvertAction}
             watermarkOptions={watermarkOptions}
             setWatermarkOptions={setWatermarkOptions}
+            zoomScale={zoomScale}
+            setZoomScale={setZoomScale}
           />
 
           <main className={`workbench-shell react-workspace ${module === 'convertir' ? 'convert-mode' : ''}`}>
@@ -376,20 +407,25 @@ export function WorkspaceApp() {
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
-            <PdfStage
-              currentDoc={currentDoc}
-              annotations={annotations}
-              setAnnotations={setAnnotations}
-              editorMode={editorMode}
-              previewMode={previewMode}
-              textOptions={textOptions}
-              selectedId={selectedId}
-              setSelectedId={setSelectedId}
-              module={module}
-              pageOrder={pageOrder}
-              pageRotations={pageRotations}
-              setPageMeta={setPdfPageInfo}
-            />
+            {module === 'convertir' && uploadConversions.includes(convertAction) ? (
+              <ConversionStage convertAction={convertAction} openUploadConversion={openUploadConversion} busy={busy} />
+            ) : (
+              <PdfStage
+                currentDoc={currentDoc}
+                annotations={annotations}
+                setAnnotations={setAnnotations}
+                editorMode={editorMode}
+                previewMode={previewMode}
+                textOptions={textOptions}
+                selectedId={selectedId}
+                setSelectedId={setSelectedId}
+                module={module}
+                pageOrder={pageOrder}
+                pageRotations={pageRotations}
+                setPageMeta={setPdfPageInfo}
+                zoomScale={zoomScale}
+              />
+            )}
             <ActionsPanel
               module={module}
               busy={busy}
@@ -417,7 +453,7 @@ export function WorkspaceApp() {
 
       <div className="statusbar">
         <span><i className="fas fa-circle" style={{ fontSize: '.45rem', color: '#4CAF50' }}></i> Listo</span>
-        <span>React · Google · Historial privado</span>
+        <span>© 2026 DocFlow · Desarrollado por JHS · Historial privado</span>
       </div>
       <div className={`toast ${toast ? 'show' : ''}`}>{toast}</div>
     </>

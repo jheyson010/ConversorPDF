@@ -101,13 +101,13 @@ function readableTextItem(item, styles, pageNum, index) {
   const y = Number(transform[5] || 0);
   const rawHeight = Math.abs(Number(item.height || transform[3] || 10));
   const style = styles?.[item.fontName] || {};
-  const family = String(style.fontFamily || '').toLowerCase();
-  const fontFamily = family.includes('courier') || family.includes('mono')
+  const fontStr = `${style.fontFamily || ''} ${item.fontName || ''}`.toLowerCase();
+  const fontFamily = fontStr.includes('courier') || fontStr.includes('mono') || fontStr.includes('code')
     ? 'Courier'
-    : family.includes('times') || family.includes('serif')
+    : fontStr.includes('times') || fontStr.includes('serif') || fontStr.includes('georgia') || fontStr.includes('palatino') || fontStr.includes('cambria')
     ? 'TimesRoman'
     : 'Helvetica';
-  const bold = /bold|black|heavy|semibold/i.test(`${style.fontFamily || ''} ${item.fontName || ''}`);
+  const bold = /bold|black|heavy|semibold/i.test(fontStr);
   const size = clamp(rawHeight * 0.86, 7, 48);
   const width = Math.max(Number(item.width || 0), text.length * size * 0.42);
   const height = Math.max(rawHeight, size * 1.15);
@@ -312,8 +312,8 @@ export function PdfCanvas({
       page: pageNum,
       x: hit.x,
       y: hit.y,
-      width: hit.width + 8,
-      height: Math.max(hit.height, hit.size * 1.25),
+      width: hit.width,
+      height: hit.height,
       text: hit.text,
       size: Math.round(hit.size),
       color: sampled.color || textOptions.color,
@@ -580,10 +580,10 @@ function EditableAnnotation({ annotation, meta, selected, setSelectedId, setAnno
   }
 
   const fontFamily = annotation.fontFamily === 'TimesRoman'
-    ? '"Times New Roman", serif'
+    ? '"Times New Roman", Times, Georgia, serif'
     : annotation.fontFamily === 'Courier'
-    ? '"Courier New", monospace'
-    : 'Arial, sans-serif';
+    ? '"Courier New", Courier, monospace'
+    : 'Arial, "Helvetica Neue", Helvetica, sans-serif';
 
   const scaledSize = Math.min(120, Math.max(8, annotation.size * meta.scale));
 
@@ -593,10 +593,9 @@ function EditableAnnotation({ annotation, meta, selected, setSelectedId, setAnno
       data-erase={annotation.erase ? 'true' : 'false'}
       style={{
         left: annotation.x * meta.scale,
-        // PDF y=0 is bottom of page, canvas y=0 is top. Subtract height so box grows downward.
-        top: (meta.pdfHeight - annotation.y) * meta.scale - (annotation.height * meta.scale),
+        top: (meta.pdfHeight - annotation.y - annotation.height) * meta.scale,
         width: annotation.width * meta.scale,
-        minHeight: annotation.height * meta.scale,
+        height: annotation.height * meta.scale,
         backgroundColor: annotation.erase ? (annotation.backgroundColor || '#ffffff') : 'transparent',
         '--annotation-fill': annotation.backgroundColor || '#ffffff',
       }}
@@ -628,11 +627,12 @@ function EditableAnnotation({ annotation, meta, selected, setSelectedId, setAnno
         spellCheck="false"
         data-placeholder={annotation.erase ? 'Reemplaza o borra...' : 'Escribe...'}
         style={{
-          fontSize: scaledSize,
+          fontSize: Math.round(scaledSize),
           color: annotation.color,
           fontFamily,
           fontWeight: annotation.bold ? 700 : 400,
-          minHeight: scaledSize * 1.4,
+          lineHeight: `${annotation.height * meta.scale}px`,
+          height: '100%',
         }}
         onPointerDown={(e) => e.stopPropagation()}
         onFocus={() => { if (!previewMode) setSelectedId(annotation.id); }}

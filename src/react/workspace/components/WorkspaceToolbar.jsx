@@ -1,10 +1,11 @@
 import React from 'react';
 import { convertLabels } from '../constants.js';
 
-const CONVERT_ACTIONS = ['pdfToWord', 'pdfToWordImage', 'compress', 'pdfToImage'];
+const CONVERT_ACTIONS = ['pdfToWord', 'pdfToPpt', 'compress', 'pdfToImage'];
 
 function convertIcon(action) {
   if (action === 'pdfToImage') return 'fas fa-image';
+  if (action === 'pdfToPpt') return 'fas fa-file-powerpoint';
   if (action.includes('Word')) return 'fas fa-file-word';
   return 'fas fa-compress-arrows-alt';
 }
@@ -12,6 +13,7 @@ function convertIcon(action) {
 export function WorkspaceToolbar({
   module, editorMode, setEditorMode, previewMode, setPreviewMode, textOptions, selectedAnnotation, changeTextOptions,
   convertAction, setConvertAction, watermarkOptions, setWatermarkOptions,
+  zoomScale = 1.0, setZoomScale,
 }) {
   if (module === 'convertir') {
     return (
@@ -26,7 +28,7 @@ export function WorkspaceToolbar({
             <i className={convertIcon(action)}></i> {convertLabels[action]}
           </button>
         ))}
-        <span className="toolbar-hint">Word editable conserva texto y estructura. Word visual es solo para copia exacta no editable.</span>
+        <span className="toolbar-hint">PDF ➔ Word genera un DOCX editable; PDF ➔ PPT genera una presentación PowerPoint.</span>
       </section>
     );
   }
@@ -100,6 +102,30 @@ export function WorkspaceToolbar({
         <i className="fas fa-eye"></i> Vista previa
       </button>
       <span className="toolbar-separator"></span>
+      {setZoomScale && (
+        <>
+          <button
+            className="toolbar-button compact"
+            type="button"
+            title="Alejar (Zoom -)"
+            disabled={zoomScale <= 0.6}
+            onClick={() => setZoomScale((prev) => Math.max(0.5, Number((prev - 0.15).toFixed(2))))}
+          >
+            <i className="fas fa-magnifying-glass-minus"></i>
+          </button>
+          <span className="toolbar-label" style={{ minWidth: 38, textAlign: 'center' }}>{Math.round(zoomScale * 100)}%</span>
+          <button
+            className="toolbar-button compact"
+            type="button"
+            title="Acercar (Zoom +)"
+            disabled={zoomScale >= 2.0}
+            onClick={() => setZoomScale((prev) => Math.min(2.0, Number((prev + 0.15).toFixed(2))))}
+          >
+            <i className="fas fa-magnifying-glass-plus"></i>
+          </button>
+          <span className="toolbar-separator"></span>
+        </>
+      )}
       <button
         className={`toolbar-button compact ${textOptions.bold ? 'active' : ''}`}
         type="button"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { convertLabels, convertDescriptions, formatBytes, isPdf, uploadConversions } from '../constants.js';
 import { PdfCanvas } from './PdfCanvas.jsx';
+import { PdfThumbnail } from './PdfThumbnail.jsx';
 
 function pagesFromCount(pageCount) {
   return Array.from({ length: Math.max(0, Number(pageCount || 0)) }, (_v, index) => index + 1);
@@ -88,7 +89,7 @@ export function DocumentPanel({
               }}
               onClick={() => selectPage(page)}
             >
-              <span className="page-thumb" style={{ transform: `rotate(${pageRotations[page] || 0}deg)` }}>{page}</span>
+              <PdfThumbnail docUrl={currentDoc.downloadUrl} pageNum={page} width={50} rotation={pageRotations[page] || 0} fallbackLabel={page} />
               <span>
                 <span className="page-title">Pagina {page}</span>
                 <span className="page-subtitle">Posicion {index + 1}{pageRotations[page] ? ` - ${pageRotations[page]} deg` : ''}</span>
@@ -105,6 +106,66 @@ export function DocumentPanel({
   );
 }
 
+export function NonPdfDocumentStage({ doc }) {
+  if (!doc) return null;
+  const ext = (doc.name || '').split('.').pop().toLowerCase();
+  const isWord = ['docx', 'doc'].includes(ext);
+  const isPpt = ['pptx', 'ppt'].includes(ext);
+  const isExcel = ['xlsx', 'xls'].includes(ext);
+  const isZip = ext === 'zip';
+
+  let icon = 'fa-file-lines';
+  let badge = `Archivo ${ext.toUpperCase()}`;
+  let desc = 'Tu documento procesado está listo para descargar, compartir o editar.';
+
+  if (isWord) {
+    icon = 'fa-file-word';
+    badge = 'Documento Microsoft Word (.docx)';
+    desc = 'Documento editable de Microsoft Word con texto extraído y formato conservado.';
+  } else if (isPpt) {
+    icon = 'fa-file-powerpoint';
+    badge = 'Presentación PowerPoint (.pptx)';
+    desc = 'Presentación de diapositivas OpenXML lista para abrir en PowerPoint, Keynote o Google Slides.';
+  } else if (isExcel) {
+    icon = 'fa-file-excel';
+    badge = 'Hoja de Cálculo Excel (.xlsx)';
+    desc = 'Hoja de cálculo estructurada lista para abrir en Microsoft Excel o Google Sheets.';
+  } else if (isZip) {
+    icon = 'fa-file-zipper';
+    badge = 'Paquete ZIP de Imágenes';
+    desc = 'Archivo comprimido con las páginas extraídas en imágenes PNG de alta resolución.';
+  }
+
+  return (
+    <div className="conversion-stage-card non-pdf-stage-card" style={{ padding: '3rem 2rem', textAlign: 'center' }}>
+      <div className="cs-icon" style={{
+        width: 72, height: 72, fontSize: '2rem', margin: '0 auto 1.25rem', borderRadius: '50%', display: 'grid', placeItems: 'center',
+        background: isWord ? 'rgba(66, 133, 244, 0.15)' : isPpt ? 'rgba(234, 67, 53, 0.15)' : 'rgba(201, 168, 76, 0.15)',
+        color: isWord ? '#4285F4' : isPpt ? '#EA4335' : 'var(--gold)',
+        border: `1px solid ${isWord ? '#4285F4' : isPpt ? '#EA4335' : 'var(--gold)'}`
+      }}>
+        <i className={`fas ${icon}`}></i>
+      </div>
+      <span className="doc-type-badge" style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', borderRadius: 20, background: 'var(--dark3)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}>
+        {badge}
+      </span>
+      <h2 style={{ margin: '1rem 0 0.5rem', fontSize: '1.6rem', color: 'var(--text)' }}>{doc.name}</h2>
+      <p style={{ maxWidth: 480, margin: '0 auto 1.8rem', color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>{desc}</p>
+      
+      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <a href={doc.downloadUrl} download={doc.name} className="btn-primary btn-large cs-btn" style={{ textDecoration: 'none' }}>
+          <i className="fas fa-download"></i> Descargar {ext.toUpperCase()} ({formatBytes(doc.sizeBytes)})
+        </a>
+        {isWord && (
+          <a href="/dashboard.html" className="btn-secondary btn-large cs-btn" style={{ textDecoration: 'none', background: 'var(--dark3)', border: '1px solid var(--border)', color: 'var(--text)' }}>
+            <i className="fas fa-file-pen"></i> Abrir Editor Word
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function PdfStage({
   currentDoc,
   annotations,
@@ -117,15 +178,15 @@ export function PdfStage({
   module,
   pageOrder,
   pageRotations,
-  setPageMeta,
+  zoomScale = 1.0,
 }) {
   const canEdit = module === 'editar' || module === 'comentario';
   return (
     <section className="pdf-stage">
       {!currentDoc && <div className="empty-state stage-empty">Sube un PDF para empezar.</div>}
-      {currentDoc && !isPdf(currentDoc) && <div className="empty-state stage-empty">Archivo listo para convertir.</div>}
+      {currentDoc && !isPdf(currentDoc) && <NonPdfDocumentStage doc={currentDoc} />}
       {currentDoc && isPdf(currentDoc) && (
-        <div className="pdf-pages">
+        <div className="pdf-pages" style={{ transform: `scale(${zoomScale})`, transformOrigin: 'top center', transition: 'transform 0.15s ease' }}>
           <PdfCanvas
             doc={currentDoc}
             annotations={annotations}
@@ -137,10 +198,33 @@ export function PdfStage({
             setSelectedId={setSelectedId}
             pageOrder={pageOrder}
             pageRotations={pageRotations}
-            setPageMeta={setPageMeta}
           />
         </div>
       )}
+    </section>
+  );
+}
+
+export function ConversionStage({ convertAction, openUploadConversion, busy }) {
+  const titles = {
+    wordToPdf: ['Word → PDF', 'Convierte tus documentos Word (.docx) a PDF con alta fidelidad de formato.', '.docx'],
+    excelToPdf: ['Excel → PDF', 'Convierte tus hojas de cálculo Excel (.xlsx, .xls) a documento PDF.', '.xlsx, .xls'],
+    pptToPdf: ['PPT → PDF', 'Convierte tus presentaciones PowerPoint (.pptx) a PDF por diapositiva.', '.pptx'],
+    imagesToPdf: ['Imagen → PDF', 'Unifica imágenes JPG, PNG o WEBP en un solo archivo PDF.', '.jpg, .png'],
+  };
+  const info = titles[convertAction] || ['Convertir a PDF', 'Selecciona tu archivo para convertir.', ''];
+
+  return (
+    <section className="pdf-stage conversion-stage">
+      <div className="conversion-stage-card">
+        <div className="cs-icon"><i className="fas fa-cloud-arrow-up"></i></div>
+        <h2>{info[0]}</h2>
+        <p>{info[1]}</p>
+        <button className="btn-primary btn-large cs-btn" type="button" disabled={busy} onClick={() => openUploadConversion(convertAction)}>
+          <i className={`fas ${busy ? 'fa-spinner fa-spin' : 'fa-folder-open'}`}></i>
+          {' '}Seleccionar archivo {info[2]} desde tu dispositivo
+        </button>
+      </div>
     </section>
   );
 }
@@ -168,10 +252,6 @@ export function ActionsPanel({
           <h2>{panelTitle()}</h2>
         </div>
       </div>
-      <button className="btn-primary full side-apply" type="button" disabled={busy} onClick={apply}>
-        <i className={`fas ${busy ? 'fa-spinner fa-spin' : 'fa-check'}`}></i>
-        {' '}{busy ? 'Procesando...' : primaryLabel}
-      </button>
 
       {module === 'convertir' && (
         <ConvertActions convertAction={convertAction} setConvertAction={setConvertAction} openUploadConversion={openUploadConversion} />
@@ -209,12 +289,13 @@ export function ActionsPanel({
 
 function actionIcon(action) {
   if (action === 'pdfToImage') return 'fas fa-image';
+  if (action === 'pdfToPpt') return 'fas fa-file-powerpoint';
   if (action.includes('Word')) return 'fas fa-file-word';
   if (action === 'compress') return 'fas fa-compress-arrows-alt';
   return 'fas fa-file-export';
 }
 
-const PDF_ACTIONS = ['pdfToWord', 'pdfToWordImage', 'compress', 'pdfToImage'];
+const PDF_ACTIONS = ['pdfToWord', 'pdfToPpt', 'compress', 'pdfToImage'];
 
 function ConvertActions({ convertAction, setConvertAction, openUploadConversion }) {
   return (

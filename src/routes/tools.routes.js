@@ -71,10 +71,10 @@ const tools = {
     mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     run: ([document], options) => conversion().pdfToWord(document, options),
   },
-  pdfToWordImage: {
-    outputName: 'pdf-word-visual.docx',
-    mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    run: ([document]) => conversion().pdfToWord(document, { mode: 'image' }),
+  pdfToPpt: {
+    outputName: 'pdf-presentacion.pptx',
+    mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    run: ([document]) => conversion().pdfToPpt(document),
   },
   pdfToImage: {
     outputName: 'pdf-imagenes.zip',

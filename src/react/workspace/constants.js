@@ -7,8 +7,8 @@ export const uploadConversions = ['wordToPdf', 'excelToPdf', 'pptToPdf', 'imageT
 
 export const convertLabels = {
   compress: 'Comprimir PDF',
-  pdfToWord: 'PDF -> Word editable',
-  pdfToWordImage: 'PDF -> Word visual',
+  pdfToWord: 'PDF -> Word',
+  pdfToPpt: 'PDF -> PPT',
   pdfToImage: 'PDF -> Imagen',
   wordToPdf: 'Word -> PDF',
   excelToPdf: 'Excel -> PDF',
@@ -19,7 +19,7 @@ export const convertLabels = {
 export const convertDescriptions = {
   compress: 'Reduce el tamano del archivo PDF manteniendo la calidad.',
   pdfToWord: 'Convierte el PDF a Word editable conservando mejor la posicion del texto.',
-  pdfToWordImage: 'Mantiene el diseno como imagen dentro de Word; no es editable.',
+  pdfToPpt: 'Convierte tu archivo PDF en una presentacion PowerPoint (.pptx).',
   pdfToImage: 'Exporta cada pagina como imagen PNG en un archivo ZIP.',
   wordToPdf: 'Convierte tu documento Word a formato PDF.',
   excelToPdf: 'Convierte tu hoja de calculo Excel a formato PDF.',

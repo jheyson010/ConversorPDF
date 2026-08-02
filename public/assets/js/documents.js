@@ -1,5 +1,5 @@
-import { api } from './api.js?v=20260606-access';
-import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260606-access';
+import { api } from './api.js?v=20260615-public';
+import { $, escapeHtml, formatBytes, toast } from './ui.js?v=20260615-public';
 
 export function setupDocuments({ requireAuth, getActiveTool, inferToolForFiles, getToolOptions }) {
   const recentStrip = $('#recentStrip');
@@ -14,32 +14,38 @@ export function setupDocuments({ requireAuth, getActiveTool, inferToolForFiles, 
   let authenticated = false;
 
   function render() {
-    recentStrip.classList.toggle('hidden', documents.length === 0);
+    if (recentStrip) recentStrip.classList.toggle('hidden', documents.length === 0);
     if (!documents.length) {
-      docsSummary.innerHTML = authenticated
-        ? '<span>No hay documentos en esta cuenta todavia.</span>'
-        : '<span>Inicia sesion para ver tus documentos.</span>';
-      list.innerHTML = '<div class="empty-state">Todavia no tienes documentos.</div>';
+      if (docsSummary) {
+        docsSummary.innerHTML = authenticated
+          ? '<span>No hay documentos en esta cuenta todavia.</span>'
+          : '<span>Inicia sesion para ver tus documentos.</span>';
+      }
+      if (list) list.innerHTML = '<div class="empty-state">Todavia no tienes documentos.</div>';
       return;
     }
 
     const uploads = documents.filter((doc) => doc.kind === 'upload').length;
     const outputs = documents.filter((doc) => doc.kind === 'output').length;
-    docsSummary.innerHTML = `
-      <span><strong>${documents.length}</strong> documentos guardados</span>
-      <span><strong>${uploads}</strong> subidos - <strong>${outputs}</strong> resultados</span>
-    `;
+    if (docsSummary) {
+      docsSummary.innerHTML = `
+        <span><strong>${documents.length}</strong> documentos guardados</span>
+        <span><strong>${uploads}</strong> subidos - <strong>${outputs}</strong> resultados</span>
+      `;
+    }
 
-    list.innerHTML = documents.slice(0, 8).map((doc) => `
-      <article class="document-item compact">
-        <span class="doc-file-icon"><i class="fas fa-file"></i></span>
-        <span>
-          <span class="doc-name">${escapeHtml(doc.name)}</span>
-          <span class="doc-meta">${escapeHtml(doc.kind)} - ${formatBytes(doc.sizeBytes)}</span>
-        </span>
-        <a class="doc-download" href="/workspace.html?tool=editPdf&docs=${doc.id}" title="Abrir"><i class="fas fa-arrow-up-right-from-square"></i></a>
-      </article>
-    `).join('');
+    if (list) {
+      list.innerHTML = documents.slice(0, 8).map((doc) => `
+        <article class="document-item compact">
+          <span class="doc-file-icon"><i class="fas fa-file"></i></span>
+          <span>
+            <span class="doc-name">${escapeHtml(doc.name)}</span>
+            <span class="doc-meta">${escapeHtml(doc.kind)} - ${formatBytes(doc.sizeBytes)}</span>
+          </span>
+          <a class="doc-download" href="/workspace.html?tool=editPdf&docs=${doc.id}" title="Abrir"><i class="fas fa-arrow-up-right-from-square"></i></a>
+        </article>
+      `).join('');
+    }
   }
 
   async function refresh() {
@@ -98,10 +104,10 @@ export function setupDocuments({ requireAuth, getActiveTool, inferToolForFiles, 
     }
   }
 
-  fileInput.addEventListener('change', () => uploadFiles(fileInput.files));
-  uploadBox.addEventListener('submit', (event) => event.preventDefault());
-  heroUploadButton.addEventListener('click', () => fileInput.click());
-  refreshButton.addEventListener('click', () => refresh().catch((error) => toast(error.message)));
+  fileInput?.addEventListener('change', () => uploadFiles(fileInput.files));
+  uploadBox?.addEventListener('submit', (event) => event.preventDefault());
+  heroUploadButton?.addEventListener('click', () => fileInput.click());
+  refreshButton?.addEventListener('click', () => refresh().catch((error) => toast(error.message)));
 
   uploadBox.addEventListener('dragover', (event) => {
     event.preventDefault();

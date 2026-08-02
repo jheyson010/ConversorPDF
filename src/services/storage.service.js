@@ -135,6 +135,16 @@ function publicDocument(document) {
   };
 }
 
+async function deleteDocumentForUser(id, userId) {
+  const doc = await getDocumentForUser(id, userId);
+  if (!doc) return false;
+  if (doc.storage_path && fs.existsSync(doc.storage_path)) {
+    try { fs.unlinkSync(doc.storage_path); } catch (_e) {}
+  }
+  await db.run('DELETE FROM documents WHERE id = ? AND user_id = ?', [id, userId]);
+  return true;
+}
+
 module.exports = {
   MAX_FILE_SIZE,
   ensureStorage,
@@ -143,5 +153,6 @@ module.exports = {
   recordOutputFile,
   getDocumentForUser,
   listDocumentsForUser,
+  deleteDocumentForUser,
   publicDocument,
 };

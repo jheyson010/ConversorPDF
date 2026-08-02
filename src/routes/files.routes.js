@@ -8,6 +8,7 @@ const {
   recordUploadedFile,
   getDocumentForUser,
   listDocumentsForUser,
+  deleteDocumentForUser,
   publicDocument,
 } = require('../services/storage.service');
 const { listOperationsForUser, publicOperation } = require('../services/operation.service');
@@ -84,6 +85,16 @@ router.get('/:id/download', async (req, res, next) => {
   res.setHeader('Content-Disposition', `attachment; filename="${filename.replace(/"/g, '_')}"`);
   res.setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
   res.download(document.storage_path, filename);
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deleted = await deleteDocumentForUser(req.params.id, req.user.id);
+    if (!deleted) return res.status(404).json({ message: 'Documento no encontrado o ya fue eliminado.' });
+    return res.json({ success: true, message: 'Documento eliminado correctamente.' });
+  } catch (error) {
+    return next(error);
+  }
 });
 
 module.exports = router;

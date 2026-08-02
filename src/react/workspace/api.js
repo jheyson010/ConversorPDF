@@ -27,6 +27,21 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ documentIds, options }),
     }),
+  aiSummarize: (documentId) =>
+    request('/api/ai/summarize', {
+      method: 'POST',
+      body: JSON.stringify({ documentId }),
+    }),
+  aiChat: (documentId, question, chatHistory = []) =>
+    request('/api/ai/chat', {
+      method: 'POST',
+      body: JSON.stringify({ documentId, question, chatHistory }),
+    }),
+  aiTranslate: (documentId, targetLanguage) =>
+    request('/api/ai/translate', {
+      method: 'POST',
+      body: JSON.stringify({ documentId, targetLanguage }),
+    }),
 };
 
 export function downloadDocument(document) {
