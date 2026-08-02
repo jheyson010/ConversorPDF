@@ -32,9 +32,9 @@ router.post('/logout', async (req, res, next) => {
 
 router.get('/google/client', (_req, res) => {
   try { require('dotenv').config({ quiet: true, override: true }); } catch (_e) {}
-  const clientId = process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '652344578744-4n8lsr7k1medd0s31g1bnrd3m9bennl.apps.googleusercontent.com';
+  const clientId = process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '652344578744-8muaou1p2ic972i2al68gmiagnonr25j.apps.googleusercontent.com';
   res.json({
-    enabled: String(process.env.ENABLE_GOOGLE_LOGIN || 'false').toLowerCase() === 'true' && Boolean(clientId),
+    enabled: String(process.env.ENABLE_GOOGLE_LOGIN || 'true').toLowerCase() !== 'false' && Boolean(clientId),
     clientId,
   });
 });
