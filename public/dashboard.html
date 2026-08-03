@@ -73,6 +73,7 @@
         <button class="tb-btn" id="refreshDashboardButton" type="button"><i class="ti ti-history"></i> Historial</button>
         <button class="tb-btn" id="topSubscribeButton" type="button"><i class="ti ti-crown"></i> Pro S/ 6</button>
         <button class="tb-btn" id="topUploadButton" type="button"><i class="ti ti-upload"></i> Subir</button>
+        <button class="tb-btn tb-btn-gold" id="topDownloadButton" type="button"><i class="ti ti-download"></i> Descargar</button>
         <button class="tb-btn tb-btn-gold" id="convertButton" type="button"><i class="ti ti-arrows-exchange"></i> Convertir</button>
       </div>
     </header>
@@ -105,7 +106,7 @@
 
     <section class="ref-view hidden" id="filesView">
       <div class="view-inner">
-        <div class="view-header"><h2>Mis archivos</h2><p>Historial de documentos subidos y resultados.</p></div>
+        <div class="view-header"><h2>Mis archivos</h2><p>Historial de documentos subidos y resultados para descargar.</p></div>
         <div class="files-toolbar">
           <input id="fileSearchInput" type="search" placeholder="Buscar archivos...">
           <button class="btn btn-ghost" id="filesUploadButton" type="button"><i class="ti ti-upload"></i> Subir</button>
@@ -120,17 +121,42 @@
         <button class="tab-add" type="button" id="wordUploadButton"><i class="ti ti-plus"></i></button>
       </div>
       <div class="editor-toolbar">
-        <select class="et-select"><option>Calibri</option><option>Arial</option><option>Times New Roman</option></select>
-        <select class="et-select"><option>12</option><option>14</option><option>16</option></select>
+        <select class="et-select" id="wordFontFamilySelect" title="Tipografía / Fuente">
+          <option value="Calibri">Calibri</option>
+          <option value="Arial">Arial</option>
+          <option value="Helvetica">Helvetica</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Trebuchet MS">Trebuchet MS</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Impact">Impact</option>
+          <option value="Comic Sans MS">Comic Sans MS</option>
+          <option value="Garamond">Garamond</option>
+          <option value="Monospace">Monospace</option>
+          <option value="Roboto">Roboto</option>
+          <option value="Open Sans">Open Sans</option>
+          <option value="Playfair Display">Playfair Display</option>
+          <option value="DM Sans">DM Sans</option>
+        </select>
+        <select class="et-select" id="wordFontSizeSelect" title="Tamaño de letra">
+          <option value="1">8pt</option>
+          <option value="2">10pt</option>
+          <option value="3" selected>12pt</option>
+          <option value="4">14pt</option>
+          <option value="5">18pt</option>
+          <option value="6">24pt</option>
+          <option value="7">36pt</option>
+        </select>
         <span class="et-sep"></span>
-        <button class="et-btn" type="button" data-command="bold"><i class="ti ti-bold"></i></button>
-        <button class="et-btn" type="button" data-command="italic"><i class="ti ti-italic"></i></button>
-        <button class="et-btn" type="button" data-command="underline"><i class="ti ti-underline"></i></button>
-        <button class="et-btn" type="button" data-command="justifyLeft"><i class="ti ti-align-left"></i></button>
-        <button class="et-btn" type="button" data-command="justifyCenter"><i class="ti ti-align-center"></i></button>
-        <button class="et-btn" type="button" data-command="justifyRight"><i class="ti ti-align-right"></i></button>
+        <button class="et-btn" type="button" data-command="bold" title="Negrita"><i class="ti ti-bold"></i></button>
+        <button class="et-btn" type="button" data-command="italic" title="Cursiva"><i class="ti ti-italic"></i></button>
+        <button class="et-btn" type="button" data-command="underline" title="Subrayado"><i class="ti ti-underline"></i></button>
+        <button class="et-btn" type="button" data-command="justifyLeft" title="Alinear a la izquierda"><i class="ti ti-align-left"></i></button>
+        <button class="et-btn" type="button" data-command="justifyCenter" title="Centrar"><i class="ti ti-align-center"></i></button>
+        <button class="et-btn" type="button" data-command="justifyRight" title="Alinear a la derecha"><i class="ti ti-align-right"></i></button>
         <span class="et-sep"></span>
-        <button class="et-btn ai-btn" type="button"><i class="ti ti-sparkles"></i> IA</button>
+        <button class="et-btn ai-btn" id="wordDownloadToolbarButton" type="button"><i class="ti ti-download"></i> Descargar DOCX</button>
       </div>
       <div class="word-editor-shell">
         <aside class="file-panel word-file-panel">
@@ -139,7 +165,7 @@
           <div class="fp-list" id="wordFileList"><div class="empty-state">No hay archivos cargados.</div></div>
         </aside>
         <main class="doc-area word-doc-area">
-          <article class="doc-page word-empty-page" id="wordEditorPage">
+          <article class="doc-page word-empty-page" id="wordEditorPage" contenteditable="true">
             <div class="word-empty-state">
               <i class="ti ti-file-type-doc"></i>
               <h2>Sube un documento Word</h2>
@@ -151,10 +177,17 @@
         <aside class="right-panel word-right-panel">
           <div class="rp-section">
             <div class="rp-title">Propiedades</div>
-            <div class="rp-row"><label>Paginas</label><div class="rp-val">0</div></div>
-            <div class="rp-row"><label>Palabras</label><div class="rp-val">0</div></div>
-            <div class="rp-row"><label>Tamano</label><div class="rp-val">0 KB</div></div>
-            <div class="rp-row"><label>Estado</label><div class="rp-val">Sin archivo</div></div>
+            <div class="rp-row"><label>Paginas</label><div class="rp-val" id="wordPropPages">0</div></div>
+            <div class="rp-row"><label>Palabras</label><div class="rp-val" id="wordPropWords">0</div></div>
+            <div class="rp-row"><label>Tamano</label><div class="rp-val" id="wordPropSize">0 KB</div></div>
+            <div class="rp-row"><label>Estado</label><div class="rp-val" id="wordPropStatus">Sin archivo</div></div>
+          </div>
+          <div class="rp-section">
+            <div class="rp-title">Descargar Documento</div>
+            <button class="convert-card" id="wordRightDownloadButton" type="button" style="border-color:var(--gold); background:rgba(201,168,76,0.12); width:100%; margin-bottom:0.75rem;">
+              <div class="cc-top" style="color:var(--gold); font-size:1.05rem; font-weight:700;"><i class="ti ti-download"></i> Descargar DOCX</div>
+              <div class="cc-desc">Guarda el archivo procesado en tu equipo</div>
+            </button>
           </div>
           <div class="rp-section">
             <div class="rp-title">Convertir a</div>

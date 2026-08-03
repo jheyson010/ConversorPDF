@@ -183,15 +183,19 @@ function renderTools() {
 }
 
 function fileRow(doc) {
+  const downloadUrl = doc.downloadUrl || `/api/documents/${encodeURIComponent(doc.id)}/download`;
   return `
-    <a class="recent-item" href="/workspace.html?tool=editPdf&docs=${encodeURIComponent(doc.id)}">
+    <div class="recent-item">
       <span class="doc-file-icon"><i class="ti ti-file"></i></span>
       <span class="ri-info">
         <span class="ri-name">${escapeHtml(doc.name)}</span>
         <span class="ri-meta">${formatBytes(doc.sizeBytes)} · ${escapeHtml(doc.kind || 'archivo')}</span>
       </span>
-      <span class="ri-action">Abrir</span>
-    </a>
+      <div style="display:flex; gap:0.4rem; align-items:center;">
+        <a class="tb-btn" style="padding:0.35rem 0.65rem;" href="/workspace.html?tool=editPdf&docs=${encodeURIComponent(doc.id)}"><i class="ti ti-edit"></i> Abrir</a>
+        <a class="tb-btn tb-btn-gold" style="padding:0.35rem 0.65rem;" href="${downloadUrl}" download="${escapeHtml(doc.name)}"><i class="ti ti-download"></i> Descargar</a>
+      </div>
+    </div>
   `;
 }
 
@@ -221,12 +225,23 @@ async function refresh() {
 }
 
 function triggerDownload(document) {
+  if (!document) return;
   const link = window.document.createElement('a');
-  link.href = document.downloadUrl;
+  link.href = document.downloadUrl || `/api/documents/${encodeURIComponent(document.id)}/download`;
   link.download = document.name || 'resultado';
   window.document.body.appendChild(link);
   link.click();
   link.remove();
+}
+
+function handleDownloadLatest() {
+  if (documents && documents.length > 0) {
+    const latest = documents[0];
+    triggerDownload(latest);
+    toast(`Descargando: ${latest.name}`);
+  } else {
+    toast('Sube o convierte un archivo primero para poder descargar.');
+  }
 }
 
 async function uploadFiles(files) {
@@ -294,6 +309,18 @@ document.addEventListener('click', (event) => {
   }
 });
 
+$('#wordFontFamilySelect')?.addEventListener('change', (e) => {
+  document.execCommand('fontName', false, e.target.value);
+});
+
+$('#wordFontSizeSelect')?.addEventListener('change', (e) => {
+  document.execCommand('fontSize', false, e.target.value);
+});
+
+$('#topDownloadButton')?.addEventListener('click', handleDownloadLatest);
+$('#wordDownloadToolbarButton')?.addEventListener('click', handleDownloadLatest);
+$('#wordRightDownloadButton')?.addEventListener('click', handleDownloadLatest);
+
 $('#topUploadButton').addEventListener('click', () => dashboardFileInput.click());
 $('#filesUploadButton').addEventListener('click', () => dashboardFileInput.click());
 $('#wordUploadButton').addEventListener('click', () => dashboardFileInput.click());
@@ -337,3 +364,4 @@ init().catch((error) => {
   toast(error.message);
   if (!currentUser) window.location.href = '/';
 });
+
