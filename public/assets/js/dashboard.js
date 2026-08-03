@@ -317,6 +317,45 @@ $('#wordFontSizeSelect')?.addEventListener('change', (e) => {
   document.execCommand('fontSize', false, e.target.value);
 });
 
+const fontsModal = $('#fontsModal');
+const closeFontsModal = $('#closeFontsModal');
+const openFontsModalBtn = $('#openFontsModalBtn');
+const wordRightFontsButton = $('#wordRightFontsButton');
+const fontsCatalogContainer = $('#fontsCatalogContainer');
+
+async function loadFontsCatalog() {
+  if (!fontsCatalogContainer) return;
+  try {
+    const res = await fetch('/api/fonts');
+    const data = await res.json();
+    const list = data.fonts || [];
+    fontsCatalogContainer.innerHTML = list.map((font) => `
+      <div style="display:flex; justify-content:space-between; align-items:center; background:var(--dark3); border:1px solid var(--border); padding:0.55rem 0.8rem; border-radius:2px;">
+        <div>
+          <strong style="font-size:0.88rem; color:var(--text);">${escapeHtml(font.name)}</strong>
+          <div style="font-size:0.68rem; color:var(--text-muted);">${escapeHtml(font.category)} · ${escapeHtml(font.license)}</div>
+        </div>
+        <div style="display:flex; gap:0.4rem;">
+          <a class="tb-btn tb-btn-gold" style="padding:0.3rem 0.65rem; font-size:0.72rem;" href="${font.downloadUrl}" target="_blank" rel="noopener"><i class="ti ti-download"></i> Descargar TTF</a>
+        </div>
+      </div>
+    `).join('');
+  } catch (_e) {
+    fontsCatalogContainer.innerHTML = '<div class="empty-state">No se pudo cargar el catálogo de fuentes.</div>';
+  }
+}
+
+function openFontsModal() {
+  if (fontsModal && !fontsModal.open) {
+    fontsModal.showModal();
+    loadFontsCatalog();
+  }
+}
+
+openFontsModalBtn?.addEventListener('click', openFontsModal);
+wordRightFontsButton?.addEventListener('click', openFontsModal);
+closeFontsModal?.addEventListener('click', () => fontsModal?.close());
+
 $('#topDownloadButton')?.addEventListener('click', handleDownloadLatest);
 $('#wordDownloadToolbarButton')?.addEventListener('click', handleDownloadLatest);
 $('#wordRightDownloadButton')?.addEventListener('click', handleDownloadLatest);

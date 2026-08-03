@@ -157,6 +157,7 @@
         <button class="et-btn" type="button" data-command="justifyRight" title="Alinear a la derecha"><i class="ti ti-align-right"></i></button>
         <span class="et-sep"></span>
         <button class="et-btn ai-btn" id="wordDownloadToolbarButton" type="button"><i class="ti ti-download"></i> Descargar DOCX</button>
+        <button class="et-btn ai-btn" id="openFontsModalBtn" type="button" style="border-color:var(--gold); color:var(--gold);" title="Descargar paquete de fuentes tipográficas TTF/OTF"><i class="ti ti-typography"></i> Descargar Fuentes</button>
       </div>
       <div class="word-editor-shell">
         <aside class="file-panel word-file-panel">
@@ -187,6 +188,13 @@
             <button class="convert-card" id="wordRightDownloadButton" type="button" style="border-color:var(--gold); background:rgba(201,168,76,0.12); width:100%; margin-bottom:0.75rem;">
               <div class="cc-top" style="color:var(--gold); font-size:1.05rem; font-weight:700;"><i class="ti ti-download"></i> Descargar DOCX</div>
               <div class="cc-desc">Guarda el archivo procesado en tu equipo</div>
+            </button>
+          </div>
+          <div class="rp-section">
+            <div class="rp-title">Fuentes Tipográficas</div>
+            <button class="convert-card" id="wordRightFontsButton" type="button" style="border-color:var(--border); width:100%;">
+              <div class="cc-top" style="color:var(--text); font-size:0.95rem; font-weight:600;"><i class="ti ti-font"></i> Descargar Fuentes TTF</div>
+              <div class="cc-desc">Descarga fuentes estándar y Google Fonts</div>
             </button>
           </div>
           <div class="rp-section">
@@ -221,6 +229,28 @@
       </div>
     </footer>
   </main>
+
+  <dialog class="auth-dialog" id="fontsModal">
+    <div class="auth-card" style="max-width:580px; width:92%; padding:1.6rem; border-radius:4px; background:var(--dark2);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:0.75rem;">
+        <h2 style="font-size:1.15rem; font-family:'Playfair Display',serif; color:var(--gold); display:flex; align-items:center; gap:0.5rem; margin:0;">
+          <i class="ti ti-typography"></i> Descargar Fuentes Tipográficas
+        </h2>
+        <button id="closeFontsModal" type="button" style="background:transparent; border:0; color:var(--text-muted); font-size:1.5rem; cursor:pointer;">&times;</button>
+      </div>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.2rem; line-height:1.5;">
+        Descarga e instala fuentes en tu equipo (Windows, macOS o Linux) para utilizarlas en Microsoft Word, PDF y DocFlow con máxima fidelidad visual.
+      </p>
+      <div id="fontsCatalogContainer" style="display:grid; gap:0.55rem; max-height:290px; overflow-y:auto; margin-bottom:1.2rem; padding-right:0.3rem;">
+        <!-- Lista de fuentes -->
+      </div>
+      <div style="display:flex; gap:0.6rem; justify-content:flex-end; border-top:1px solid var(--border); padding-top:1rem;">
+        <a class="tb-btn tb-btn-gold" href="/api/fonts/download-all" download="DocFlow-Fuentes.zip" style="padding:0.6rem 1.1rem; font-weight:700;">
+          <i class="ti ti-file-zip"></i> Descargar Paquete Completo (.ZIP)
+        </a>
+      </div>
+    </div>
+  </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="/assets/js/dashboard.js?v=20260615-public"></script>
