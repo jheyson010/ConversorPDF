@@ -8,7 +8,7 @@ function getGoogleClientId() {
   if (!process.env.GOOGLE_CLIENT_ID && !process.env.REACT_APP_GOOGLE_CLIENT_ID) {
     try { require('dotenv').config({ quiet: true }); } catch (_e) {}
   }
-  return process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '652344578744-4n8lsr7k1medd0s31g1bnrd3m9bennl.apps.googleusercontent.com';
+  return process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID || '652344578744-8muaou1p2ic972i2al68gmiagnonr25j.apps.googleusercontent.com';
 }
 
 async function verifyGoogleCredential(credential) {
